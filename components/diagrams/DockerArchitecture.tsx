@@ -1,6 +1,6 @@
 'use client'
 
-import { Database, Container, Layers, Zap, Shield, ChevronDown, Lock, RefreshCw, Package } from 'lucide-react'
+import { Database, Container, Zap, Shield, ChevronDown, Lock, RefreshCw, Package } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 // Docker 고래 아이콘 SVG 컴포넌트
@@ -23,7 +23,7 @@ export default function DockerArchitecture() {
             </h3>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl">
-            컨테이너화로 실현하는 완벽한 재현성 - "내 컴퓨터에서는 됐는데" 문제를 영원히 해결
+            컨테이너화로 실현하는 완벽한 재현성 - &ldquo;내 컴퓨터에서는 됐는데&rdquo; 문제를 영원히 해결
           </p>
         </div>
 

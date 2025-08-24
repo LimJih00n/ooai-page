@@ -399,8 +399,8 @@ export default function ResearchProcessComparison() {
                   </h5>
                   <ul className="space-y-2">
                     {(viewMode === 'traditional' 
-                      ? steps[currentStep].problems 
-                      : steps[currentStep].benefits
+                      ? ('problems' in steps[currentStep] ? steps[currentStep].problems : [])
+                      : ('benefits' in steps[currentStep] ? steps[currentStep].benefits : [])
                     )?.map((item, index) => (
                       <motion.li
                         key={index}

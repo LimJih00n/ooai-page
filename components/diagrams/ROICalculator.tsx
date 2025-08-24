@@ -215,7 +215,7 @@ export default function ROICalculator() {
                         cy="50%"
                         outerRadius={80}
                         dataKey="value"
-                        label={({ name, value }) => `${name}: ${value.toLocaleString()}`}
+                        label={({ name, value }) => `${name}: ${value?.toLocaleString() ?? '0'}`}
                       >
                         {savingsData.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.fill} />

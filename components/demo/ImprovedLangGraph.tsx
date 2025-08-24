@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 interface FlowStep {
   id: string
   label: string
-  icon: any
+  icon: React.ComponentType<{ className?: string }>
   x: number
   y: number
   status: 'idle' | 'active' | 'completed'

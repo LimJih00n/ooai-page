@@ -10,7 +10,7 @@ interface Node {
   label: string
   position: { x: number; y: number }
   status: 'idle' | 'active' | 'completed'
-  icon: any
+  icon: React.ComponentType<{ className?: string }>
 }
 
 interface Edge {

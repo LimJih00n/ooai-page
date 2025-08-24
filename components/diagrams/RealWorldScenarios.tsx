@@ -407,7 +407,7 @@ export default function RealWorldScenarios() {
             <CardContent>
               <div className={`p-4 rounded-lg ${getScenarioColor(selectedScenario.color).bg}`}>
                 <p className="font-medium text-gray-900 mb-4">
-                  "{selectedScenario.question}"
+                  &ldquo;{selectedScenario.question}&rdquo;
                 </p>
                 
                 <div className="space-y-3">

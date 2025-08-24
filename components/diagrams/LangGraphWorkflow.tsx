@@ -1,6 +1,6 @@
 'use client'
 
-import { Brain, Database, BarChart3, Users, ArrowRight, CheckCircle, AlertCircle, ChevronRight } from 'lucide-react'
+import { Brain, Database, BarChart3, Users, CheckCircle, AlertCircle, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function LangGraphWorkflow() {
@@ -44,7 +44,7 @@ export default function LangGraphWorkflow() {
               className="bg-white rounded-lg p-3 w-full shadow-sm"
             >
               <div className="text-xs text-blue-800 font-mono">
-                "특정 해역의 해수면 온도와 어종 출현 빈도의 상관관계를 분석하라"
+                &ldquo;특정 해역의 해수면 온도와 어종 출현 빈도의 상관관계를 분석하라&rdquo;
               </div>
             </motion.div>
           </motion.div>

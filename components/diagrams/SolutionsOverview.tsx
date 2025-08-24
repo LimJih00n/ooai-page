@@ -28,7 +28,7 @@ const solutionPillars = [
       '플랫폼 독립적 실행'
     ],
     beforeProblems: [
-      '"내 컴퓨터에서는 됐는데" 문제',
+      '&ldquo;내 컴퓨터에서는 됐는데&rdquo; 문제',
       '패키지 버전 충돌',
       '환경 설정에 수일 소요',
       '협업 시 재현 불가능'

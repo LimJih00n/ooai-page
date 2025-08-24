@@ -1,103 +1,580 @@
-import Image from "next/image";
+'use client'
+
+import { ArrowRight, Beaker, Brain, Database, GitBranch, Globe, Lightbulb, Lock, MessageCircle, Microscope, PieChart, Rocket, Shield, Sparkles, Users, Zap, Activity, Settings, FileText, Network, BarChart3, Workflow, Timer, TrendingUp, CheckCircle, AlertTriangle, FileX, Clock, Container, Code, Play, Target, Mail, RefreshCw } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import DockerArchitecture from '@/components/diagrams/DockerArchitecture'
+import LangGraphWorkflow from '@/components/diagrams/LangGraphWorkflow'
+import UltraThinkService from '@/components/diagrams/UltraThinkService'
+import ResearchProcessComparison from '@/components/diagrams/ResearchProcessComparison'
+import TechStackArchitecture from '@/components/diagrams/TechStackArchitecture'
+import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
+import RealWorldScenarios from '@/components/diagrams/RealWorldScenarios'
+import SolutionsOverview from '@/components/diagrams/SolutionsOverview'
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 research-pattern">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 glass border-b border-white/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-xl font-bold text-gray-900">FatherMarine</span>
+                </div>
+              </div>
+              <div className="hidden md:block">
+                <div className="ml-10 flex items-baseline space-x-8">
+                  <a href="#problems" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    연구 현황
+                  </a>
+                  <a href="#solutions" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    솔루션
+                  </a>
+                  <a href="#features" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    기능
+                  </a>
+                  <a href="#scenarios" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    활용사례
+                  </a>
+                  <a href="#technology" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    기술
+                  </a>
+                  <a href="#services" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    서비스
+                  </a>
+                  <a href="#contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    문의
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <Button variant="research" className="shadow-lg">
+                파일럿 프로젝트 시작
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <Badge variant="research" className="mb-6 animate-fade-up flex items-center justify-center gap-2 mx-auto w-fit">
+              <Microscope className="w-4 h-4" />
+              <span>자연대 연구실을 위한 AI 혁신</span>
+            </Badge>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 animate-fade-up">
+              연구실의{' '}
+              <span className="gradient-text">
+                생산성
+              </span>
+              을
+              <br />
+              2배로 높이다
+            </h1>
+            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-up">
+              AI와 컨테이너 기술로 구축하는{' '}
+              <span className="font-semibold text-blue-600">차세대 연구 플랫폼</span>
+              <br />
+              <span className="text-lg text-gray-500">재현 가능하고, 자동화되며, 완전히 안전한 연구 환경</span>
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up">
+              <Button variant="research" size="xl" className="group">
+                무료 파일럿 시작하기
+                <Rocket className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Link href="/demo">
+                <Button variant="research-outline" size="xl" className="group">
+                  기술 데모 보기
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+            
+            {/* Key Stats */}
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center glass p-6 rounded-xl">
+                <div className="text-4xl font-bold text-blue-600 mb-2">90%</div>
+                <div className="text-gray-600">시간 절약</div>
+                <div className="text-xs text-gray-500 mt-1">데이터 수집 → 분석 → 보고서</div>
+              </div>
+              <div className="text-center glass p-6 rounded-xl">
+                <div className="text-4xl font-bold text-indigo-600 mb-2">5x</div>
+                <div className="text-gray-600">분석 속도 향상</div>
+                <div className="text-xs text-gray-500 mt-1">병렬 처리 + AI 최적화</div>
+              </div>
+              <div className="text-center glass p-6 rounded-xl">
+                <div className="text-4xl font-bold text-purple-600 mb-2">24/7</div>
+                <div className="text-gray-600">무중단 AI 지원</div>
+                <div className="text-xs text-gray-500 mt-1">로컬 실행으로 안전 보장</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Research Problems Section */}
+      <section id="problems" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+              자연대 연구실의 현실
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              과학 연구에서 발생하는 체계적인 문제들을 데이터로 확인해보세요
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow border-blue-200">
+              <div className="text-3xl font-bold text-blue-600 mb-2">70%</div>
+              <div className="text-gray-600 font-medium mb-2">실험 재현 실패율</div>
+              <div className="text-xs text-gray-500">Nature Survey, 1,576명 과학자</div>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow border-indigo-200">
+              <div className="text-3xl font-bold text-indigo-600 mb-2">23%</div>
+              <div className="text-gray-600 font-medium mb-2">실제 연구에 쓰는 시간</div>
+              <div className="text-xs text-gray-500">Stanford University 연구</div>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow border-purple-200">
+              <div className="text-3xl font-bold text-purple-600 mb-2">14.9개</div>
+              <div className="text-gray-600 font-medium mb-2">연구자당 평균 도구 개수</div>
+              <div className="text-xs text-gray-500">Software Carpentry 설문</div>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow border-purple-200">
+              <div className="text-3xl font-bold text-purple-600 mb-2">€102B</div>
+              <div className="text-gray-600 font-medium mb-2">EU 연간 데이터 손실 비용</div>
+              <div className="text-xs text-gray-500">European Commission</div>
+            </Card>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 lg:p-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+              "내 컴퓨터에서는 됐는데..." 문제
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <AlertTriangle className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">의존성 지옥 (Dependency Hell)</h4>
+                    <p className="text-gray-600 text-sm">패키지 버전 충돌로 인한 환경 파괴</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FileX className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">부정확한 문서화</h4>
+                    <p className="text-gray-600 text-sm">README 파일의 불완전한 설치 가이드</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">코드 부패 (Code Rot)</h4>
+                    <p className="text-gray-600 text-sm">시간이 지나면서 실행 불가능해지는 분석 스크립트</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Users className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">협업의 어려움</h4>
+                    <p className="text-gray-600 text-sm">환경 차이로 인한 동료 검토 지연</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Feature Showcase Section */}
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <InteractiveFeatureShowcase />
+      </section>
+
+      {/* Real World Scenarios Section */}
+      <section id="scenarios" className="py-20 px-4 sm:px-6 lg:px-8 research-gradient">
+        <RealWorldScenarios />
+      </section>
+
+      {/* Research Process Comparison Section */}
+      <section id="process-comparison" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <ResearchProcessComparison />
+      </section>
+
+      {/* Solutions Overview Section */}
+      <section id="solutions" className="py-20 px-4 sm:px-6 lg:px-8 research-gradient">
+        <SolutionsOverview />
+      </section>
+
+      {/* Service Tiers Section */}
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+              3단계 진화 경로
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              연구실의 현재 상황에 맞는 단계별 AI 도입 전략
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Tier 1: Enabler */}
+            <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-blue-200">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50" />
+              <CardHeader className="relative">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <Lightbulb className="w-6 h-6 text-blue-600" />
+                </div>
+                <CardTitle className="text-2xl mb-2">
+                  1단계: 인에이블러
+                </CardTitle>
+                <Badge variant="research" className="w-fit mb-4">
+                  파일럿 프로젝트
+                </Badge>
+                <CardDescription className="text-base">
+                  기존 연구 환경을 Docker화하고 AI 도구 도입으로 즉시 효과 체험
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative">
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
+                    현재 연구 환경 Docker 컨테이너화
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
+                    Gemini CLI 통합 개발 환경 구축
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
+                    기본 워크플로우 자동화 스크립트
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
+                    연구진 대상 사용법 교육
+                  </li>
+                </ul>
+                <Button variant="research" className="w-full group">
+                  파일럿 시작하기
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Tier 2: Operator */}
+            <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-indigo-200 bg-white">
+              <div className="absolute -top-1 -left-1 -right-1 h-1 bg-indigo-500" />
+              <div className="absolute top-4 right-4">
+                <Badge variant="research" className="text-xs">
+                  추천
+                </Badge>
+              </div>
+              <CardHeader className="relative">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <Rocket className="w-6 h-6 text-purple-600" />
+                </div>
+                <CardTitle className="text-2xl mb-2">
+                  2단계: 오퍼레이터
+                </CardTitle>
+                <Badge variant="success" className="w-fit mb-4">
+                  스케일링
+                </Badge>
+                <CardDescription className="text-base">
+                  LangGraph 다중 에이전트 시스템으로 연구 프로세스 완전 자동화
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative">
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    다중 데이터 소스 자동 수집
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    AI 에이전트 기반 분석 자동화
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    Human-in-the-Loop 검토 시스템
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    연구실 지식 그래프 구축
+                  </li>
+                </ul>
+                <Button variant="research" className="w-full group bg-indigo-600 hover:bg-indigo-700">
+                  스케일링 시작
+                  <Rocket className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Tier 3: Partner */}
+            <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-purple-200">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100 opacity-50" />
+              <CardHeader className="relative">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-purple-600" />
+                </div>
+                <CardTitle className="text-2xl mb-2">
+                  3단계: 파트너
+                </CardTitle>
+                <Badge variant="research" className="w-fit mb-4">
+                  전략적 파트너십
+                </Badge>
+                <CardDescription className="text-base">
+                  연구실 전체 디지털 트랜스포메이션 및 공동 연구 개발
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative">
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    연구실 전체 AI 시스템 설계
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    공동 특허 및 IP 개발
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    장기 기술 로드맵 수립
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-purple-600 mt-0.5 mr-3 flex-shrink-0" />
+                    차세대 연구진 AI 교육
+                  </li>
+                </ul>
+                <Button variant="research-outline" className="w-full group border-purple-600 text-purple-600 hover:bg-purple-600">
+                  파트너십 논의
+                  <MessageCircle className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-16 text-center">
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2 flex items-center justify-center gap-2">
+                <Target className="w-5 h-5 text-blue-600" />
+                <span>어느 단계부터 시작해야 할까요?</span>
+              </h3>
+              <p className="text-gray-600 mb-4">
+                15분 무료 상담으로 연구실에 최적화된 AI 도입 전략을 받아보세요
+              </p>
+              <Button variant="research" size="lg">
+                무료 상담 신청하기
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Architecture Section */}
+      <section id="technology" className="py-20 px-4 sm:px-6 lg:px-8 research-gradient">
+        <TechStackArchitecture />
+      </section>
+
+      {/* Technology Comparison */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              왜 FatherMarine인가?
+            </h2>
+            <p className="text-lg text-gray-600">
+              기존 AI 도구들과의 핵심 차별점
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead className="bg-gray-50">
+                  <tr className="border-b border-gray-200">
+                    <th className="py-4 px-6 font-semibold text-gray-900">핵심 특징</th>
+                    <th className="py-4 px-6 font-semibold text-gray-900 text-center">ChatGPT/Claude</th>
+                    <th className="py-4 px-6 font-semibold text-gray-900 text-center">FatherMarine</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  <tr className="hover:bg-gray-50">
+                    <td className="py-4 px-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <Lock className="w-4 h-4 text-blue-600" />
+                        </div>
+                        <span className="font-medium text-gray-900">데이터 보안</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="secondary" className="text-xs">외부 클라우드 의존</Badge>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="research" className="text-xs">100% 로컬 실행</Badge>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="py-4 px-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <Network className="w-4 h-4 text-purple-600" />
+                        </div>
+                        <span className="font-medium text-gray-900">실험실 장비 연동</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="secondary" className="text-xs">지원 불가</Badge>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="research" className="text-xs">실시간 IoT 연동</Badge>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="py-4 px-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
+                          <Database className="w-4 h-4 text-indigo-600" />
+                        </div>
+                        <span className="font-medium text-gray-900">연구실 지식베이스</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="secondary" className="text-xs">일반 지식만</Badge>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="research" className="text-xs">전용 지식그래프</Badge>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="py-4 px-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <RefreshCw className="w-4 h-4 text-blue-600" />
+                        </div>
+                        <span className="font-medium text-gray-900">실험 재현성</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="secondary" className="text-xs">보장 불가</Badge>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="research" className="text-xs">Docker 완전 재현</Badge>
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="py-4 px-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <Shield className="w-4 h-4 text-purple-600" />
+                        </div>
+                        <span className="font-medium text-gray-900">규제 준수</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="warning" className="text-xs">제한적 준수</Badge>
+                    </td>
+                    <td className="py-4 px-6 text-center">
+                      <Badge variant="research" className="text-xs">완전 규제 준수</Badge>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500 mb-4">
+              연구실 전용으로 설계된 유일한 AI 플랫폼
+            </p>
+            <Button variant="research" size="lg" className="group">
+              차별점 자세히 보기
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+
+      {/* CTA Section */}
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            연구실의 AI 혁신을 시작하세요
+          </h2>
+          <p className="text-xl mb-8 opacity-90">
+            파일럿 프로젝트로 시작해서 연구실 전체의 디지털 트랜스포메이션까지
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <Button size="xl" className="bg-white text-blue-600 hover:bg-gray-100 group">
+              무료 파일럿 프로젝트 신청
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button variant="outline" size="xl" className="border-white text-white hover:bg-white/10">
+              기술 상담 예약하기
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm opacity-80">
+            <div className="flex flex-col items-center">
+              <Mail className="w-5 h-5 mb-2" />
+              <div className="font-semibold mb-1">이메일</div>
+              <div>research@fathermarine.ai</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Clock className="w-5 h-5 mb-2" />
+              <div className="font-semibold mb-1">상담 시간</div>
+              <div>평일 9:00-18:00</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Target className="w-5 h-5 mb-2" />
+              <div className="font-semibold mb-1">응답 시간</div>
+              <div>24시간 내 회신 보장</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-2 mb-4 md:mb-0">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <Brain className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold">FatherMarine</span>
+            </div>
+            <div className="text-gray-400 text-center md:text-right">
+              <p>&copy; 2024 FatherMarine. 자연대 연구실을 위한 AI 혁신.</p>
+              <p className="mt-1">문의: research@fathermarine.ai</p>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }

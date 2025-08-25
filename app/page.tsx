@@ -10,7 +10,6 @@ import UltraThinkService from '@/components/diagrams/UltraThinkService'
 import ResearchProcessComparison from '@/components/diagrams/ResearchProcessComparison'
 import TechStackArchitecture from '@/components/diagrams/TechStackArchitecture'
 import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
-import RealWorldScenarios from '@/components/diagrams/RealWorldScenarios'
 import SolutionsOverview from '@/components/diagrams/SolutionsOverview'
 import Link from 'next/link'
 
@@ -24,10 +23,14 @@ export default function Home() {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                    <Brain className="w-5 h-5 text-white" />
+                  <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-lime-400 rounded-full flex items-center justify-center relative">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-6 h-2 bg-white rounded-full"></div>
+                      <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full left-2"></div>
+                      <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full right-2"></div>
+                    </div>
                   </div>
-                  <span className="text-xl font-bold text-gray-900">FatherMarine</span>
+                  <span className="text-xl font-bold text-gray-900">LabA</span>
                 </div>
               </div>
               <div className="hidden md:block">
@@ -40,9 +43,6 @@ export default function Home() {
                   </a>
                   <a href="#features" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                     기능
-                  </a>
-                  <a href="#scenarios" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                    활용사례
                   </a>
                   <a href="#technology" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                     기술
@@ -214,10 +214,6 @@ export default function Home() {
         <InteractiveFeatureShowcase />
       </section>
 
-      {/* Real World Scenarios Section */}
-      <section id="scenarios" className="py-20 px-4 sm:px-6 lg:px-8 research-gradient">
-        <RealWorldScenarios />
-      </section>
 
       {/* Research Process Comparison Section */}
       <section id="process-comparison" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -404,7 +400,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              왜 FatherMarine인가?
+              왜 LabA인가?
             </h2>
             <p className="text-lg text-gray-600">
               기존 AI 도구들과의 핵심 차별점
@@ -418,7 +414,7 @@ export default function Home() {
                   <tr className="border-b border-gray-200">
                     <th className="py-4 px-6 font-semibold text-gray-900">핵심 특징</th>
                     <th className="py-4 px-6 font-semibold text-gray-900 text-center">ChatGPT/Claude</th>
-                    <th className="py-4 px-6 font-semibold text-gray-900 text-center">FatherMarine</th>
+                    <th className="py-4 px-6 font-semibold text-gray-900 text-center">LabA</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
@@ -542,7 +538,7 @@ export default function Home() {
             <div className="flex flex-col items-center">
               <Mail className="w-5 h-5 mb-2" />
               <div className="font-semibold mb-1">이메일</div>
-              <div>research@fathermarine.ai</div>
+              <div>research@laba.ai</div>
             </div>
             <div className="flex flex-col items-center">
               <Clock className="w-5 h-5 mb-2" />
@@ -563,14 +559,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-lime-400 rounded-full flex items-center justify-center relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-6 h-2 bg-white rounded-full"></div>
+                  <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full left-2"></div>
+                  <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full right-2"></div>
+                </div>
               </div>
-              <span className="text-xl font-bold">FatherMarine</span>
+              <span className="text-xl font-bold">LabA</span>
             </div>
             <div className="text-gray-400 text-center md:text-right">
-              <p>&copy; 2024 FatherMarine. 자연대 연구실을 위한 AI 혁신.</p>
-              <p className="mt-1">문의: research@fathermarine.ai</p>
+              <p>&copy; 2024 LabA. 자연대 연구실을 위한 AI 혁신.</p>
+              <p className="mt-1">문의: research@laba.ai</p>
             </div>
           </div>
         </div>

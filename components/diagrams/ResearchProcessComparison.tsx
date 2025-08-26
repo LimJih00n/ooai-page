@@ -137,7 +137,7 @@ export default function ResearchProcessComparison() {
     let interval: NodeJS.Timeout
     if (isPlaying) {
       interval = setInterval(() => {
-        const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : fatherMarineSteps.length
+        const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : labASteps.length
         setCurrentStep(prev => {
           if (prev < maxSteps - 1) {
             return prev + 1
@@ -153,7 +153,7 @@ export default function ResearchProcessComparison() {
 
   // 애니메이션 제어
   const handlePlay = () => {
-    const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : fatherMarineSteps.length
+    const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : labASteps.length
     
     if (!isPlaying && currentStep === maxSteps - 1) {
       // 마지막 단계에서 재생 버튼을 누르면 처음부터 시작

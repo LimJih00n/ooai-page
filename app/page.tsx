@@ -1,6 +1,7 @@
 'use client'
 
-import { ArrowRight, Beaker, Brain, Database, GitBranch, Globe, Lightbulb, Lock, MessageCircle, Microscope, PieChart, Rocket, Shield, Sparkles, Users, Zap, Activity, Settings, FileText, Network, BarChart3, Workflow, Timer, TrendingUp, CheckCircle, AlertTriangle, FileX, Clock, Container, Code, Play, Target, Mail, RefreshCw, Bug, Egg } from 'lucide-react'
+import { ArrowRight, Beaker, Brain, Database, GitBranch, Globe, Lightbulb, Lock, MessageCircle, Microscope, PieChart, Rocket, Shield, Users, Zap, Activity, Settings, FileText, Network, BarChart3, Workflow, Timer, TrendingUp, CheckCircle, AlertTriangle, FileX, Clock, Container, Code, Play, Target, Mail, RefreshCw, Bug, Egg } from 'lucide-react'
+import { GiButterfly, GiCaterpillar, GiCocoon } from 'react-icons/gi'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -250,7 +251,7 @@ export default function Home() {
               <CardHeader className="relative">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                    <Bug className="w-6 h-6 text-white" />
+                    <GiCaterpillar className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-xs text-gray-500">
                     <div className="font-semibold">애벌레 단계</div>
@@ -305,7 +306,7 @@ export default function Home() {
               <CardHeader className="relative">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                    <Egg className="w-6 h-6 text-white" />
+                    <GiCocoon className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-xs text-gray-500">
                     <div className="font-semibold">번데기 단계</div>
@@ -355,7 +356,7 @@ export default function Home() {
               <CardHeader className="relative">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-white" />
+                    <GiButterfly className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-xs text-gray-500">
                     <div className="font-semibold">나비 단계</div>

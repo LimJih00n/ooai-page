@@ -33,9 +33,9 @@ import {
   Package,
   CheckCircle,
   Bug,
-  Egg,
-  Sparkles
+  Egg
 } from 'lucide-react'
+import { GiButterfly, GiCaterpillar, GiCocoon } from 'react-icons/gi'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -52,7 +52,7 @@ export default function DetailedServiceOfferings() {
       description: "최소한의 리스크로 Agentic AI를 처음 도입하여, R&D 혁신의 '첫 성공 사례'를 만들어내는 단계",
       meaning: "화학 반응을 촉진하는 촉매처럼, labA가 고객의 R&D 조직에 AI 도입이라는 혁신적인 변화를 빠르고 효과적으로 일으키는 기폭제 역할을 합니다.",
       gradient: "from-blue-500 to-cyan-500",
-      icon: <Bug className="w-6 h-6" />,
+      icon: <GiCaterpillar className="w-6 h-6" />,
       evolutionStage: "애벌레",
       evolutionDescription: "작지만 강력한 시작, 성장의 잠재력을 품은 첫 단계",
       categories: [
@@ -122,7 +122,7 @@ export default function DetailedServiceOfferings() {
       description: "연구원들이 인프라 관리 부담 없이 핵심 연구에만 집중할 수 있도록, 완전히 관리되는 안정적이고 확장 가능한 R&D 환경 제공",
       meaning: "여러 요소가 모이는 중심점처럼, 데이터, AI 에이전트, 워크플로우, 연구원 등 R&D에 필요한 모든 것을 하나로 연결하는 중앙 허브 역할을 합니다.",
       gradient: "from-indigo-500 to-purple-500",
-      icon: <Egg className="w-6 h-6" />,
+      icon: <GiCocoon className="w-6 h-6" />,
       evolutionStage: "번데기",
       evolutionDescription: "내부에서 혁신이 일어나는 변화의 시기, 도약을 준비하는 단계",
       categories: [
@@ -192,7 +192,7 @@ export default function DetailedServiceOfferings() {
       description: "고객과 하나의 팀처럼 긴밀하게 협력하여 R&D 프로세스를 근본적으로 재설계하고, 독점적인 IP를 공동 개발하여 시장을 파괴하는 혁신을 이끌어냅니다",
       meaning: "Agentic AI를 활용한 R&D 혁명의 최전선에서 업계를 이끄는 전략적 동반자. '처음부터 다시 시작'하는 과감한 접근을 통해 지속 가능한 경쟁 우위를 함께 만들어갑니다.",
       gradient: "from-purple-500 to-pink-500",
-      icon: <Sparkles className="w-6 h-6" />,
+      icon: <GiButterfly className="w-6 h-6" />,
       evolutionStage: "나비",
       evolutionDescription: "완전한 변태를 거쳐 날아오른 혁신, 무한한 가능성의 실현",
       categories: [

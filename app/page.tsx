@@ -23,11 +23,11 @@ export default function Home() {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-lime-400 rounded-full flex items-center justify-center relative">
+                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center relative">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-6 h-2 bg-white rounded-full"></div>
-                      <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full left-2"></div>
-                      <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full right-2"></div>
+                      <div className="absolute w-1.5 h-1.5 bg-blue-700 rounded-full left-2"></div>
+                      <div className="absolute w-1.5 h-1.5 bg-blue-700 rounded-full right-2"></div>
                     </div>
                   </div>
                   <span className="text-xl font-bold text-gray-900">LabA</span>
@@ -559,11 +559,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-lime-400 rounded-full flex items-center justify-center relative">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-6 h-2 bg-white rounded-full"></div>
-                  <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full left-2"></div>
-                  <div className="absolute w-1.5 h-1.5 bg-green-700 rounded-full right-2"></div>
+                  <div className="absolute w-1.5 h-1.5 bg-blue-700 rounded-full left-2"></div>
+                  <div className="absolute w-1.5 h-1.5 bg-blue-700 rounded-full right-2"></div>
                 </div>
               </div>
               <span className="text-xl font-bold">LabA</span>

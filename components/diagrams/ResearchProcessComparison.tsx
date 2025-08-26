@@ -67,8 +67,8 @@ const traditionalSteps = [
   }
 ]
 
-// FatherMarine 프로세스 단계
-const fatherMarineSteps = [
+// LabA 프로세스 단계
+const labASteps = [
   {
     id: 1,
     title: "자연어 질문 입력",
@@ -130,7 +130,7 @@ const fatherMarineSteps = [
 export default function ResearchProcessComparison() {
   const [currentStep, setCurrentStep] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [viewMode, setViewMode] = useState<'traditional' | 'fathermarine'>('traditional')
+  const [viewMode, setViewMode] = useState<'traditional' | 'laba'>('traditional')
 
   // 자동 진행 useEffect 추가
   React.useEffect(() => {
@@ -170,7 +170,7 @@ export default function ResearchProcessComparison() {
     setIsPlaying(false)
   }
 
-  const steps = viewMode === 'traditional' ? traditionalSteps : fatherMarineSteps
+  const steps = viewMode === 'traditional' ? traditionalSteps : labASteps
   const totalDuration = viewMode === 'traditional' ? '7-15주' : '3.5시간'
   const successRate = viewMode === 'traditional' ? '30%' : '95%'
 
@@ -190,7 +190,7 @@ export default function ResearchProcessComparison() {
           </h3>
         </motion.div>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          기존 방식과 FatherMarine의 차이를 단계별로 비교해보세요
+          기존 방식과 LabA의 차이를 단계별로 비교해보세요
         </p>
       </div>
 
@@ -216,19 +216,19 @@ export default function ResearchProcessComparison() {
           </button>
           <button
             onClick={() => {
-              setViewMode('fathermarine')
+              setViewMode('laba')
               setCurrentStep(0)
               setIsPlaying(false)
             }}
             className={`px-6 py-2 rounded-md transition-all ${
-              viewMode === 'fathermarine' 
+              viewMode === 'laba' 
                 ? 'bg-white shadow-sm text-gray-900 font-medium' 
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-              <span>FatherMarine 방식</span>
+              <span>LabA 방식</span>
             </div>
           </button>
         </div>
@@ -242,7 +242,7 @@ export default function ResearchProcessComparison() {
               <Pause className="w-5 h-5 mr-2" />
               일시정지
             </>
-          ) : currentStep === (viewMode === 'traditional' ? traditionalSteps.length - 1 : fatherMarineSteps.length - 1) ? (
+          ) : currentStep === (viewMode === 'traditional' ? traditionalSteps.length - 1 : labASteps.length - 1) ? (
             <>
               <RotateCcw className="w-5 h-5 mr-2" />
               다시 시연
@@ -506,7 +506,7 @@ export default function ResearchProcessComparison() {
           <CardHeader className="bg-blue-50">
             <CardTitle className="flex items-center space-x-2 text-blue-800">
               <CheckCircle className="w-5 h-5" />
-              <span>FatherMarine 방식</span>
+              <span>LabA 방식</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">

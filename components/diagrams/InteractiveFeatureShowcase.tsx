@@ -134,7 +134,7 @@ export default function InteractiveFeatureShowcase() {
           </h3>
         </motion.div>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          FatherMarine의 6가지 핵심 기능을 인터랙티브하게 탐색하고 실제 동작 원리를 이해해보세요
+          LabA의 6가지 핵심 기능을 인터랙티브하게 탐색하고 실제 동작 원리를 이해해보세요
         </p>
       </div>
 
@@ -288,7 +288,7 @@ export default function InteractiveFeatureShowcase() {
                             <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                               <div className="flex items-center space-x-2 mb-2">
                                 <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                                <span className="font-medium text-blue-800">FatherMarine</span>
+                                <span className="font-medium text-blue-800">LabA</span>
                               </div>
                               <p className="text-sm text-blue-700">{selectedFeature.beforeAfter.after}</p>
                             </div>

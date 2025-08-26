@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowRight, Beaker, Brain, Database, GitBranch, Globe, Lightbulb, Lock, MessageCircle, Microscope, PieChart, Rocket, Shield, Users, Zap, Activity, Settings, FileText, Network, BarChart3, Workflow, Timer, TrendingUp, CheckCircle, AlertTriangle, FileX, Clock, Container, Code, Play, Target, Mail, RefreshCw, Bug, Egg } from 'lucide-react'
-import { GiButterfly, GiCaterpillar, GiCocoon } from 'react-icons/gi'
+import { GiButterfly, GiCaterpillar } from 'react-icons/gi'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -306,7 +306,7 @@ export default function Home() {
               <CardHeader className="relative">
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                    <GiCocoon className="w-6 h-6 text-white" />
+                    <Egg className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-xs text-gray-500">
                     <div className="font-semibold">번데기 단계</div>

@@ -35,7 +35,7 @@ import {
   Bug,
   Egg
 } from 'lucide-react'
-import { GiButterfly, GiCaterpillar, GiCocoon } from 'react-icons/gi'
+import { GiButterfly, GiCaterpillar } from 'react-icons/gi'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -122,7 +122,7 @@ export default function DetailedServiceOfferings() {
       description: "연구원들이 인프라 관리 부담 없이 핵심 연구에만 집중할 수 있도록, 완전히 관리되는 안정적이고 확장 가능한 R&D 환경 제공",
       meaning: "여러 요소가 모이는 중심점처럼, 데이터, AI 에이전트, 워크플로우, 연구원 등 R&D에 필요한 모든 것을 하나로 연결하는 중앙 허브 역할을 합니다.",
       gradient: "from-indigo-500 to-purple-500",
-      icon: <GiCocoon className="w-6 h-6" />,
+      icon: <Egg className="w-6 h-6" />,
       evolutionStage: "번데기",
       evolutionDescription: "내부에서 혁신이 일어나는 변화의 시기, 도약을 준비하는 단계",
       categories: [

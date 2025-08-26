@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Beaker, Brain, Database, GitBranch, Globe, Lightbulb, Lock, MessageCircle, Microscope, PieChart, Rocket, Shield, Sparkles, Users, Zap, Activity, Settings, FileText, Network, BarChart3, Workflow, Timer, TrendingUp, CheckCircle, AlertTriangle, FileX, Clock, Container, Code, Play, Target, Mail, RefreshCw } from 'lucide-react'
+import { ArrowRight, Beaker, Brain, Database, GitBranch, Globe, Lightbulb, Lock, MessageCircle, Microscope, PieChart, Rocket, Shield, Sparkles, Users, Zap, Activity, Settings, FileText, Network, BarChart3, Workflow, Timer, TrendingUp, CheckCircle, AlertTriangle, FileX, Clock, Container, Code, Play, Target, Mail, RefreshCw, Bug, Egg } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -11,6 +11,7 @@ import ResearchProcessComparison from '@/components/diagrams/ResearchProcessComp
 import TechStackArchitecture from '@/components/diagrams/TechStackArchitecture'
 import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
 import SolutionsOverview from '@/components/diagrams/SolutionsOverview'
+import DetailedServiceOfferings from '@/components/diagrams/DetailedServiceOfferings'
 import Link from 'next/link'
 
 export default function Home() {
@@ -225,6 +226,11 @@ export default function Home() {
         <SolutionsOverview />
       </section>
 
+      {/* Detailed Service Offerings Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <DetailedServiceOfferings />
+      </section>
+
       {/* Service Tiers Section */}
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -238,21 +244,28 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Tier 1: Enabler */}
+            {/* Tier 1: Catalyst */}
             <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-blue-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-50" />
               <CardHeader className="relative">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Lightbulb className="w-6 h-6 text-blue-600" />
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                    <Bug className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    <div className="font-semibold">애벌레 단계</div>
+                    <div>작지만 강력한 시작</div>
+                  </div>
                 </div>
                 <CardTitle className="text-2xl mb-2">
-                  1단계: 인에이블러
+                  labA Catalyst
+                  <span className="text-lg text-gray-600 ml-2">(촉매)</span>
                 </CardTitle>
                 <Badge variant="research" className="w-fit mb-4">
-                  파일럿 프로젝트
+                  The Enabler
                 </Badge>
                 <CardDescription className="text-base">
-                  기존 연구 환경을 Docker화하고 AI 도구 도입으로 즉시 효과 체험
+                  최소한의 리스크로 Agentic AI의 첫 성공 사례를 만들어내는 기폭제 역할
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative">
@@ -281,26 +294,33 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Tier 2: Operator */}
+            {/* Tier 2: Nexus */}
             <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-indigo-200 bg-white">
-              <div className="absolute -top-1 -left-1 -right-1 h-1 bg-indigo-500" />
+              <div className="absolute -top-1 -left-1 -right-1 h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
               <div className="absolute top-4 right-4">
                 <Badge variant="research" className="text-xs">
                   추천
                 </Badge>
               </div>
               <CardHeader className="relative">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Rocket className="w-6 h-6 text-purple-600" />
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
+                    <Egg className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    <div className="font-semibold">번데기 단계</div>
+                    <div>내부 혁신의 시기</div>
+                  </div>
                 </div>
                 <CardTitle className="text-2xl mb-2">
-                  2단계: 오퍼레이터
+                  labA Nexus
+                  <span className="text-lg text-gray-600 ml-2">(연결점)</span>
                 </CardTitle>
                 <Badge variant="success" className="w-fit mb-4">
-                  스케일링
+                  The Operator
                 </Badge>
                 <CardDescription className="text-base">
-                  LangGraph 다중 에이전트 시스템으로 연구 프로세스 완전 자동화
+                  모든 R&D 요소를 하나로 연결하는 중앙 허브로 완전 자동화 실현
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative">
@@ -329,21 +349,28 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Tier 3: Partner */}
+            {/* Tier 3: Vanguard */}
             <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-purple-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100 opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-50" />
               <CardHeader className="relative">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-purple-600" />
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    <div className="font-semibold">나비 단계</div>
+                    <div>완전한 변태의 실현</div>
+                  </div>
                 </div>
                 <CardTitle className="text-2xl mb-2">
-                  3단계: 파트너
+                  labA Vanguard
+                  <span className="text-lg text-gray-600 ml-2">(선도자)</span>
                 </CardTitle>
                 <Badge variant="research" className="w-fit mb-4">
-                  전략적 파트너십
+                  The Partner
                 </Badge>
                 <CardDescription className="text-base">
-                  연구실 전체 디지털 트랜스포메이션 및 공동 연구 개발
+                  R&D 혁명의 최전선에서 업계를 이끄는 전략적 동반자
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative">

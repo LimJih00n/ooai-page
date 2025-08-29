@@ -430,9 +430,11 @@ export default function DetailedServiceOfferings() {
               무료 컨설팅 신청
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="research-outline" size="lg">
-              서비스 카탈로그 다운로드
-            </Button>
+            <a href="/service_catalog.pdf" download="LabA_Service_Catalog.pdf">
+              <Button variant="research-outline" size="lg">
+                서비스 카탈로그 다운로드
+              </Button>
+            </a>
           </div>
         </div>
       </div>

@@ -86,7 +86,7 @@ app = workflow.compile()
 
 # 연구 질문으로 실행
 result = app.invoke({
-    "query": "동해 표층 수온 변화가 명태 서식지에 미치는 영향"
+    "query": "동해 표층 수온 변화가 오징어 서식지에 미치는 영향"
 })
 
 print("분석 완료:", result["analysis"]["correlation"])

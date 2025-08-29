@@ -20,7 +20,7 @@ const coreFeatures = [
     description: '복잡한 연구 질문을 일상 언어로 입력',
     icon: MessageSquare,
     color: 'blue',
-    example: '“동해 표층 수온 변화가 명태 서식지에 미치는 영향을 분석해주세요”',
+    example: '“동해 표층 수온 변화가 오징어 서식지에 미치는 영향을 분석해주세요”',
     benefits: ['기술 장벽 제거', '직관적 인터페이스', '빠른 질문 구조화'],
     beforeAfter: {
       before: '복잡한 쿼리 언어 학습 → 코드 작성 → 디버깅',

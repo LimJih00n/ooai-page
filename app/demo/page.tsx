@@ -17,7 +17,7 @@ const demoSteps = [
     description: "연구자가 자연어로 질문을 입력합니다",
     component: "researcher",
     color: "blue",
-    example: "동해 표층 수온 변화가 명태 서식지에 미치는 영향을 분석해주세요"
+    example: "동해 표층 수온 변화가 오징어 서식지에 미치는 영향을 분석해주세요"
   },
   {
     id: 2,

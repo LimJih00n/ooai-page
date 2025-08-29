@@ -43,7 +43,7 @@ const coreFeatures = [
   {
     id: 'auto-data',
     title: '자동 데이터 수집',
-    description: '전세계 해양 데이터베이스에서 실시간 수집',
+    description: '전세계 데이터베이스에서 실시간 수집',
     icon: Database,
     color: 'indigo',
     example: 'Copernicus, NOAA, KIOST 데이터 자동 통합',

@@ -277,7 +277,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
-                    Gemini CLI 통합 개발 환경 구축
+                    Command Line Interface 통합 개발환경 구축
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />

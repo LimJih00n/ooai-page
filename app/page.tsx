@@ -259,7 +259,7 @@ export default function Home() {
                   </div>
                 </div>
                 <CardTitle className="text-2xl mb-2">
-                  labA Catalyst
+                  LabA Catalyst
                   <span className="text-lg text-gray-600 ml-2">(촉매)</span>
                 </CardTitle>
                 <Badge variant="research" className="w-fit mb-4">
@@ -314,7 +314,7 @@ export default function Home() {
                   </div>
                 </div>
                 <CardTitle className="text-2xl mb-2">
-                  labA Nexus
+                  LabA Nexus
                   <span className="text-lg text-gray-600 ml-2">(연결점)</span>
                 </CardTitle>
                 <Badge variant="success" className="w-fit mb-4">
@@ -364,7 +364,7 @@ export default function Home() {
                   </div>
                 </div>
                 <CardTitle className="text-2xl mb-2">
-                  labA Vanguard
+                  LabA Vanguard
                   <span className="text-lg text-gray-600 ml-2">(선도자)</span>
                 </CardTitle>
                 <Badge variant="research" className="w-fit mb-4">
@@ -566,7 +566,7 @@ export default function Home() {
             <div className="flex flex-col items-center">
               <Mail className="w-5 h-5 mb-2" />
               <div className="font-semibold mb-1">이메일</div>
-              <div>research@laba.ai</div>
+              <div>research@LabA.ai</div>
             </div>
             <div className="flex flex-col items-center">
               <Clock className="w-5 h-5 mb-2" />
@@ -598,7 +598,7 @@ export default function Home() {
             </div>
             <div className="text-gray-400 text-center md:text-right">
               <p>&copy; 2024 LabA. 자연대 연구실을 위한 AI 혁신.</p>
-              <p className="mt-1">문의: research@laba.ai</p>
+              <p className="mt-1">문의: research@LabA.ai</p>
             </div>
           </div>
         </div>

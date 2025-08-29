@@ -45,12 +45,12 @@ export default function DetailedServiceOfferings() {
 
   const services = {
     1: {
-      title: "labA Catalyst",
+      title: "LabA Catalyst",
       subtitle: "촉매",
       stage: "1단계: 기반 서비스",
       badge: "The Enabler",
       description: "최소한의 리스크로 Agentic AI를 처음 도입하여, R&D 혁신의 '첫 성공 사례'를 만들어내는 단계",
-      meaning: "화학 반응을 촉진하는 촉매처럼, labA가 고객의 R&D 조직에 AI 도입이라는 혁신적인 변화를 빠르고 효과적으로 일으키는 기폭제 역할을 합니다.",
+      meaning: "화학 반응을 촉진하는 촉매처럼, LabA가 고객의 R&D 조직에 AI 도입이라는 혁신적인 변화를 빠르고 효과적으로 일으키는 기폭제 역할을 합니다.",
       gradient: "from-blue-500 to-cyan-500",
       icon: <GiCaterpillar className="w-6 h-6" />,
       evolutionStage: "애벌레",
@@ -115,7 +115,7 @@ export default function DetailedServiceOfferings() {
       ]
     },
     2: {
-      title: "labA Nexus",
+      title: "LabA Nexus",
       subtitle: "연결점",
       stage: "2단계: 매니지드 플랫폼",
       badge: "The Operator",
@@ -185,7 +185,7 @@ export default function DetailedServiceOfferings() {
       ]
     },
     3: {
-      title: "labA Vanguard",
+      title: "LabA Vanguard",
       subtitle: "선도자",
       stage: "3단계: 전략적 혁신",
       badge: "The Partner",

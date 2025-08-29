@@ -11,11 +11,11 @@ import { Button } from '@/components/ui/button'
 const calculateROI = (researchers: number, avgSalary: number, researchTime: number) => {
   const yearlyHours = 2000 // 연간 근무시간
   const currentEfficiency = 0.23 // 현재 실제 연구 시간 비율
-  const labAEfficiency = 0.60 // LabA 사용 시 효율
+  const LabAEfficiency = 0.60 // LabA 사용 시 효율
   
   const hourlyRate = avgSalary / yearlyHours
   const currentProductiveHours = yearlyHours * currentEfficiency
-  const labAProductiveHours = yearlyHours * labAEfficiency
+  const labAProductiveHours = yearlyHours * LabAEfficiency
   
   const timeSaved = (labAProductiveHours - currentProductiveHours) * researchers
   const costSaved = timeSaved * hourlyRate

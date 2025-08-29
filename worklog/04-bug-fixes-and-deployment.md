@@ -99,7 +99,7 @@ git remote add origin https://github.com/LimJih00n/ooai-page.git
 
 # 초기 커밋
 git add .
-git commit -m "Initial FatherMarine research platform implementation"
+git commit -m "Initial LabA research platform implementation"
 
 # ESLint 수정 후 커밋들
 git commit -m "Fix ESLint errors: remove any types and fix quotes"

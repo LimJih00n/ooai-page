@@ -22,7 +22,7 @@ fathermarine-research-platform/
 - 색상 기반 기능 선택 시스템
 - 각 기능별 상세 설명 및 예시
 - "라이브 데모" + "코드 보기" 이중 버튼
-- FatherMarine 테마 색상 통합
+- LabA 테마 색상 통합
 
 **주요 코드 패턴**:
 ```tsx
@@ -52,7 +52,7 @@ const getColorClasses = (color: string) => {
 - 실제 연구 성과 데이터 포함
 
 ### 3. ResearchProcessComparison.tsx
-**목적**: 기존 방식 vs FatherMarine 방식 프로세스 비교
+**목적**: 기존 방식 vs LabA 방식 프로세스 비교
 **핵심 기능**:
 - 자동 시연 기능 (2초마다 진행)
 - 실시간 게이지 바 애니메이션

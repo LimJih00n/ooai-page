@@ -9,7 +9,7 @@
 
 **배운 점**: 
 - 프로젝트 초기에 명확한 색상 팔레트 정의 필수
-- FatherMarine 테마: Blue-Purple-Indigo-Gray 4색 체계
+- LabA 테마: Blue-Purple-Indigo-Gray 4색 체계
 - 모든 개발자가 공유할 수 있는 디자인 토큰 시스템 구축
 
 **적용 방안**:

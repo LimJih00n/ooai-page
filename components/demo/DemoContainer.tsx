@@ -64,7 +64,7 @@ export default function DemoContainer() {
       () => setLogs(prev => [...prev, { step: 'reporting', message: '최종 보고서가 생성되었습니다.' }]),
     ];
 
-    const stepDurations = [2000, 3000, 4000, 3000, 2000];
+    const stepDurations = [1000, 1500, 2000, 1500, 1000];
     
     const timer = setTimeout(() => {
       setCurrentStep(currentStep + 1);

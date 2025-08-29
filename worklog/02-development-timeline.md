@@ -16,7 +16,7 @@
 
 ### 1. 첫 번째 라운드 컴포넌트 (3개)
 - **ROICalculator.tsx**: 인터랙티브 ROI 계산기 (차트 포함)
-- **ResearchProcessComparison.tsx**: 기존 vs FatherMarine 프로세스 비교
+- **ResearchProcessComparison.tsx**: 기존 vs LabA 프로세스 비교
 - **TechStackArchitecture.tsx**: 완전한 기술 스택 시각화
 
 ### 2. JSX 구문 오류 수정
@@ -41,7 +41,7 @@
 
 ### 1. 색상 일관성 문제 해결
 - **문제**: 주황색, 초록색, 빨간색 등 테마에 맞지 않는 색상 사용
-- **해결**: FatherMarine 테마 색상(blue-purple-indigo-gray)으로 통일
+- **해결**: LabA 테마 색상(blue-purple-indigo-gray)으로 통일
 - **범위**: 모든 시각화 컴포넌트에서 색상 일관성 확보
 
 ### 2. 삼각형 시각화 최적화
@@ -72,7 +72,7 @@
 ### 1. 기술 섹션 중복 해결
 - **문제**: "Technology Architecture"와 "상세 기술 구현" 섹션 중복
 - **해결**: TechStackArchitecture 강화, 상세 구현 섹션 제거
-- **추가**: "왜 FatherMarine인가?" 비교표로 차별화 강조
+- **추가**: "왜 LabA인가?" 비교표로 차별화 강조
 
 ### 2. 프로세스 시연 기능 구현
 - **문제**: 버튼 클릭 시 게이지가 동작하지 않음

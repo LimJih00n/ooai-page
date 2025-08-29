@@ -1,7 +1,7 @@
-# FatherMarine 연구 플랫폼 개발 - 프로젝트 개요
+# LabA 연구 플랫폼 개발 - 프로젝트 개요
 
 ## 📋 프로젝트 정보
-- **프로젝트명**: FatherMarine Research Platform
+- **프로젝트명**: LabA Research Platform
 - **개발 기간**: 2024년 (진행 중)
 - **기술 스택**: Next.js 15, React 19, TypeScript, Tailwind CSS
 - **목적**: 자연과학 연구실을 위한 AI 기반 연구 플랫폼 랜딩페이지

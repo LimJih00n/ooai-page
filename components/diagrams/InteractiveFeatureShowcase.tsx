@@ -12,7 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
-import CodeModal from './CodeModal' // CodeModal import
+import CodeModal from '../demo/CodeModal' // CodeModal import
 
 // 핵심 기능들
 const coreFeatures = [

@@ -213,16 +213,18 @@ export default function InteractiveFeatureShowcase() {
           {/* 체험하기 버튼 */}
           <div className="pt-4 border-t space-y-3">
             <div className="flex gap-3">
-              <Link href="/demo" className="flex-1">
-                <Button 
-                  variant="research" 
-                  className="w-full group"
-                  size="lg"
-                >
-                  <Play className="w-4 h-4 mr-2" />
-                  라이브 데모
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
+              <Link href="/demo" passHref legacyBehavior>
+                <a className="flex-1">
+                  <Button 
+                    variant="research" 
+                    className="w-full group"
+                    size="lg"
+                  >
+                    <Play className="w-4 h-4 mr-2" />
+                    라이브 데모
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </a>
               </Link>
               <Button 
                 variant="research-outline" 

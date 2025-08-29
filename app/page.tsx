@@ -566,7 +566,7 @@ export default function Home() {
             <div className="flex flex-col items-center">
               <Mail className="w-5 h-5 mb-2" />
               <div className="font-semibold mb-1">이메일</div>
-              <div>research@LabA.ai</div>
+              <div>LabA@ocean5i.com</div>
             </div>
             <div className="flex flex-col items-center">
               <Clock className="w-5 h-5 mb-2" />
@@ -598,7 +598,7 @@ export default function Home() {
             </div>
             <div className="text-gray-400 text-center md:text-right">
               <p>&copy; 2024 LabA. 대한민국 연구실을 위한 AI 혁신.</p>
-              <p className="mt-1">문의: research@LabA.ai</p>
+              <p className="mt-1">문의: LabA@ocean5i.com</p>
             </div>
           </div>
         </div>

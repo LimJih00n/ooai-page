@@ -163,7 +163,7 @@ export default function Home() {
 
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 lg:p-12">
             <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-              &ldquo;내 컴퓨터에서는 됐는데...&rdquo; 문제
+              “내 컴퓨터에서는 됐는데...” 문제
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">

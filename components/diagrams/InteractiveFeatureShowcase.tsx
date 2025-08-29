@@ -213,10 +213,10 @@ export default function InteractiveFeatureShowcase() {
           {/* 체험하기 버튼 */}
           <div className="pt-4 border-t space-y-3">
             <div className="flex gap-3">
-              <Link href="/demo" className="flex-1">
+              <Link href="/demo">
                 <Button 
                   variant="research" 
-                  className="w-full group"
+                  className="w-full flex-1 group"
                   size="lg"
                 >
                   <Play className="w-4 h-4 mr-2" />

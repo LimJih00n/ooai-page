@@ -74,7 +74,7 @@ export default function Home() {
           <div className="text-center">
             <Badge variant="research" className="mb-6 animate-fade-up flex items-center justify-center gap-2 mx-auto w-fit">
               <Microscope className="w-4 h-4" />
-              <span>자연대 연구실을 위한 AI 혁신</span>
+              <span>대한민국 연구실을 위한 AI 혁신</span>
             </Badge>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 animate-fade-up">
               연구실의{' '}
@@ -131,7 +131,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              자연대 연구실의 현실
+              대한민국 연구실의 현실
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               과학 연구에서 발생하는 체계적인 문제들을 데이터로 확인해보세요
@@ -597,7 +597,7 @@ export default function Home() {
               <span className="text-xl font-bold">LabA</span>
             </div>
             <div className="text-gray-400 text-center md:text-right">
-              <p>&copy; 2024 LabA. 자연대 연구실을 위한 AI 혁신.</p>
+              <p>&copy; 2024 LabA. 대한민국 연구실을 위한 AI 혁신.</p>
               <p className="mt-1">문의: research@LabA.ai</p>
             </div>
           </div>

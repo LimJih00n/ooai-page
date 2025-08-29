@@ -378,6 +378,7 @@ export default function InteractiveFeatureShowcase() {
                     </AnimatePresence>
                   </div>
 
+                  {/* 체험하기 버튼 */}
                   return (
     <>
       <CodeModal 
@@ -390,8 +391,8 @@ export default function InteractiveFeatureShowcase() {
         {/* ... a lot of content ... */}
                   {/* 체험하기 버튼 */}
                   <div className="pt-4 border-t space-y-3">
-                    <div className="flex gap-3">
-                      <Link href="/demo" className="flex-1">
+                    <div className="grid grid-cols-2 gap-3">
+                      <Link href="/demo">
                         <Button 
                           variant="research" 
                           className="w-full group"
@@ -404,7 +405,7 @@ export default function InteractiveFeatureShowcase() {
                       </Link>
                       <Button 
                         variant="research-outline" 
-                        className="flex-1 group"
+                        className="w-full group"
                         size="lg"
                         onClick={() => setIsModalOpen(true)}
                       >
@@ -479,6 +480,5 @@ export default function InteractiveFeatureShowcase() {
       </motion.div>
     </div>
     </>
-  )
   )
 }

@@ -148,7 +148,7 @@ export default function DockerDemoContainer() {
             <p className="font-mono">
               <span className="text-gray-500">연구 환경:</span>
               <span className="font-semibold text-blue-600 ml-2">
-                "Docker + Python 3.12 + Copernicus/NOAA 데이터 통합 분석"
+                {'"'}Docker + Python 3.12 + Copernicus/NOAA 데이터 통합 분석{'"'}
               </span>
             </p>
           </div>

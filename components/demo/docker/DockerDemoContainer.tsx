@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import DockerProgressTracker from './DockerProgressTracker';
 import DockerWorkflow from './DockerWorkflow';
 import DockerOutputDisplay from './DockerOutputDisplay';
 import { Button } from '@/components/ui/button';
-import { Play, RefreshCw } from 'lucide-react';
+import { Play, RefreshCw, Globe, Laptop, Apple, Server, Users } from 'lucide-react';
 
 const dockerSteps = [
   { id: 'setup', name: '환경 설정' },
@@ -180,6 +181,62 @@ export default function DockerDemoContainer() {
           <DockerWorkflow activeStep={activeStepId} />
           <DockerOutputDisplay logs={logs} isComplete={isComplete} />
         </div>
+
+        {/* Unified Cross-platform Compatibility Section */}
+        {isComplete && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl border-2 border-blue-300 shadow-lg"
+          >
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <Globe className="w-8 h-8 text-blue-600" />
+              <h3 className="text-2xl font-bold text-gray-800">
+                모든 플랫폼에서 동일하게 작동
+              </h3>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-6 mb-6">
+              {[
+                { icon: Laptop, name: 'Windows', user: '연구원 A', color: 'blue' },
+                { icon: Apple, name: 'macOS', user: '연구원 B', color: 'gray' },
+                { icon: Server, name: 'Linux', user: '연구원 C', color: 'orange' }
+              ].map((platform, idx) => (
+                <motion.div
+                  key={platform.name}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.8 + idx * 0.2, type: 'spring' }}
+                  className="flex flex-col items-center"
+                >
+                  <div className={`p-4 bg-white rounded-lg shadow-md border-2 border-${platform.color}-200 mb-3`}>
+                    <platform.icon className={`w-12 h-12 text-${platform.color}-600`} />
+                  </div>
+                  <h4 className={`font-bold text-lg text-${platform.color}-700`}>{platform.name}</h4>
+                  <div className="flex items-center gap-1 mt-1">
+                    <Users className="w-4 h-4 text-green-600" />
+                    <span className="text-sm text-gray-600">{platform.user}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5 }}
+              className="text-center space-y-2"
+            >
+              <p className="text-lg text-gray-700">
+                동일한 Docker 이미지 → <span className="font-bold text-green-600">100% 동일한 결과</span>
+              </p>
+              <p className="text-md text-blue-600 font-semibold">
+                &quot;더 이상 &#39;내 컴퓨터에서는 됐는데&#39; 문제 없음!&quot;
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

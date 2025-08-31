@@ -199,9 +199,9 @@ export default function DockerDemoContainer() {
             
             <div className="grid grid-cols-3 gap-6 mb-6">
               {[
-                { icon: Laptop, name: 'Windows', user: '연구원 A', color: 'blue' },
-                { icon: Apple, name: 'macOS', user: '연구원 B', color: 'gray' },
-                { icon: Server, name: 'Linux', user: '연구원 C', color: 'orange' }
+                { icon: Laptop, name: 'Windows', user: '연구원 A', bgColor: 'bg-blue-100', iconColor: 'text-blue-600', borderColor: 'border-blue-300' },
+                { icon: Apple, name: 'macOS', user: '연구원 B', bgColor: 'bg-gray-100', iconColor: 'text-gray-700', borderColor: 'border-gray-300' },
+                { icon: Server, name: 'Linux', user: '연구원 C', bgColor: 'bg-orange-100', iconColor: 'text-orange-600', borderColor: 'border-orange-300' }
               ].map((platform, idx) => (
                 <motion.div
                   key={platform.name}
@@ -210,10 +210,10 @@ export default function DockerDemoContainer() {
                   transition={{ delay: 0.8 + idx * 0.2, type: 'spring' }}
                   className="flex flex-col items-center"
                 >
-                  <div className={`p-4 bg-white rounded-lg shadow-md border-2 border-${platform.color}-200 mb-3`}>
-                    <platform.icon className={`w-12 h-12 text-${platform.color}-600`} />
+                  <div className={`p-4 ${platform.bgColor} rounded-lg shadow-md border-2 ${platform.borderColor} mb-3`}>
+                    <platform.icon className={`w-12 h-12 ${platform.iconColor}`} />
                   </div>
-                  <h4 className={`font-bold text-lg text-${platform.color}-700`}>{platform.name}</h4>
+                  <h4 className="font-bold text-lg text-gray-800">{platform.name}</h4>
                   <div className="flex items-center gap-1 mt-1">
                     <Users className="w-4 h-4 text-green-600" />
                     <span className="text-sm text-gray-600">{platform.user}</span>

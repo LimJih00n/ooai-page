@@ -389,7 +389,7 @@ export default function InteractiveFeatureShowcase() {
                   <div className="pt-4 border-t space-y-3">
                     <div className="flex gap-3">
                       <Button asChild className="flex-1" size="lg" variant="research">
-                        <Link href="/demo" className="group">
+                        <Link href="/demo/docker-reproducibility" className="group">
                           <Play className="w-4 h-4 mr-2" />
                           라이브 데모
                           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

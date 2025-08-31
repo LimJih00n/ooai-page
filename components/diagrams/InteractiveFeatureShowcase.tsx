@@ -199,7 +199,14 @@ export default function InteractiveFeatureShowcase() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8">
+    <>
+      <CodeModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        code={demoCode}
+        title="데모 핵심 로직 (DemoContainer.tsx)"
+      />
+      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8">
       <div className="text-center mb-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -378,17 +385,6 @@ export default function InteractiveFeatureShowcase() {
                     </AnimatePresence>
                   </div>
 
-                  {/* 체험하기 버튼 */}
-                  return (
-    <>
-      <CodeModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        code={demoCode}
-        title="데모 핵심 로직 (DemoContainer.tsx)"
-      />
-      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8">
-        {/* ... a lot of content ... */}
                   {/* 체험하기 버튼 */}
                   <div className="pt-4 border-t space-y-3">
                     <div className="flex gap-3">

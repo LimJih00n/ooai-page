@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Package, Download, Cpu, Image, Upload, Zap } from 'lucide-react';
+import { Settings, Package, Download, Cpu, Image, Upload, Zap, Globe } from 'lucide-react';
 
 const dockerPhases = [
   { id: 'setup', name: 'Setup', icon: Settings, description: '환경 설정' },
@@ -11,6 +11,7 @@ const dockerPhases = [
   { id: 'processing', name: 'Process', icon: Cpu, description: '분석 처리' },
   { id: 'visualizing', name: 'Visualize', icon: Image, description: '시각화' },
   { id: 'packaging', name: 'Package', icon: Upload, description: '환경 패키징' },
+  { id: 'deploying', name: 'Deploy', icon: Globe, description: '크로스 플랫폼' },
 ];
 
 interface DockerWorkflowProps {

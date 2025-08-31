@@ -14,6 +14,7 @@ const dockerSteps = [
   { id: 'processing', name: '데이터 처리 및 분석' },
   { id: 'visualizing', name: '시각화 생성' },
   { id: 'packaging', name: '재현 환경 패키징' },
+  { id: 'deploying', name: '크로스 플랫폼 배포' },
 ];
 
 const initialLogs = [{ step: 'idle', message: 'Docker 환경 구축을 시작하려면 "데모 시작" 버튼을 클릭하세요.' }];
@@ -76,9 +77,14 @@ export default function DockerDemoContainer() {
       () => setLogs(prev => [...prev, { step: 'packaging', message: 'Docker 이미지 태깅: v1.0-reproducible' }]),
       () => setLogs(prev => [...prev, { step: 'packaging', message: 'Docker Hub에 푸시: docker push my-research:v1.0' }]),
       () => setLogs(prev => [...prev, { step: 'packaging', message: '재현성 보장 완료! 어디서든 동일한 환경 실행 가능' }]),
+      // 크로스 플랫폼 배포
+      () => setLogs(prev => [...prev, { step: 'deploying', message: 'Windows 연구실에서 docker pull my-research:v1.0...' }]),
+      () => setLogs(prev => [...prev, { step: 'deploying', message: 'macOS 연구실에서 이미지 다운로드 중...' }]),
+      () => setLogs(prev => [...prev, { step: 'deploying', message: 'Linux 서버에서 컨테이너 실행 시작...' }]),
+      () => setLogs(prev => [...prev, { step: 'deploying', message: '✅ 3개 플랫폼 모두에서 동일한 결과 확인!' }]),
     ];
 
-    const stepDurations = [1500, 2500, 2000, 2000, 1500, 1500];
+    const stepDurations = [1500, 2500, 2000, 2000, 1500, 1500, 2000];
     
     const timer = setTimeout(() => {
       setCurrentStep(currentStep + 1);
@@ -91,6 +97,7 @@ export default function DockerDemoContainer() {
         if (nextStep === 'processing') initialMessage = 'xarray와 pandas로 데이터 분석 시작...';
         if (nextStep === 'visualizing') initialMessage = 'matplotlib과 cartopy 초기화...';
         if (nextStep === 'packaging') initialMessage = '재현 가능한 연구 환경 패키징...';
+        if (nextStep === 'deploying') initialMessage = '전세계 연구실로 배포 시작...';
         if(initialMessage) setLogs(prev => [...prev, { step: nextStep, message: initialMessage }]);
       }
     }, stepDurations[currentStep]);
@@ -128,6 +135,12 @@ export default function DockerDemoContainer() {
         setTimeout(() => timeouts[18](), 400);
         setTimeout(() => timeouts[19](), 800);
         setTimeout(() => timeouts[20](), 1200);
+    }
+    if (currentStep === 6) { // Deploying
+        setTimeout(() => timeouts[21](), 400);
+        setTimeout(() => timeouts[22](), 800);
+        setTimeout(() => timeouts[23](), 1200);
+        setTimeout(() => timeouts[24](), 1600);
     }
 
     return () => clearTimeout(timer);

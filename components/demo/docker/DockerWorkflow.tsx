@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Package, Download, Cpu, Image, Upload, Zap, Globe, Monitor, Apple } from 'lucide-react';
+import { Settings, Package, Download, Cpu, Image, Upload, Zap, Globe, Monitor, Apple, Server, Laptop } from 'lucide-react';
 
 const dockerPhases = [
   { id: 'setup', name: 'Setup', icon: Settings, description: '환경 설정' },
@@ -80,18 +80,23 @@ export default function DockerWorkflow({ activeStep }: DockerWorkflowProps) {
             : 'bg-white border-gray-300'
         }`}
       >
-        <h4 className={`text-center font-bold mb-3 ${
-          isDeployingActive ? 'text-green-700 text-lg' : 'text-gray-700 text-base'
-        }`}>
-          🌍 모든 플랫폼에서 동일하게 작동
-        </h4>
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <Globe className={`w-6 h-6 ${isDeployingActive ? 'text-green-600' : 'text-gray-600'}`} />
+          <h4 className={`font-bold ${
+            isDeployingActive ? 'text-green-700 text-lg' : 'text-gray-700 text-base'
+          }`}>
+            모든 플랫폼에서 동일하게 작동
+          </h4>
+        </div>
         <div className="flex justify-center gap-4">
           <motion.div
             animate={{ scale: isDeployingActive ? [1, 1.1, 1] : 1 }}
             transition={{ repeat: isDeployingActive ? Infinity : 0, duration: 2 }}
-            className="flex items-center gap-1"
+            className="flex flex-col items-center gap-1"
           >
-            <Monitor className={`w-5 h-5 ${isDeployingActive ? 'text-blue-600' : 'text-gray-500'}`} />
+            <div className={`p-2 rounded-lg ${isDeployingActive ? 'bg-blue-100' : 'bg-gray-100'}`}>
+              <Laptop className={`w-6 h-6 ${isDeployingActive ? 'text-blue-600' : 'text-gray-500'}`} />
+            </div>
             <span className={`text-sm ${isDeployingActive ? 'text-blue-600 font-semibold' : 'text-gray-500'}`}>
               Windows
             </span>
@@ -99,9 +104,11 @@ export default function DockerWorkflow({ activeStep }: DockerWorkflowProps) {
           <motion.div
             animate={{ scale: isDeployingActive ? [1, 1.1, 1] : 1 }}
             transition={{ repeat: isDeployingActive ? Infinity : 0, duration: 2, delay: 0.3 }}
-            className="flex items-center gap-1"
+            className="flex flex-col items-center gap-1"
           >
-            <Apple className={`w-5 h-5 ${isDeployingActive ? 'text-gray-800' : 'text-gray-500'}`} />
+            <div className={`p-2 rounded-lg ${isDeployingActive ? 'bg-gray-100' : 'bg-gray-100'}`}>
+              <Apple className={`w-6 h-6 ${isDeployingActive ? 'text-gray-800' : 'text-gray-500'}`} />
+            </div>
             <span className={`text-sm ${isDeployingActive ? 'text-gray-800 font-semibold' : 'text-gray-500'}`}>
               macOS
             </span>
@@ -109,9 +116,11 @@ export default function DockerWorkflow({ activeStep }: DockerWorkflowProps) {
           <motion.div
             animate={{ scale: isDeployingActive ? [1, 1.1, 1] : 1 }}
             transition={{ repeat: isDeployingActive ? Infinity : 0, duration: 2, delay: 0.6 }}
-            className="flex items-center gap-1"
+            className="flex flex-col items-center gap-1"
           >
-            <Monitor className={`w-5 h-5 ${isDeployingActive ? 'text-orange-600' : 'text-gray-500'}`} />
+            <div className={`p-2 rounded-lg ${isDeployingActive ? 'bg-orange-100' : 'bg-gray-100'}`}>
+              <Server className={`w-6 h-6 ${isDeployingActive ? 'text-orange-600' : 'text-gray-500'}`} />
+            </div>
             <span className={`text-sm ${isDeployingActive ? 'text-orange-600 font-semibold' : 'text-gray-500'}`}>
               Linux
             </span>

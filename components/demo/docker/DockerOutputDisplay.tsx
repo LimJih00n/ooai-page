@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, FileCode, Monitor, Apple, Users } from 'lucide-react';
+import { Terminal, FileCode, Monitor, Apple, Users, Globe, Laptop, Server } from 'lucide-react';
 
 interface Log {
   step: string;
@@ -125,14 +125,17 @@ export default function DockerOutputDisplay({ logs, isComplete }: DockerOutputDi
                   transition={{ delay: 0.3 }}
                   className="mt-4 p-4 bg-blue-900/20 border border-blue-600 rounded-md"
                 >
-                  <h5 className="text-sm font-semibold mb-3 text-center text-blue-400">
-                    🌍 모든 플랫폼에서 동일하게 작동
-                  </h5>
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <Globe className="w-5 h-5 text-blue-400" />
+                    <h5 className="text-sm font-semibold text-blue-400">
+                      모든 플랫폼에서 동일하게 작동
+                    </h5>
+                  </div>
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { icon: Monitor, name: 'Windows', user: '연구원 A' },
+                      { icon: Laptop, name: 'Windows', user: '연구원 A' },
                       { icon: Apple, name: 'macOS', user: '연구원 B' },
-                      { icon: Monitor, name: 'Linux', user: '연구원 C' }
+                      { icon: Server, name: 'Linux', user: '연구원 C' }
                     ].map((platform, idx) => (
                       <motion.div
                         key={platform.name}

@@ -389,7 +389,18 @@ export default function InteractiveFeatureShowcase() {
                   <div className="pt-4 border-t space-y-3">
                     <div className="flex gap-3">
                       <Button asChild className="flex-1" size="lg" variant="research">
-                        <Link href="/demo/docker-reproducibility" className="group">
+                        <Link 
+                          href={
+                            selectedFeature?.id === 'natural-language' ? '/demo' :
+                            selectedFeature?.id === 'multi-agent' ? '/demo/multi-agent' :
+                            selectedFeature?.id === 'auto-data' ? '/demo/auto-data' :
+                            selectedFeature?.id === 'docker-env' ? '/demo/docker-reproducibility' :
+                            selectedFeature?.id === 'human-loop' ? '/demo/human-loop' :
+                            selectedFeature?.id === 'auto-report' ? '/demo/auto-report' :
+                            '/demo'
+                          } 
+                          className="group"
+                        >
                           <Play className="w-4 h-4 mr-2" />
                           라이브 데모
                           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Package, Download, Cpu, Image, Upload, Zap, Globe } from 'lucide-react';
+import { Settings, Package, Download, Cpu, Image, Upload, Zap, Globe, Monitor, Apple } from 'lucide-react';
 
 const dockerPhases = [
   { id: 'setup', name: 'Setup', icon: Settings, description: '환경 설정' },
@@ -19,10 +19,12 @@ interface DockerWorkflowProps {
 }
 
 export default function DockerWorkflow({ activeStep }: DockerWorkflowProps) {
+  const isDeployingActive = activeStep === 'deploying';
+  
   return (
-    <div className="bg-gray-50 p-6 rounded-lg border h-full">
+    <div className="bg-gray-50 p-6 rounded-lg border h-full flex flex-col">
       <h3 className="text-lg font-semibold mb-4 text-center">Docker 워크플로우</h3>
-      <div className="relative flex flex-col items-center justify-around h-[450px]">
+      <div className="relative flex flex-col items-center justify-around flex-1">
         {/* Connection Lines */}
         <svg className="absolute w-full h-full" style={{ zIndex: 0 }}>
           <line x1="50%" y1="8%" x2="50%" y2="92%" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="5,5" />
@@ -63,6 +65,69 @@ export default function DockerWorkflow({ activeStep }: DockerWorkflowProps) {
           );
         })}
       </div>
+      
+      {/* Cross-platform compatibility box */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ 
+          opacity: isDeployingActive ? 1 : 0.6,
+          scale: isDeployingActive ? 1.05 : 1
+        }}
+        transition={{ duration: 0.5 }}
+        className={`mt-6 p-4 rounded-lg border-2 ${
+          isDeployingActive 
+            ? 'bg-gradient-to-r from-blue-100 to-green-100 border-green-400 shadow-lg' 
+            : 'bg-white border-gray-300'
+        }`}
+      >
+        <h4 className={`text-center font-bold mb-3 ${
+          isDeployingActive ? 'text-green-700 text-lg' : 'text-gray-700 text-base'
+        }`}>
+          🌍 모든 플랫폼에서 동일하게 작동
+        </h4>
+        <div className="flex justify-center gap-4">
+          <motion.div
+            animate={{ scale: isDeployingActive ? [1, 1.1, 1] : 1 }}
+            transition={{ repeat: isDeployingActive ? Infinity : 0, duration: 2 }}
+            className="flex items-center gap-1"
+          >
+            <Monitor className={`w-5 h-5 ${isDeployingActive ? 'text-blue-600' : 'text-gray-500'}`} />
+            <span className={`text-sm ${isDeployingActive ? 'text-blue-600 font-semibold' : 'text-gray-500'}`}>
+              Windows
+            </span>
+          </motion.div>
+          <motion.div
+            animate={{ scale: isDeployingActive ? [1, 1.1, 1] : 1 }}
+            transition={{ repeat: isDeployingActive ? Infinity : 0, duration: 2, delay: 0.3 }}
+            className="flex items-center gap-1"
+          >
+            <Apple className={`w-5 h-5 ${isDeployingActive ? 'text-gray-800' : 'text-gray-500'}`} />
+            <span className={`text-sm ${isDeployingActive ? 'text-gray-800 font-semibold' : 'text-gray-500'}`}>
+              macOS
+            </span>
+          </motion.div>
+          <motion.div
+            animate={{ scale: isDeployingActive ? [1, 1.1, 1] : 1 }}
+            transition={{ repeat: isDeployingActive ? Infinity : 0, duration: 2, delay: 0.6 }}
+            className="flex items-center gap-1"
+          >
+            <Monitor className={`w-5 h-5 ${isDeployingActive ? 'text-orange-600' : 'text-gray-500'}`} />
+            <span className={`text-sm ${isDeployingActive ? 'text-orange-600 font-semibold' : 'text-gray-500'}`}>
+              Linux
+            </span>
+          </motion.div>
+        </div>
+        {isDeployingActive && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-center text-sm text-green-600 font-medium mt-2"
+          >
+            100% 동일한 결과 보장
+          </motion.p>
+        )}
+      </motion.div>
     </div>
   );
 }

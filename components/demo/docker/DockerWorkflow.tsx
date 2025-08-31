@@ -22,10 +22,10 @@ export default function DockerWorkflow({ activeStep }: DockerWorkflowProps) {
   return (
     <div className="bg-gray-50 p-6 rounded-lg border h-full">
       <h3 className="text-lg font-semibold mb-4 text-center">Docker 워크플로우</h3>
-      <div className="relative flex flex-col items-center justify-around h-[500px]">
+      <div className="relative flex flex-col items-center justify-evenly h-[600px] py-4">
         {/* Connection Lines */}
         <svg className="absolute w-full h-full" style={{ zIndex: 0 }}>
-          <line x1="50%" y1="8%" x2="50%" y2="92%" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="5,5" />
+          <line x1="50%" y1="6%" x2="50%" y2="94%" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="5,5" />
         </svg>
 
         {dockerPhases.map((phase, index) => {

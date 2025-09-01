@@ -10,14 +10,21 @@ import Link from 'next/link'
 const demos = [
   {
     title: '다중 에이전트 워크플로우 (고급)',
-    description: 'LangGraph 기반 워크플로우 안에서 AI 에이전트들이 어떻게 상호작용하고 인간의 검토를 받는지 보여줍니다.',
+    description: 'LangGraph 기반으로 여러 AI 에이전트가 협업하고, 인간이 중간에 개입하여 연구를 완성하는 과정을 시뮬레이션합니다.',
     icon: Users,
     href: '/demo/multi-agent',
     isAvailable: true,
   },
   {
+    title: '하이브리드 AI 워크플로우',
+    description: 'Jeni, Exaone, Specialist LLM이 각자의 전문성을 발휘하여 최적의 코드를 생성해내는 과정을 보여줍니다.',
+    icon: Bot,
+    href: '/demo/hybrid-ai-workflow',
+    isAvailable: true,
+  },
+  {
     title: '자동 연구 데모 (기초)',
-    description: 'AI 에이전트가 계획 수립부터 보고서 작성까지 연구 전 과정을 자동화하는 과정을 시뮬레이션합니다.',
+    description: '단일 AI 에이전트가 연구 전 과정을 자동화하는 기본적인 과정을 시뮬레이션합니다.',
     icon: Bot,
     href: '/demo',
     isAvailable: true,

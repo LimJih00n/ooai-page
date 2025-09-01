@@ -12,7 +12,7 @@ const agents = [
 ];
 
 interface HybridAgentWorkflowProps {
-  activeStep: string;
+  activeStep?: string;
 }
 
 export default function HybridAgentWorkflow({ activeStep }: HybridAgentWorkflowProps) {

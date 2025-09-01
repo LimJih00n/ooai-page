@@ -113,7 +113,7 @@ export default function HybridDemoContainer() {
         <HybridProgressTracker steps={hybridSteps} currentStep={currentStep} isRunning={isRunning} isComplete={isComplete} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-          <HybridAgentWorkflow activeStep={activeStepId} />
+          <HybridAgentWorkflow />
           <HybridOutputDisplay logs={logs} isComplete={isComplete} />
         </div>
       </div>

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
-import { ArrowRight, ChevronDown, FileText, Rocket } from 'lucide-react'
+import React from 'react'
+import { ArrowRight, FileText, Rocket } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
@@ -9,22 +9,10 @@ import ResearchProcessComparison from '@/components/diagrams/ResearchProcessComp
 import SolutionsOverview from '@/components/diagrams/SolutionsOverview'
 import DetailedServiceOfferings from '@/components/diagrams/DetailedServiceOfferings'
 import TechStackArchitecture from '@/components/diagrams/TechStackArchitecture'
+import DemoShowcase from '@/components/diagrams/DemoShowcase'
 import Link from 'next/link'
-import { Card } from '@/components/ui/card'
 
 export default function Home() {
-  const [showDemos, setShowDemos] = useState(false)
-
-  const demos = [
-    { name: '전체 데모 허브', href: '/demo' },
-    { name: '다중 AI 에이전트', href: '/demo/multi-agent' },
-    { name: 'Docker 완전 재현성', href: '/demo/docker-reproducibility' },
-    { name: 'Human-in-the-Loop', href: '/demo/human-loop' },
-    { name: '자동 보고서 생성', href: '/demo/auto-report' },
-    { name: '[Live] 해양 데이터 수집', href: '/auto-data-demo.html', target: '_blank' },
-    { name: '[Live] 대기 데이터 수집', href: '/auto-data-demo-ncei.html', target: '_blank' },
-  ]
-
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 research-pattern">
       <nav className="fixed top-0 w-full z-50 glass border-b border-white/20">
@@ -50,6 +38,9 @@ export default function Home() {
                   </a>
                   <a href="#solutions" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                     솔루션
+                  </a>
+                  <a href="#demos" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                    데모
                   </a>
                   <a href="#features" className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
                     기능
@@ -107,29 +98,6 @@ export default function Home() {
                     <Rocket className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
-                
-                <div className="relative" onMouseEnter={() => setShowDemos(true)} onMouseLeave={() => setShowDemos(false)}>
-                  <Button variant="research-outline" size="xl" className="group">
-                    기술 데모 보기
-                    <ChevronDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
-                  </Button>
-                  {showDemos && (
-                    <div className="absolute top-full mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-10 py-2 text-left">
-                      {demos.map((demo) => (
-                        <a
-                          key={demo.href}
-                          href={demo.href}
-                          target={demo.target || '_self'}
-                          rel="noopener noreferrer"
-                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                        >
-                          {demo.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
                 <a href="/education-program.html" target="_blank" rel="noopener noreferrer">
                   <Button variant="research-outline" size="xl" className="group">
                     교육 과정 바로가기
@@ -159,6 +127,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <DemoShowcase />
 
         <section id="problems" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
           {/* ... content for problems section ... */}

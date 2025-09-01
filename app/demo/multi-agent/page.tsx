@@ -23,10 +23,10 @@ export default function MultiAgentDemoPage() {
           {`이 데모는 "특정 해역의 해수면 온도 변화와 특정 어종의 출현 빈도 사이의 상관관계 분석"이라는 가상의 연구 목표를 시뮬레이션합니다.`}
         </p>
         <ul className="list-disc list-inside space-y-2">
-          <li><strong>연구 계획가 (Planner):</strong> 목표를 구체적인 실행 계획으로 분해합니다.</li>
-          <li><strong>데이터 수집가 (Data Fetcher):</strong> 해양학, 생태학 데이터베이스 및 웹에서 관련 정보를 수집합니다.</li>
-          <li><strong>데이터 분석가 (Synthesizer):</strong> 수집된 데이터를 종합하여 통계적 상관관계를 도출합니다.</li>
-          <li><strong>보고서 생성가 (Report Generator):</strong> 분석 결과를 바탕으로 구조화된 보고서를 작성합니다.</li>
+          <li><strong>연구 계획 AI (Planner):</strong> 목표를 구체적인 실행 계획으로 분해합니다.</li>
+          <li><strong>데이터 수집 AI (Data Fetcher):</strong> 해양학, 생태학 데이터베이스 및 웹에서 관련 정보를 수집합니다.</li>
+          <li><strong>데이터 분석 AI (Synthesizer):</strong> 수집된 데이터를 종합하여 통계적 상관관계를 도출합니다.</li>
+          <li><strong>보고서 생성 AI (Report Generator):</strong> 분석 결과를 바탕으로 구조화된 보고서를 작성합니다.</li>
           <li><strong>인간 검토자 (Human-in-the-Loop):</strong> 최종 결과물을 검토하고, 승인하거나 수정을 요청하여 워크플로우의 다음 단계를 결정합니다.</li>
         </ul>
       </div>

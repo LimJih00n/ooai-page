@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지구과학 데이터 수집 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #FDFBF8;
+            color: #333333;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tab-button {
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-button.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+            font-weight: 700;
+        }
+        .demo-tab-button.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 500px;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .code-block {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-size: 0.875rem;
+        }
+        .code-block .comment { color: #9ca3af; }
+        .code-block .keyword { color: #93c5fd; }
+        .code-block .string { color: #a5d6a7; }
+        .code-block .function { color: #fcd34d; }
+        .code-block .variable { color: #d8b4fe; }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A task-oriented SPA with vertical scrolling navigation. The structure is designed to guide a researcher from general discovery (Major Services) to specific action (Collection Procedure, Python Automation) and finally to evaluation (Service Comparison). This non-linear, section-based approach allows users to jump directly to the information they need, which is more efficient than a linear report format. Interactions like tabs and an interactive chart break down complex information into digestible, engaging parts. -->
+    <!-- Visualization & Content Choices: Major Services (Goal: Inform) -> HTML/Tailwind Cards -> Static -> Quick overview. Collection Procedure (Goal: Organize) -> JS-powered Tabs -> User clicks to switch between providers -> Simplifies complex, parallel workflows. Service Comparison (Goal: Compare) -> Chart.js Bar Chart -> Static but can be made interactive -> Provides a quick, visual summary of qualitative features, more engaging than a table. Automation Workflow (Goal: Organize/Flow) -> HTML/Tailwind Diagram -> Static -> Clearly illustrates the steps in a process. Confirmed no SVG/Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">지구과학 데이터 수집 가이드</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#intro" class="nav-link text-gray-600 font-medium pb-1">소개</a>
+                <a href="#services" class="nav-link text-gray-600 font-medium pb-1">주요 데이터 서비스</a>
+                <a href="#procedure" class="nav-link text-gray-600 font-medium pb-1">데이터 수집 절차</a>
+                <a href="#automation" class="nav-link text-gray-600 font-medium pb-1">Python 자동화</a>
+                <a href="#demo" class="nav-link text-gray-600 font-medium pb-1">자동 수집 데모</a>
+                <a href="#comparison" class="nav-link text-gray-600 font-medium pb-1">서비스 비교</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="intro" class="text-center mb-24 scroll-mt-24">
+            <h2 class="text-4xl font-bold mb-4">연구를 위한 데이터의 바다, 함께 항해하기</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600">
+                현대 지구과학 및 환경 연구는 방대한 양의 데이터에 의존합니다. Copernicus, NOAA와 같은 기관들은 전 지구적 규모의 관측 및 모델링 데이터를 제공하며, 연구의 가능성을 무한히 확장시키고 있습니다. 이 가이드는 연구자가 이러한 데이터를 효과적으로 탐색하고, 수집하며, Python을 활용하여 수집 과정을 자동화하는 체계를 구축할 수 있도록 돕기 위해 설계되었습니다.
+            </p>
+        </section>
+
+        <section id="services" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">주요 데이터 제공 서비스</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">
+                각 카드를 클릭하면 해당 기관의 데이터 카탈로그 페이지로 이동하여 직접 데이터를 탐색할 수 있습니다.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="https://data.marine.copernicus.eu/" target="_blank" rel="noopener noreferrer" class="block rounded-lg">
+                    <div class="card bg-white p-6 rounded-lg shadow-md border border-gray-200 h-full flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-blue-700">Copernicus Marine Service <span class="text-sm align-middle">🔗</span></h3>
+                        <p class="text-gray-600 mb-4 flex-grow">유럽연합(EU)의 지구 관측 프로그램으로, 해양 환경에 특화된 고품질 데이터를 제공합니다. 과거 데이터, 실시간 데이터, 예측 데이터를 포함하여 해수면 온도, 염분, 해류, 해빙 등 다양한 변수를 다룹니다.</p>
+                        <div class="mt-auto pt-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">해양 데이터</span>
+                            <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">NetCDF</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.ncei.noaa.gov/products" target="_blank" rel="noopener noreferrer" class="block rounded-lg">
+                    <div class="card bg-white p-6 rounded-lg shadow-md border border-gray-200 h-full flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-teal-700">NOAA / NCEI <span class="text-sm align-middle">🔗</span></h3>
+                        <p class="text-gray-600 mb-4 flex-grow">미국 해양대기청(NOAA) 산하 국립환경정보센터(NCEI)는 세계 최대의 기후 및 해양 데이터 아카이브입니다. 대기, 해양, 지구물리학 데이터를 포괄하며, 위성, 현장 관측 등 다양한 소스로부터 데이터를 수집하여 제공합니다.</p>
+                        <div class="mt-auto pt-4">
+                            <span class="inline-block bg-teal-100 text-teal-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">대기/기후</span>
+                            <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">다양한 포맷</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://search.earthdata.nasa.gov/" target="_blank" rel="noopener noreferrer" class="block rounded-lg">
+                    <div class="card bg-white p-6 rounded-lg shadow-md border border-gray-200 h-full flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-orange-700">NASA Earthdata <span class="text-sm align-middle">🔗</span></h3>
+                        <p class="text-gray-600 mb-4 flex-grow">미국 항공우주국(NASA)은 지구 관측 시스템(EOS)을 통해 얻은 방대한 위성 데이터를 제공합니다. 대기, 해양, 육지, 빙권 등 지구 시스템의 모든 구성 요소를 다루는 데이터를 검색하고 내려받을 수 있습니다.</p>
+                        <div class="mt-auto pt-4">
+                            <span class="inline-block bg-orange-100 text-orange-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">위성 데이터</span>
+                            <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full">HDF/NetCDF</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="procedure" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">데이터 수집 절차 알아보기</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-8">
+                데이터 수집은 연구의 첫걸음입니다. 각 서비스는 고유한 데이터 접근 방식과 도구를 제공합니다. 여기서는 가장 대표적인 Copernicus Marine Service와 NOAA NCEI의 데이터 수집 절차를 단계별로 안내합니다. 아래 탭을 클릭하여 각 서비스의 절차를 확인해보세요.
+            </p>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-center border-b mb-6">
+                    <button id="copernicus-proc-tab" class="tab-button text-lg font-medium py-2 px-6 active">Copernicus</button>
+                    <button id="noaa-proc-tab" class="tab-button text-lg font-medium py-2 px-6">NOAA NCEI</button>
+                </div>
+
+                <div id="copernicus-proc-content" class="proc-tab-content bg-white p-8 rounded-lg shadow-inner border border-gray-200">
+                    <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                        <li><strong>회원 가입 및 로그인:</strong> <a href="https://data.marine.copernicus.eu/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Copernicus Marine Service 웹사이트</a>에서 무료 계정을 생성하고 로그인합니다.</li>
+                        <li><strong>데이터 탐색 (Data Discovery):</strong> 온라인 카탈로그를 사용하여 연구 주제에 맞는 데이터를 검색합니다. 지역, 시간, 변수 등의 필터를 사용하여 원하는 데이터셋(Product)을 찾습니다.</li>
+                        <li><strong>데이터셋 정보 확인:</strong> 선택한 데이터셋의 상세 정보 페이지에서 Product ID, 변수 정보, 공간/시간 해상도 등을 확인합니다. 이 정보는 자동화 스크립트 작성에 필수적입니다.</li>
+                        <li><strong>다운로드 방식 선택:</strong>
+                            <ul class="list-disc list-inside ml-6 mt-2 space-y-2">
+                                <li><strong>웹 포털 다운로드:</strong> 웹 인터페이스를 통해 지역, 시간, 변수를 선택하고 직접 파일을 다운로드합니다. 소규모 데이터에 적합합니다.</li>
+                                <li><strong>명령어 기반 다운로드 (CLI):</strong> 대규모 또는 반복적인 다운로드를 위해 Python 기반의 `motuclient`를 사용합니다. 이 방법이 자동화의 핵심입니다.</li>
+                            </ul>
+                        </li>
+                         <li><strong>Python 스크립트 작성:</strong> `motuclient`를 사용하여 Product ID, 원하는 지역의 경위도, 시간 범위, 변수 등을 지정하는 Python 스크립트를 작성하여 데이터를 다운로드합니다.</li>
+                    </ol>
+                </div>
+
+                <div id="noaa-proc-content" class="proc-tab-content bg-white p-8 rounded-lg shadow-inner border border-gray-200 hidden">
+                     <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                        <li><strong>데이터 포털 접속:</strong> NOAA NCEI의 데이터 접근 포털(예: <a href="https://www.ncei.noaa.gov/cdo-web/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Climate Data Online</a>)에 접속합니다.</li>
+                        <li><strong>데이터셋 검색:</strong> 키워드, 카테고리, 플랫폼 등을 이용하여 원하는 데이터셋을 검색합니다. 예를 들어 'Daily Summaries'와 같은 데이터셋을 선택할 수 있습니다.</li>
+                        <li><strong>데이터 필터링 및 선택:</strong> 원하는 시간 범위, 지리적 영역(국가, 주, 도시 등), 관측소, 데이터 타입을 선택하여 장바구니에 담습니다.</li>
+                        <li><strong>출력 포맷 지정:</strong> CSV, NetCDF, JSON 등 원하는 파일 형식과 단위를 선택하고 주문을 제출합니다. 데이터 크기에 따라 처리 시간이 소요될 수 있습니다.</li>
+                        <li><strong>데이터 다운로드 및 API 활용:</strong>
+                             <ul class="list-disc list-inside ml-6 mt-2 space-y-2">
+                                <li><strong>직접 다운로드:</strong> 주문 처리가 완료되면 이메일로 알림이 오고, 링크를 통해 데이터를 직접 다운로드합니다.</li>
+                                <li><strong>API 접근:</strong> 반복적인 데이터 요청을 위해 NCEI가 제공하는 API를 사용할 수 있습니다. API 사용을 위해 토큰을 발급받아야 하며, Python의 `requests` 라이브러리를 통해 자동화할 수 있습니다.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="automation" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">Python을 활용한 데이터 수집 자동화 체계</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">
+                연구의 효율성을 극대화하기 위해 데이터 수집 과정을 자동화하는 것은 필수적입니다. Python은 풍부한 라이브러리를 통해 데이터 수집, 처리, 분석 전 과정을 자동화하는 데 매우 강력한 도구입니다. 아래는 자동화 체계 구축을 위한 핵심 단계와 주요 라이브러리입니다.
+            </p>
+            <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+                <h3 class="text-2xl font-bold mb-6 text-center">자동화 워크플로우</h3>
+                <div class="flex flex-col md:flex-row justify-between items-center text-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="flex-1 p-4 bg-blue-50 rounded-lg">
+                        <div class="text-5xl mb-2">①</div>
+                        <h4 class="font-bold text-lg">파라미터 정의</h4>
+                        <p class="text-sm text-gray-600">연구 영역, 시간, 변수 등 정의</p>
+                    </div>
+                    <div class="text-2xl text-blue-400 font-bold hidden md:block">&rarr;</div>
+                    <div class="flex-1 p-4 bg-green-50 rounded-lg">
+                        <div class="text-5xl mb-2">②</div>
+                        <h4 class="font-bold text-lg">API/Client 요청</h4>
+                        <p class="text-sm text-gray-600">스크립트로 데이터 서버에 요청</p>
+                    </div>
+                    <div class="text-2xl text-green-400 font-bold hidden md:block">&rarr;</div>
+                    <div class="flex-1 p-4 bg-yellow-50 rounded-lg">
+                        <div class="text-5xl mb-2">③</div>
+                        <h4 class="font-bold text-lg">데이터 다운로드</h4>
+                        <p class="text-sm text-gray-600">NetCDF, CSV 등 파일 다운로드</p>
+                    </div>
+                     <div class="text-2xl text-yellow-400 font-bold hidden md:block">&rarr;</div>
+                    <div class="flex-1 p-4 bg-red-50 rounded-lg">
+                        <div class="text-5xl mb-2">④</div>
+                        <h4 class="font-bold text-lg">처리 및 저장</h4>
+                        <p class="text-sm text-gray-600">데이터 전처리 후 DB 또는 파일로 저장</p>
+                    </div>
+                </div>
+                 <div class="mt-10">
+                    <h3 class="text-xl font-bold mb-4 text-center">주요 Python 라이브러리</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="p-4 bg-gray-100 rounded">
+                            <p class="font-bold">motuclient</p>
+                            <p class="text-sm text-gray-600">Copernicus 데이터</p>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded">
+                            <p class="font-bold">requests</p>
+                            <p class="text-sm text-gray-600">NOAA API 통신</p>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded">
+                            <p class="font-bold">xarray</p>
+                            <p class="text-sm text-gray-600">NetCDF/GRIB 처리</p>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded">
+                            <p class="font-bold">pandas</p>
+                            <p class="text-sm text-gray-600">CSV/테이블 데이터</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="demo" class="mb-24 scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">자동 수집 데모: 실제 Python 예제</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-8">
+                이론을 실제 코드로 옮겨봅시다. 아래 탭에서 Copernicus 해양 데이터 또는 NOAA NCEI 대기 데이터 자동 수집 예제를 선택하여 확인해 보세요.
+            </p>
+            <div class="max-w-4xl mx-auto">
+                 <div class="flex justify-center border-b mb-6">
+                    <button id="copernicus-demo-tab" class="demo-tab-button text-lg font-medium py-2 px-6 rounded-t-lg active">Copernicus 예시</button>
+                    <button id="noaa-demo-tab" class="demo-tab-button text-lg font-medium py-2 px-6 rounded-t-lg">NOAA NCEI 예시</button>
+                </div>
+                
+                <div id="copernicus-demo-content" class="demo-tab-content bg-white p-8 rounded-b-lg shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-bold mb-4">시나리오: 인도양 해양 데이터 수집</h3>
+                    <ul class="list-disc list-inside bg-gray-50 p-4 rounded-md mb-6">
+                        <li><strong>대상 해역:</strong> 인도양 (경도 40°E ~ 110°E, 위도 20°S ~ 25°N)</li>
+                        <li><strong>대상 기간:</strong> 2024년 1월 한 달</li>
+                        <li><strong>수집 데이터:</strong> 표층 수온, 염분, 엽록소, 해류(동서/남북 성분)</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold mb-4">Python 예제 코드 (`motuclient`)</h3>
+                    <div class="code-block">
+<pre><code><span class="keyword">import</span> os
+<span class="keyword">import</span> subprocess
+
+<span class="comment"># ... (기존 Copernicus 코드와 동일) ... </span>
+<span class="comment"># -- 1. Configuration -- </span>
+<span class="variable">COPERNICUS_USERNAME</span> = <span class="string">'YOUR_USERNAME'</span>
+<span class="variable">COPERNICUS_PASSWORD</span> = <span class="string">'YOUR_PASSWORD'</span>
+<span class="variable">OUTPUT_DIRECTORY</span> = <span class="string">'./indian_ocean_data'</span>
+os.<span class="function">makedirs</span>(<span class="variable">OUTPUT_DIRECTORY</span>, exist_ok=<span class="keyword">True</span>)
+
+<span class="comment"># ... (나머지 파라미터 정의) ... </span>
+<span class="variable">DATE_START</span> = <span class="string">'2024-01-01 12:00:00'</span>
+<span class="variable">DATE_END</span> = <span class="string">'2024-01-31 12:00:00'</span>
+<span class="variable">LONGITUDE_MIN</span> = <span class="string">'40'</span>; <span class="variable">LONGITUDE_MAX</span> = <span class="string">'110'</span>
+<span class="variable">LATITUDE_MIN</span> = <span class="string">'-20'</span>; <span class="variable">LATITUDE_MAX</span> = <span class="string">'25'</span>
+<span class="variable">DEPTH_MIN</span> = <span class="string">'0.49'</span>; <span class="variable">DEPTH_MAX</span> = <span class="string">'0.50'</span>
+
+<span class="comment"># ... (다운로드 태스크 정의 및 실행 코드) ...</span>
+</code></pre>
+                    </div>
+                     <h3 class="text-xl font-bold mb-2 mt-6">실행 방법</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>Python과 `motuclient`가 설치되어 있는지 확인합니다. (`pip install motuclient`)</li>
+                        <li>코드 상단의 `YOUR_USERNAME`과 `YOUR_PASSWORD`를 본인의 Copernicus 계정 정보로 수정합니다.</li>
+                        <li>터미널에서 이 스크립트를 실행합니다.</li>
+                        <li>완료되면 `indian_ocean_data` 폴더 안에 NetCDF(.nc) 파일들이 생성됩니다.</li>
+                    </ol>
+                </div>
+                
+                <div id="noaa-demo-content" class="demo-tab-content bg-white p-8 rounded-b-lg shadow-lg border border-gray-200 hidden">
+                    <h3 class="text-xl font-bold mb-4">시나리오: 서울 지역 대기 데이터 수집</h3>
+                     <ul class="list-disc list-inside bg-gray-50 p-4 rounded-md mb-6">
+                        <li><strong>대상 지역:</strong> 대한민국 서울 (GHCND Station ID: KOR00047122)</li>
+                        <li><strong>대상 기간:</strong> 2024년 1월 한 달</li>
+                        <li><strong>수집 데이터:</strong> 일 최고/최저 기온, 강수량, 평균 풍속</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-bold mb-4">Python 예제 코드 (`requests` & `pandas`)</h3>
+                    <div class="code-block">
+<pre><code><span class="keyword">import</span> requests
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">from</span> io <span class="keyword">import</span> StringIO
+
+<span class="comment"># -- 1. Configuration --</span>
+<span class="variable">NCEI_API_TOKEN</span> = <span class="string">'YOUR_NCEI_API_TOKEN'</span> <span class="comment"># Get token from NCEI website</span>
+<span class="variable">STATION_ID</span> = <span class="string">'GHCND:KOR00047122'</span>
+<span class="variable">START_DATE</span> = <span class="string">'2024-01-01'</span>
+<span class="variable">END_DATE</span> = <span class="string">'2024-01-31'</span>
+<span class="variable">DATASET_ID</span> = <span class="string">'GHCND'</span> <span class="comment"># Global Historical Climatology Network Daily</span>
+<span class="variable">DATA_TYPES</span> = <span class="string">'TMAX,TMIN,PRCP,AWND'</span> <span class="comment"># Max Temp, Min Temp, Precipitation, Avg Wind</span>
+<span class="variable">OUTPUT_CSV</span> = <span class="string">'seoul_weather_2024_01.csv'</span>
+
+<span class="comment"># -- 2. Construct API Request --</span>
+<span class="variable">API_ENDPOINT</span> = <span class="string">'https://www.ncei.noaa.gov/cdo-web/api/v2/data'</span>
+<span class="variable">headers</span> = {<span class="string">'token'</span>: <span class="variable">NCEI_API_TOKEN</span>}
+<span class="variable">params</span> = {
+    <span class="string">'datasetid'</span>: <span class="variable">DATASET_ID</span>,
+    <span class="string">'stationid'</span>: <span class="variable">STATION_ID</span>,
+    <span class="string">'startdate'</span>: <span class="variable">START_DATE</span>,
+    <span class="string">'enddate'</span>: <span class="variable">END_DATE</span>,
+    <span class="string">'datatypeid'</span>: <span class="variable">DATA_TYPES</span>,
+    <span class="string">'limit'</span>: 1000, <span class="comment"># Max records per request</span>
+    <span class="string">'units'</span>: <span class="string">'metric'</span>
+}
+
+<span class="comment"># -- 3. Fetch and Process Data --</span>
+<span class="function">print</span>(<span class="string">f'Fetching data for {STATION_ID}...'</span>)
+<span class="keyword">try</span>:
+    <span class="variable">response</span> = requests.<span class="function">get</span>(<span class="variable">API_ENDPOINT</span>, headers=<span class="variable">headers</span>, params=<span class="variable">params</span>)
+    response.<span class="function">raise_for_status</span>() <span class="comment"># Raise an exception for bad status codes</span>
+    
+    <span class="variable">data</span> = response.<span class="function">json</span>().get(<span class="string">'results'</span>, [])
+    
+    <span class="keyword">if not</span> <span class="variable">data</span>:
+        <span class="function">print</span>(<span class="string">'No data found for the specified parameters.'</span>)
+    <span class="keyword">else</span>:
+        <span class="comment"># Pivot data for better readability</span>
+        <span class="variable">df</span> = pd.<span class="function">DataFrame</span>(<span class="variable">data</span>)
+        <span class="variable">pivot_df</span> = <span class="variable">df</span>.<span class="function">pivot_table</span>(
+            index=<span class="string">'date'</span>, 
+            columns=<span class="string">'datatype'</span>, 
+            values=<span class="string">'value'</span>
+        ).<span class="function">reset_index</span>()
+        
+        <span class="comment"># Clean up date format</span>
+        pivot_df[<span class="string">'date'</span>] = pd.<span class="function">to_datetime</span>(pivot_df[<span class="string">'date'</span>]).<span class="function">dt</span>.<span class="function">date</span>
+        
+        <span class="comment"># Save to CSV</span>
+        pivot_df.<span class="function">to_csv</span>(<span class="variable">OUTPUT_CSV</span>, index=<span class="keyword">False</span>)
+        <span class="function">print</span>(<span class="string">f'Successfully saved data to {OUTPUT_CSV}'</span>)
+        <span class="function">print</span>(<span class="string">'\n--- Data Preview ---'</span>)
+        <span class="function">print</span>(pivot_df.<span class="function">head</span>())
+
+<span class="keyword">except</span> <span class="variable">requests</span>.<span class="function">exceptions</span>.<span class="variable">HTTPError</span> <span class="keyword">as</span> <span class="variable">e</span>:
+    <span class="function">print</span>(<span class="string">f'API Request Error: {e}'</span>)
+<span class="keyword">except</span> <span class="variable">Exception</span> <span class="keyword">as</span> <span class="variable">e</span>:
+    <span class="function">print</span>(<span class="string">f'An error occurred: {e}'</span>)
+
+</code></pre>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 mt-6">실행 방법</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>Python과 `requests`, `pandas` 라이브러리를 설치합니다. (`pip install requests pandas`)</li>
+                        <li><a href="https://www.ncdc.noaa.gov/cdo-web/token" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">NOAA NCEI 웹사이트</a>에서 API 토큰을 발급받아 `YOUR_NCEI_API_TOKEN` 부분을 수정합니다.</li>
+                        <li>터미널에서 스크립트를 실행합니다.</li>
+                        <li>완료되면 현재 폴더에 `seoul_weather_2024_01.csv` 파일이 생성됩니다.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="scroll-mt-24">
+            <h2 class="text-3xl font-bold text-center mb-12">주요 서비스 특징 비교</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-8">
+                어떤 데이터 서비스를 선택할지는 연구의 목적과 필요에 따라 달라집니다. 각 서비스는 데이터의 종류, 접근성, 편의성 등에서 고유한 장단점을 가집니다. 아래 차트는 주요 서비스들의 특징을 직관적으로 비교하여 보여줍니다.
+            </p>
+            <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-24">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 Earth Science Data Guide. For Research and Educational Purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function setupTabs(buttonIds, contentClass, activeClass) {
+                const tabs = {};
+                buttonIds.forEach(id => {
+                    const name = id.split('-')[0];
+                    tabs[name] = {
+                        button: document.getElementById(id),
+                        content: document.getElementById(`${name}-${contentClass}-content`)
+                    };
+                });
+
+                const allTabButtons = Object.values(tabs).map(t => t.button);
+                const allTabContents = Object.values(tabs).map(t => t.content);
+
+                function switchTab(tabName) {
+                    allTabButtons.forEach(button => button.classList.remove(activeClass));
+                    allTabContents.forEach(content => content.classList.add('hidden'));
+                    
+                    if(tabs[tabName]) {
+                        tabs[tabName].button.classList.add(activeClass);
+                        tabs[tabName].content.classList.remove('hidden');
+                    }
+                }
+
+                allTabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                         const name = button.id.split('-')[0];
+                         switchTab(name);
+                    });
+                });
+            }
+
+            setupTabs(['copernicus-proc-tab', 'noaa-proc-tab'], 'proc', 'active');
+            setupTabs(['copernicus-demo-tab', 'noaa-demo-tab'], 'demo', 'active');
+
+
+            const ctx = document.getElementById('comparisonChart').getContext('2d');
+            const comparisonChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['데이터 다양성', '접근 용이성 (초심자)', '자동화 편의성 (API)', '실시간성', '데이터 품질'],
+                    datasets: [
+                        {
+                            label: 'Copernicus Marine',
+                            data: [4, 3, 5, 5, 5],
+                            backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'NOAA / NCEI',
+                            data: [5, 4, 4, 4, 4],
+                            backgroundColor: 'rgba(16, 185, 129, 0.6)',
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'NASA Earthdata',
+                            data: [5, 3, 4, 3, 5],
+                            backgroundColor: 'rgba(249, 115, 22, 0.6)',
+                            borderColor: 'rgba(249, 115, 22, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 5,
+                            title: {
+                                display: true,
+                                text: '상대적 평가 점수 (5점 만점)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '데이터 서비스별 특징 비교',
+                            font: {
+                                size: 18
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + '점';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
+

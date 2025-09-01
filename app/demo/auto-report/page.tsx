@@ -20,7 +20,7 @@ export default function AutoReportPage() {
       <div className="mt-12 max-w-4xl mx-auto p-6 bg-gray-50 rounded-lg border">
         <h2 className="text-2xl font-bold mb-4">데모 시나리오 개요</h2>
         <p className="mb-4 text-gray-700">
-          AI 에이전트에게 "인도양 다이폴(IOD)과 주요 해양 환경 변수 간의 관계"에 대한 핵심 분석 결과 데이터를 입력합니다.
+          {`AI 에이전트에게 "인도양 다이폴(IOD)과 주요 해양 환경 변수 간의 관계"에 대한 핵심 분석 결과 데이터를 입력합니다.`}
         </p>
         <ul className="list-disc list-inside space-y-2">
           <li><strong>입력 데이터:</strong> 연구 목표, 핵심 통계치(상관계수 등), 결론 요약 등 정형화된 데이터를 AI에게 제공합니다.</li>

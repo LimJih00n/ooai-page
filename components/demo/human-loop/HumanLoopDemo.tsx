@@ -61,12 +61,14 @@ sns.lmplot(x='SST', y='Chlorophyll', data=df)
 plt.title('SST vs Chlorophyll (Scatter Plot)')
 plt.show()`;
 
-  const simulateTyping = (text: string, setter: (text: string) => void, onComplete?: () => void) => {
+  const simulateTyping = (text: string, setter: (value: string) => void, onComplete?: () => void) => {
     let i = 0;
+    let currentText = '';
     setter('');
     const interval = setInterval(() => {
       if (i < text.length) {
-        setter(prev => prev + text.charAt(i));
+        currentText += text.charAt(i);
+        setter(currentText);
         i++;
       } else {
         clearInterval(interval);

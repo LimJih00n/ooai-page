@@ -113,7 +113,7 @@ export default function MultiAgentDemoContainer() {
         <MultiAgentProgressTracker steps={multiAgentSteps} currentStep={currentStep} isRunning={isRunning} isComplete={isComplete} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-          <MultiAgentWorkflow activeStep={activeStepId} />
+          <MultiAgentWorkflow />
           <MultiAgentOutputDisplay logs={logs} isComplete={isComplete} />
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function MultiAgentDemoPage() {
       <div className="mt-12 max-w-4xl mx-auto p-6 bg-gray-50 rounded-lg border">
         <h2 className="text-2xl font-bold mb-4">데모 시나리오 개요</h2>
         <p className="mb-4 text-gray-700">
-          이 데모는 "특정 해역의 해수면 온도 변화와 특정 어종의 출현 빈도 사이의 상관관계 분석"이라는 가상의 연구 목표를 시뮬레이션합니다.
+          {`이 데모는 "특정 해역의 해수면 온도 변화와 특정 어종의 출현 빈도 사이의 상관관계 분석"이라는 가상의 연구 목표를 시뮬레이션합니다.`}
         </p>
         <ul className="list-disc list-inside space-y-2">
           <li><strong>연구 계획가 (Planner):</strong> 목표를 구체적인 실행 계획으로 분해합니다.</li>

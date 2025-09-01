@@ -100,12 +100,29 @@ export default function Home() {
                   <Rocket className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
-              <Link href="/demo">
+              
+              <div className="relative" onMouseEnter={() => setShowDemos(true)} onMouseLeave={() => setShowDemos(false)}>
                 <Button variant="research-outline" size="xl" className="group">
                   기술 데모 보기
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronDown className="ml-2 w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 </Button>
-              </Link>
+                {showDemos && (
+                  <div className="absolute top-full mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-10 py-2 text-left">
+                    {demos.map((demo) => (
+                      <a
+                        key={demo.href}
+                        href={demo.href}
+                        target={demo.target || '_self'}
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                      >
+                        {demo.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <a href="/education-program.html" target="_blank" rel="noopener noreferrer">
                 <Button variant="research-outline" size="xl" className="group">
                   교육 과정 바로가기

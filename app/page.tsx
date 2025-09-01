@@ -1,20 +1,16 @@
 'use client'
 
 import React, { useState } from 'react'
-import { ArrowRight, Beaker, Brain, Database, GitBranch, Globe, Lightbulb, Lock, MessageCircle, Microscope, PieChart, Rocket, Shield, Users, Zap, Activity, Settings, FileText, Network, BarChart3, Workflow, Timer, TrendingUp, CheckCircle, AlertTriangle, FileX, Clock, Container, Code, Play, Target, Mail, RefreshCw, Bug, Egg, ChevronDown } from 'lucide-react'
-import { GiButterfly, GiCaterpillar } from 'react-icons/gi'
+import { ArrowRight, ChevronDown, FileText, Rocket } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import DockerArchitecture from '@/components/diagrams/DockerArchitecture'
-import LangGraphWorkflow from '@/components/diagrams/LangGraphWorkflow'
-import UltraThinkService from '@/components/diagrams/UltraThinkService'
-import ResearchProcessComparison from '@/components/diagrams/ResearchProcessComparison'
-import TechStackArchitecture from '@/components/diagrams/TechStackArchitecture'
 import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
+import ResearchProcessComparison from '@/components/diagrams/ResearchProcessComparison'
 import SolutionsOverview from '@/components/diagrams/SolutionsOverview'
 import DetailedServiceOfferings from '@/components/diagrams/DetailedServiceOfferings'
+import TechStackArchitecture from '@/components/diagrams/TechStackArchitecture'
 import Link from 'next/link'
+import { Card } from '@/components/ui/card'
 
 export default function Home() {
   const [showDemos, setShowDemos] = useState(false)
@@ -88,7 +84,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <Badge variant="research" className="mb-6 animate-fade-up flex items-center justify-center gap-2 mx-auto w-fit">
-              <Microscope className="w-4 h-4" />
               <span>대한민국 연구실을 위한 AI 혁신</span>
             </Badge>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 animate-fade-up">

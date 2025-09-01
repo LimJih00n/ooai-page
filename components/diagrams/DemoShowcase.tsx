@@ -4,15 +4,22 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Play, Bot, Container, UserCheck, FileText, Waves, Wind } from 'lucide-react'
+import { ArrowRight, Play, Bot, Container, UserCheck, FileText, Waves, Wind, Users } from 'lucide-react'
 import Link from 'next/link'
 
 const demos = [
   {
-    title: '다중 AI 에이전트',
-    description: '전문 AI 에이전트 팀이 협업하여 복잡한 연구 과제를 해결하는 과정을 보여줍니다.',
-    icon: Bot,
+    title: '다중 에이전트 워크플로우 (고급)',
+    description: 'LangGraph 기반 워크플로우 안에서 AI 에이전트들이 어떻게 상호작용하고 인간의 검토를 받는지 보여줍니다.',
+    icon: Users,
     href: '/demo/multi-agent',
+    isAvailable: true,
+  },
+  {
+    title: '자동 연구 데모 (기초)',
+    description: 'AI 에이전트가 계획 수립부터 보고서 작성까지 연구 전 과정을 자동화하는 과정을 시뮬레이션합니다.',
+    icon: Bot,
+    href: '/demo',
     isAvailable: true,
   },
   {

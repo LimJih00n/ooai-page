@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { Brain, Database, BarChart3, CheckCircle, FileText, Zap } from 'lucide-react';
 
 const agents = [
-  { id: 'planning', name: 'Planner', icon: Brain, description: '계획 수립' },
-  { id: 'collecting', name: 'Collector', icon: Database, description: '데이터 수집' },
-  { id: 'analyzing', name: 'Analyzer', icon: BarChart3, description: '데이터 분석' },
-  { id: 'validating', name: 'Validator', icon: CheckCircle, description: '결과 검증' },
-  { id: 'reporting', name: 'Reporter', icon: FileText, description: '보고서 생성' },
+  { id: 'planning', name: 'Planner', icon: Brain, description: '계획 수립 AI' },
+  { id: 'collecting', name: 'Collector', icon: Database, description: '데이터 수집 AI' },
+  { id: 'analyzing', name: 'Analyzer', icon: BarChart3, description: '데이터 분석 AI' },
+  { id: 'validating', name: 'Validator', icon: CheckCircle, description: '결과 검증 AI' },
+  { id: 'reporting', name: 'Reporter', icon: FileText, description: '보고서 생성 AI' },
 ];
 
 interface AgentWorkflowProps {

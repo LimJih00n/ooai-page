@@ -9,10 +9,10 @@ import OutputDisplay from '../OutputDisplay';
 import { Brain, Database, Search, BarChart3, FileText, User } from 'lucide-react';
 
 const nodes = [
-  { id: 'planner', name: '연구 계획가', icon: Brain, description: '사용자 목표를 분석하여 실행 계획 수립' },
-  { id: 'data_fetcher', name: '데이터 수집가', icon: Database, description: '계획에 따라 다양한 소스에서 데이터 수집' },
-  { id: 'synthesizer', name: '데이터 분석가', icon: BarChart3, description: '수집된 데이터를 종합하고 통계 분석 수행' },
-  { id: 'report_generator', name: '보고서 생성가', icon: FileText, description: '분석 결과를 바탕으로 최종 보고서 작성' },
+  { id: 'planner', name: '연구 계획 AI', icon: Brain, description: '사용자 목표를 분석하여 실행 계획 수립' },
+  { id: 'data_fetcher', name: '데이터 수집 AI', icon: Database, description: '계획에 따라 다양한 소스에서 데이터 수집' },
+  { id: 'synthesizer', name: '데이터 분석 AI', icon: BarChart3, description: '수집된 데이터를 종합하고 통계 분석 수행' },
+  { id: 'report_generator', name: '보고서 생성 AI', icon: FileText, description: '분석 결과를 바탕으로 최종 보고서 작성' },
   { id: 'human_review', name: '인간 검토자', icon: User, description: '중간/최종 결과물을 검토하고 피드백 제공' },
 ];
 

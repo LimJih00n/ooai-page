@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인도양 다이폴(IOD)과 해양 환경 변동성 분석 보고서</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #fdfdfd;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3, h4 {
+            font-family: 'KoPub Batang', serif;
+            color: #1a237e;
+            border-bottom: 2px solid #3f51b5;
+            padding-bottom: 10px;
+            margin-top: 1.5em;
+        }
+        h1 { font-size: 2.5em; text-align: center; border: none; }
+        h2 { font-size: 2em; }
+        h3 { font-size: 1.5em; border-bottom: 1px solid #9fa8da; }
+        h4 { font-size: 1.2em; border-bottom: none; color: #3f51b5; }
+        p {
+            text-align: justify;
+            margin-bottom: 1em;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        figcaption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        code {
+            background-color: #f0f4f8;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'D2Coding', monospace;
+        }
+        .formula {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin: 20px 0;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=KoPub+Batang:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>인도양 다이폴(IOD)과 해양 환경 변동성 분석</h1>
+        
+        <h2>1. 연구 배경 및 동향</h2>
+        <p>인도양 다이폴(Indian Ocean Dipole, IOD)은 열대 인도양에서 발생하는 가장 중요한 해양-대기 상호작용 현상 중 하나로, 인도양 주변 지역뿐만 아니라 전 지구적 기후 시스템에 막대한 영향을 미친다 (Saji et al., 1999). IOD는 인도양 서쪽 열대 해역(WTIO)과 동쪽 열대 해역(ETIO) 사이의 해수면 온도(SST) 차이로 정의되며, 이는 엘니뇨-남방진동(ENSO)과는 독립적인 내부 변동성으로 알려져 있다 (Webster et al., 1999; Schott et al., 2009).</p>
+        
+        <figure>
+            <img src="https://raw.githubusercontent.com/LimJih00n/asset/main/IOD_schematic_with_poles.png" alt="IOD 위상 개념도">
+            <figcaption><strong>그림 1.</strong> 인도양 다이폴(IOD)의 양의 위상(상단)과 음의 위상(하단)에 대한 개념도.</figcaption>
+        </figure>
+        
+        <p>IOD의 발달 메커니즘은 해양의 동역학적 과정과 밀접하게 연관되어 있다. 특히 해수면 아래의 수온약층(thermocline) 깊이 변화가 핵심적인 역할을 한다 (Rao et al., 2002). 양의 IOD 이벤트 동안에는 동쪽에서 서쪽으로 향하는 비정상적인 바람이 강화되어, 동쪽 해역에서는 용승(upwelling)이 활발해지고 수온약층이 얕아져 찬 해수면 온도 아노말리가 나타난다. 반면, 서쪽 해역에서는 침강(downwelling)이 발생하여 수온약층이 깊어지고 따뜻한 해수면 온도 아노말리가 형성된다 (Shinoda et al., 2004).</p>
+        <p>IOD가 해양 생지화학 과정에 미치는 영향 또한 주요 연구 주제이다. 동쪽 해역의 강화된 용승은 영양염을 표층으로 공급하여 클로로필-a(CHL) 농도를 증가시키고, 이는 해당 지역의 일차 생산성을 높이는 결과를 가져온다 (Murtugudde et al., 2000).</p>
+        <p>따라서 본 연구에서는 최신 위성 및 재분석 자료를 활용하여 2014년부터 2024년까지 인도양의 SST, 와류 운동 에너지(EKE), CHL 변동성을 분석하고, 이들이 IOD와 어떠한 정량적 관계를 가지는지 밝히고자 한다.</p>
+
+        <h2>2. 데이터 및 분석 방법</h2>
+        <h4>2.1. 사용 데이터</h4>
+        <ul>
+            <li><strong>해양 물리 데이터 (SST, 해류):</strong> Copernicus Marine Service(CMS) 재분석 및 준실시간 자료 (1/12° 해상도)</li>
+            <li><strong>해양 생지화학 데이터 (CHL):</strong> CMS 재분석 및 준실시간 자료 (1/4° 해상도)</li>
+            <li><strong>공식 DMI 지수:</strong> 영국 기상청(Met Office) HadISST 기반 DMI 지수</li>
+        </ul>
+
+        <h4>2.2. 분석 방법</h4>
+        <p>월별 아노말리($X'$)는 원본 자료($X_t$)에서 월별 기후값($\bar{X}_{m(t)}$)을 빼서 계산하였다.</p>
+        <p class="formula">$X'(t) = X_t - \bar{X}_{m(t)} \quad (1)$</p>
+        <p>SST와 CHL 아노말리의 주요 변동성 모드를 추출하기 위해 경험적 직교 함수(EOF) 분석을 적용하였다.</p>
+        <p class="formula">$D(x, t) = \sum_{k=1}^{N} A_k(t) E_k(x) \quad (2)$</p>
+        <p>와류 운동 에너지(EKE)는 해류 아노말리($u', v'$)로부터 계산하였다.</p>
+        <p class="formula">$EKE = \frac{1}{2} (u'^2 + v'^2) \quad (3)$</p>
+        <p>각종 지수들 간의 관계를 평가하기 위해 피어슨 상관 분석을 사용하였다.</p>
+
+        <h2>3. 분석 결과</h2>
+        <h4>3.1. 인도양의 평균 상태</h4>
+        <figure>
+            <img src="https://raw.githubusercontent.com/LimJih00n/asset/main/SST_mean_distribution_2014-2024_v3.png" alt="Mean SST Distribution">
+            <figcaption><strong>그림 2.</strong> 2014-2024년 연평균 해수면 온도(SST) 분포.</figcaption>
+        </figure>
+        <figure>
+            <img src="https://raw.githubusercontent.com/LimJih00n/asset/main/EKE_mean_distribution_2014-2024_v4.png" alt="Mean EKE Distribution">
+            <figcaption><strong>그림 3.</strong> 2014-2024년 연평균 와류 운동 에너지(EKE) 분포.</figcaption>
+        </figure>
+        <figure>
+            <img src="https://raw.githubusercontent.com/LimJih00n/asset/main/CHL_mean_distribution_2014-2024_v3.png" alt="Mean CHL Distribution">
+            <figcaption><strong>그림 4.</strong> 2014-2024년 연평균 표층 클로로필(CHL) 농도 분포.</figcaption>
+        </figure>
+
+        <h4>3.2. SST, EKE, CHL 변동성 모드 분석</h4>
+        <p>EOF 분석 결과, SST와 EKE의 첫 번째 변동성 모드는 IOD의 전형적인 동서 다이폴 구조를 명확하게 보였다. SST PC1 시계열은 공식 DMI 지수와 유의미한 양의 상관관계(R=0.26, p<0.01)를 나타냈다. 반면, CHL의 주요 변동성은 IOD와 직접적인 선형 관계를 보이지 않았다.</p>
+        <figure>
+            <img src="https://raw.githubusercontent.com/LimJih00n/asset/main/SST_EOF_modes_1-3.png" alt="SST EOF Modes 1-3">
+            <figcaption><strong>그림 5.</strong> SST 아노말리의 첫 세 가지 EOF 모드와 해당 주성분 시계열.</figcaption>
+        </figure>
+
+        <h2>4. 토의 및 결론</h2>
+        <p>본 연구는 최신 데이터를 활용하여 IOD가 인도양의 물리적 환경, 특히 SST와 EKE의 동서간 비대칭성에 미치는 영향을 정량적으로 규명하였다. 하지만 생지화학적 반응의 경우, 인도양 전체의 관점에서는 뚜렷한 연관성을 찾기 어려웠다. 이는 인도양의 생물 생산성이 IOD라는 대규모 기후 현상뿐만 아니라, 지역적인 해류 시스템, 담수 유입, 국지적인 용승 등 다양한 요인에 의해 복합적으로 조절된다는 것을 시사한다. 향후 연구에서는 IOD의 영향이 직접적으로 나타나는 핵심 해역에 초점을 맞춘 고해상도 지역 분석이 필요할 것으로 사료된다.</p>
+    </div>
+</body>
+</html>

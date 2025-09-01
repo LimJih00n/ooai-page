@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Play, RefreshCw, FileText, BarChart, Brain } from 'lucide-react';
+import { Play, RefreshCw, FileText, BarChart, Brain, ExternalLink } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 const AutoReportDemo = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -94,9 +95,9 @@ const AutoReportDemo = () => {
         </div>
 
         {/* Generated Report */}
-        <div className="lg:col-span-3 border rounded-lg p-4">
+        <div className="lg:col-span-3 border rounded-lg p-4 flex flex-col">
           <h3 className="font-bold text-lg mb-4 flex items-center"><FileText className="mr-2 text-green-600"/> AI 생성 보고서</h3>
-          <div className="prose prose-sm max-w-none h-[400px] overflow-y-auto p-4 border rounded bg-gray-50 whitespace-pre-wrap">
+          <div className="prose prose-sm max-w-none h-[400px] overflow-y-auto p-4 border rounded bg-gray-50 whitespace-pre-wrap flex-grow">
             {reportContent ? (
               <div dangerouslySetInnerHTML={{ __html: reportContent.replace(/### (.*?)\n/g, '<h3>$1</h3>').replace(/#### (.*?)\n/g, '<h4>$1</h4>').replace(/\n/g, '<br />') }} />
             ) : (
@@ -105,10 +106,21 @@ const AutoReportDemo = () => {
               </div>
             )}
           </div>
+          {isComplete && (
+            <div className="mt-4">
+              <Button asChild className="w-full">
+                <Link href="/iod_analysis_report.html" target="_blank">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  전체 보고서 보기 (새 탭)
+                </Link>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
+
 
 export default AutoReportDemo;

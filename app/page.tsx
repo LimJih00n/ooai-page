@@ -74,7 +74,7 @@ export default function Home() {
             <div className="hidden md:block">
               <Button asChild variant="research" className="shadow-lg">
                 <a href="/pilot-application.html">
-                  파일럿 프로젝트 시작
+                  파일럿 프로그램 신청
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
               </Button>
@@ -109,7 +109,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up">
               <Button asChild variant="research" size="xl" className="group">
                 <a href="/pilot-application.html">
-                  무료 파일럿 시작하기
+                  무료 연구 환경 진단 신청
                   <Rocket className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>

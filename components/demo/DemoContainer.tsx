@@ -127,7 +127,7 @@ export default function DemoContainer() {
         </div>
 
         <div className="mb-8">
-          <Button onClick={startDemo} disabled={isRunning} size="lg" className="w-full">
+          <Button onClick={startDemo} disabled={isRunning} size="lg" className="w-full h-16 text-xl">
             {isComplete ? <RefreshCw className="mr-2 h-4 w-4" /> : <Play className="mr-2 h-4 w-4" />}
             {isComplete ? '데모 다시 시작' : (isRunning ? '분석 진행 중...' : '데모 시작')}
           </Button>

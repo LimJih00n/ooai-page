@@ -102,6 +102,12 @@ export default function Home() {
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
+              <a href="/education-program.html" target="_blank" rel="noopener noreferrer">
+                <Button variant="research-outline" size="xl" className="group">
+                  교육 과정 바로가기
+                  <FileText className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
             </div>
             
             {/* Key Stats */}

@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 const demos = [
   {
-    title: '다중 에이전트 워크플로우 (고급)',
+    title: '다중 에이전트 워크플로우',
     description: 'LangGraph 기반으로 여러 AI 에이전트가 협업하고, 인간이 중간에 개입하여 연구를 완성하는 과정을 시뮬레이션합니다.',
     icon: Users,
     href: '/demo/multi-agent',
@@ -23,7 +23,7 @@ const demos = [
     isAvailable: true,
   },
   {
-    title: '자동 연구 데모 (기초)',
+    title: '자동 연구 데모',
     description: '단일 AI 에이전트가 연구 전 과정을 자동화하는 기본적인 과정을 시뮬레이션합니다.',
     icon: Bot,
     href: '/demo',

@@ -389,22 +389,24 @@ export default function InteractiveFeatureShowcase() {
                   <div className="pt-4 border-t space-y-3">
                     <div className="flex gap-3">
                       <Button asChild className="flex-1" size="lg" variant="research">
-                        <Link 
+                        <a 
                           href={
+                            selectedFeature?.id === 'auto-data' ? '/auto-data-demo.html' :
                             selectedFeature?.id === 'natural-language' ? '/demo' :
                             selectedFeature?.id === 'multi-agent' ? '/demo/multi-agent' :
-                            selectedFeature?.id === 'auto-data' ? '/demo/auto-data' :
                             selectedFeature?.id === 'docker-env' ? '/demo/docker-reproducibility' :
                             selectedFeature?.id === 'human-loop' ? '/demo/human-loop' :
                             selectedFeature?.id === 'auto-report' ? '/demo/auto-report' :
                             '/demo'
                           } 
                           className="group"
+                          target={selectedFeature?.id === 'auto-data' ? '_blank' : '_self'}
+                          rel="noopener noreferrer"
                         >
                           <Play className="w-4 h-4 mr-2" />
                           라이브 데모
                           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        </a>
                       </Button>
                       <Button 
                         variant="research-outline" 

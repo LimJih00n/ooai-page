@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabA 라이브 데모: AI 기반 자동 데이터 수집</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .code-block {
+            background-color: #1e293b; /* slate-800 */
+            color: #e2e8f0; /* slate-200 */
+            font-family: 'Fira Code', monospace;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border: 1px solid #334155; /* slate-700 */
+        }
+        .terminal-block {
+            background-color: #0f172a; /* slate-900 */
+            color: #94a3b8; /* slate-400 */
+            font-family: 'Fira Code', monospace;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #334155; /* slate-700 */
+        }
+        .terminal-line::before {
+            content: '$ ';
+            color: #4ade80; /* green-400 */
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background-color: #f1f5f9; /* slate-100 */
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .result-table th, .result-table td {
+            border: 1px solid #e2e8f0; /* slate-200 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .result-table th {
+            background-color: #f1f5f9; /* slate-100 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <div class="container mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-blue-600 mb-2">LabA 핵심 기능 체험</h1>
+            <p class="text-2xl text-gray-700 font-semibold">AI 에이전트 기반 자동 데이터 수집</p>
+            <p class="mt-4 max-w-3xl mx-auto text-gray-600">
+                "인도양 특정 해역의 2024년 1월 해양 데이터 수집"이라는 연구 목표가 주어졌을 때, LabA의 AI 에이전트가 어떻게 자율적으로 데이터 수집 계획을 수립하고 코드를 실행하는지 확인해보세요.
+            </p>
+        </header>
+
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-8">
+                <button id="start-demo-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors text-lg shadow-lg">
+                    라이브 데모 시작
+                </button>
+            </div>
+
+            <div id="demo-container" class="hidden grid md:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h2 class="text-xl font-bold mb-2">AI가 생성한 Python 코드</h2>
+                    <p class="text-sm text-gray-500 mb-4">AI 에이전트가 연구 목표를 달성하기 위해 생성한 코드입니다.</p>
+                    <div class="code-block"><pre id="code-output"></pre></div>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold mb-2">가상 터미널 실행 로그</h2>
+                    <p class="text-sm text-gray-500 mb-4">코드가 Docker 컨테이너 내부에서 실행되는 과정입니다.</p>
+                    <div id="terminal-output" class="terminal-block"></div>
+                </div>
+            </div>
+
+            <div id="result-container" class="hidden mt-12 bg-white p-8 rounded-lg shadow-xl border border-gray-200">
+                <h2 class="text-2xl font-bold text-center mb-6 text-green-600">✅ 데이터 수집 및 처리 완료</h2>
+                <p class="text-center text-gray-600 mb-6">수집된 데이터는 분석에 용이한 테이블 형태로 자동 정제되어 저장되었습니다.</p>
+                <h3 class="text-lg font-semibold mb-4">수집 데이터 미리보기 (일부)</h3>
+                <div class="overflow-x-auto">
+                    <table class="result-table">
+                        <thead>
+                            <tr>
+                                <th>날짜</th>
+                                <th>위도</th>
+                                <th>경도</th>
+                                <th>수온 (°C)</th>
+                                <th>염분 (PSU)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2024-01-15</td><td>10.5 N</td><td>75.2 E</td><td>28.1</td><td>34.5</td></tr>
+                            <tr><td>2024-01-15</td><td>10.5 N</td><td>75.3 E</td><td>28.2</td><td>34.5</td></tr>
+                            <tr><td>2024-01-16</td><td>10.6 N</td><td>75.2 E</td><td>28.3</td><td>34.4</td></tr>
+                            <tr><td>2024-01-16</td><td>10.6 N</td><td>75.3 E</td><td>28.2</td><td>34.6</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById('start-demo-btn');
+        const demoContainer = document.getElementById('demo-container');
+        const codeOutput = document.getElementById('code-output');
+        const terminalOutput = document.getElementById('terminal-output');
+        const resultContainer = document.getElementById('result-container');
+
+        const code = `import os
+import subprocess
+import time
+
+# 1. Configuration
+# AI가 연구 목표에 맞춰 파라미터를 자동 설정합니다.
+COPERNICUS_USERNAME = 'ocean_researcher'
+COPERNICUS_PASSWORD = '***'
+OUTPUT_DIRECTORY = './indian_ocean_data'
+
+# 2. Parameters
+DATE_START = '2024-01-01 12:00:00'
+DATE_END = '2024-01-31 12:00:00'
+LONGITUDE_MIN, LONGITUDE_MAX = '40', '110'
+LATITUDE_MIN, LATITUDE_MAX = '-20', '25'
+VARIABLES = ['thetao', 'so', 'chl', 'uo', 'vo']
+
+# 3. Execution
+print("데이터 수집 에이전트 실행...")
+os.makedirs(OUTPUT_DIRECTORY, exist_ok=True)
+
+# ... motuclient 명령어 생성 ...
+command = [
+    "python", "-m", "motuclient",
+    # ... (인자 추가) ...
+]
+print(f"{len(VARIABLES)}개 변수 다운로드 시작.")
+# subprocess.run(command)
+time.sleep(2) # 시뮬레이션 지연
+print("다운로드 완료.")
+`;
+
+        const terminalLogs = [
+            "LabA Docker 컨테이너 환경 활성화...",
+            "Python 3.10 및 필수 라이브러리(xarray, pandas) 확인.",
+            "데이터 수집 에이전트 실행...",
+            "Copernicus Marine Service 서버에 연결 중...",
+            "인증 성공. 데이터 요청 시작.",
+            "5개 변수 다운로드 시작.",
+            "Downloading... [████████████████████] 100%",
+            "다운로드 완료.",
+            "NetCDF 파일 후처리 및 테이블 변환 시작...",
+            "작업 완료. 결과가 저장되었습니다."
+        ];
+
+        function typeCode(element, text, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    let char = text.charAt(i);
+                    if (char === '\\n') char = '<br>';
+                    element.innerHTML += char;
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    if (callback) callback();
+                }
+            }, 20); // 타이핑 속도
+        }
+
+        function showLogs(element, logs, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            const interval = setInterval(() => {
+                if (i < logs.length) {
+                    const line = document.createElement('p');
+                    line.className = 'terminal-line';
+                    line.textContent = logs[i];
+                    element.appendChild(line);
+                    element.scrollTop = element.scrollHeight;
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    if (callback) callback();
+                }
+            }, 800); // 로그 출력 간격
+        }
+
+        startBtn.addEventListener('click', () => {
+            startBtn.disabled = true;
+            startBtn.textContent = '데모 실행 중...';
+            demoContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+
+            const codeWithCursor = code + '<span class="typing-cursor"></span>';
+            
+            typeCode(codeOutput, code, () => {
+                // Remove cursor after typing
+                codeOutput.innerHTML = code;
+            });
+
+            showLogs(terminalOutput, terminalLogs, () => {
+                resultContainer.classList.remove('hidden');
+                startBtn.disabled = false;
+                startBtn.textContent = '데모 다시 시작하기';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -387,38 +387,54 @@ export default function InteractiveFeatureShowcase() {
 
                   {/* 체험하기 버튼 */}
                   <div className="pt-4 border-t space-y-3">
-                    <div className="flex gap-3">
-                      <Button asChild className="flex-1" size="lg" variant="research">
-                        <a 
-                          href={
-                            selectedFeature?.id === 'auto-data' ? '/auto-data-demo.html' :
-                            selectedFeature?.id === 'natural-language' ? '/demo' :
-                            selectedFeature?.id === 'multi-agent' ? '/demo/multi-agent' :
-                            selectedFeature?.id === 'docker-env' ? '/demo/docker-reproducibility' :
-                            selectedFeature?.id === 'human-loop' ? '/demo/human-loop' :
-                            selectedFeature?.id === 'auto-report' ? '/demo/auto-report' :
-                            '/demo'
-                          } 
-                          className="group"
-                          target={selectedFeature?.id === 'auto-data' ? '_blank' : '_self'}
-                          rel="noopener noreferrer"
+                    {selectedFeature.id === 'auto-data' ? (
+                      <div className="flex gap-3">
+                        <Button asChild className="flex-1" size="lg" variant="research">
+                          <a href="/auto-data-demo.html" target="_blank" rel="noopener noreferrer" className="group">
+                            <Play className="w-4 h-4 mr-2" />
+                            해양 데이터 데모
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </a>
+                        </Button>
+                        <Button asChild className="flex-1" size="lg" variant="research">
+                          <a href="/auto-data-demo-ncei.html" target="_blank" rel="noopener noreferrer" className="group">
+                            <Play className="w-4 h-4 mr-2" />
+                            대기 데이터 데모
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </a>
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="flex gap-3">
+                        <Button asChild className="flex-1" size="lg" variant="research">
+                          <a 
+                            href={
+                              selectedFeature?.id === 'natural-language' ? '/demo' :
+                              selectedFeature?.id === 'multi-agent' ? '/demo/multi-agent' :
+                              selectedFeature?.id === 'docker-env' ? '/demo/docker-reproducibility' :
+                              selectedFeature?.id === 'human-loop' ? '/demo/human-loop' :
+                              selectedFeature?.id === 'auto-report' ? '/demo/auto-report' :
+                              '/demo'
+                            } 
+                            className="group"
+                          >
+                            <Play className="w-4 h-4 mr-2" />
+                            라이브 데모
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </a>
+                        </Button>
+                        <Button 
+                          variant="research-outline" 
+                          className="flex-1 group"
+                          size="lg"
+                          onClick={() => setIsModalOpen(true)}
                         >
-                          <Play className="w-4 h-4 mr-2" />
-                          라이브 데모
+                          <Code className="w-4 h-4 mr-2" />
+                          코드 보기
                           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                      </Button>
-                      <Button 
-                        variant="research-outline" 
-                        className="flex-1 group"
-                        size="lg"
-                        onClick={() => setIsModalOpen(true)}
-                      >
-                        <Code className="w-4 h-4 mr-2" />
-                        코드 보기
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </div>
+                        </Button>
+                      </div>
+                    )}
                     <div className="text-xs text-gray-500 text-center">
                       • 실제 동작 환경에서 테스트 • 완전 무료 • 설치 불필요
                     </div>

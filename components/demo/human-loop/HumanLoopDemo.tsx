@@ -8,7 +8,7 @@ import { Play, RefreshCw, User, Check, X, Send, Bot, FileText, BarChart } from '
 import { Badge } from '@/components/ui/badge';
 
 const HumanLoopDemo = () => {
-  const [status, setStatus] = useState('idle'); // idle, coding, review, revising, completed
+  const [status, setStatus] = useState('idle'); // idle, coding, review, revising, reporting, completed
   const [logs, setLogs] = useState<string[]>([]);
   const [aiCode, setAiCode] = useState('');
   const [aiResult, setAiResult] = useState('');
@@ -60,6 +60,20 @@ print(f"상관 분석 결과: {correlation:.2f}")
 sns.lmplot(x='SST', y='Chlorophyll', data=df)
 plt.title('SST vs Chlorophyll (Scatter Plot)')
 plt.show()`;
+  
+  const finalReport = `## 최종 분석 보고서
+
+### 1. 분석 개요
+- **목표:** 해수면 온도(SST)와 엽록소 농도(Chlorophyll) 간의 상관관계 분석
+- **데이터:** 가상 시계열 데이터 (SST, Chlorophyll)
+- **분석 방법:** Python Pandas 라이브러리를 이용한 피어슨 상관계수 계산 및 Seaborn을 이용한 시각화
+
+### 2. 분석 결과
+- **상관계수:** SST와 엽록소 농도 간에는 **0.96**의 매우 강한 양의 상관관계가 나타났습니다.
+- **시각화:** 산점도 및 추세선 분석 결과, SST가 증가함에 따라 엽록소 농도가 선형적으로 증가하는 경향이 뚜렷하게 확인되었습니다.
+
+### 3. 결론
+분석 결과, 해수면 온도의 상승은 해양 표층의 엽록소 농도 증가와 밀접한 관련이 있음을 시사합니다. 이는 수온 변화가 해양 일차 생산성에 미치는 영향을 이해하는 데 중요한 근거가 될 수 있습니다.`;
 
   const simulateTyping = (text: string, setter: (value: string) => void, onComplete?: () => void) => {
     let i = 0;
@@ -96,9 +110,15 @@ plt.show()`;
 
   const handleReview = (approved: boolean) => {
     if (approved) {
-      setLogs(prev => [...prev, '연구원이 결과를 승인했습니다. 최종 보고서를 생성합니다.']);
-      setStatus('completed');
-      setAiResult('## 최종 보고서\n\n해수면 온도(SST)와 엽록소 농도 간에는 강한 양의 상관관계(r=0.96)가 나타났습니다. 이는 SST 증가가 식물성 플랑크톤의 성장에 긍정적인 영향을 미칠 수 있음을 시사합니다.');
+      setLogs(prev => [...prev, '연구원이 결과를 승인했습니다. AI가 최종 보고서 생성을 시작합니다...']);
+      setStatus('reporting');
+      setAiResult('');
+      setTimeout(() => {
+        simulateTyping(finalReport, setAiResult, () => {
+          setLogs(prev => [...prev, '보고서 생성 완료. 워크플로우를 종료합니다.']);
+          setStatus('completed');
+        });
+      }, 500);
     } else {
       if (!feedback) {
         alert('수정 요청 사항을 입력해주세요.');
@@ -126,6 +146,7 @@ plt.show()`;
     setAiResult('');
     setFeedback('');
   }
+
 
   return (
     <div className="w-full max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg border">

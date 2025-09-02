@@ -43,7 +43,6 @@ const demos = [
     icon: UserCheck,
     href: '/demo/human-loop',
     isAvailable: true,
-    status: 'wip',
   },
   {
     title: '자동 보고서 생성',
@@ -51,7 +50,6 @@ const demos = [
     icon: FileText,
     href: '/demo/auto-report',
     isAvailable: true,
-    status: 'wip',
   },
   {
     title: '[Live] 해양 데이터 수집',
@@ -95,9 +93,6 @@ export default function DemoShowcase() {
               transition={{ delay: index * 0.1 }}
             >
               <Card className="h-full flex flex-col group hover:border-blue-500 transition-colors relative">
-                {demo.status === 'wip' && (
-                  <Badge variant="outline" className="absolute top-4 right-4 bg-yellow-100 text-yellow-800 border-yellow-300">작성 중</Badge>
-                )}
                 <CardHeader className="flex-row items-center gap-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <demo.icon className="w-6 h-6 text-blue-600" />
@@ -106,23 +101,17 @@ export default function DemoShowcase() {
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
                   <p className="text-gray-600 mb-6 flex-grow">{demo.description}</p>
-                  {demo.status === 'wip' ? (
-                    <Button variant="research-outline" className="w-full mt-auto" disabled>
-                      준비 중입니다...
-                    </Button>
-                  ) : (
-                    <Button asChild variant="research-outline" className="w-full mt-auto group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                      {demo.isExternal ? (
-                        <a href={demo.href} target="_blank" rel="noopener noreferrer">
-                          데모 보기 <ArrowRight className="ml-2 w-4 h-4" />
-                        </a>
-                      ) : (
-                        <Link href={demo.href}>
-                          데모 보기 <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
-                      )}
-                    </Button>
-                  )}
+                  <Button asChild variant="research-outline" className="w-full mt-auto group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    {demo.isExternal ? (
+                      <a href={demo.href} target="_blank" rel="noopener noreferrer">
+                        데모 보기 <ArrowRight className="ml-2 w-4 h-4" />
+                      </a>
+                    ) : (
+                      <Link href={demo.href}>
+                        데모 보기 <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
+                    )}
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>

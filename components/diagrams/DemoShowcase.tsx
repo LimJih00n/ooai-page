@@ -4,37 +4,48 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Play, Bot, Container, UserCheck, FileText, Waves, Wind, Users } from 'lucide-react'
+import { ArrowRight, Container, UserCheck, FileText, Waves, Wind, Users, Terminal, Server, Brain, Cpu } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 
 const demos = [
   {
+    title: 'Agentic AI Workspace',
+    description: '프로젝트 컨텍스트를 이해하고 복잡한 연구 작업을 자율적으로 계획하고 실행하는 AI 에이전트입니다.',
+    icon: Brain,
+    href: '/demo/agentic-ai',
+    isAvailable: true,
+    isNew: true,
+  },
+  {
+    title: 'Claude Code',
+    description: 'AI 코딩 어시스턴트가 프로젝트 컨텍스트를 이해하고 연구용 Python 코드를 자동 생성합니다.',
+    icon: Terminal,
+    href: '/demo/claude-code',
+    isAvailable: true,
+    isNew: true,
+  },
+  {
+    title: 'MCP Server',
+    description: 'Model Context Protocol로 AI가 파일시스템, 데이터베이스, 외부 API에 안전하게 연결합니다.',
+    icon: Server,
+    href: '/demo/mcp-server',
+    isAvailable: true,
+    isNew: true,
+  },
+  {
+    title: 'Chl-a 예측 파이프라인',
+    description: '위성 데이터로 Chlorophyll-a를 예측하는 ML 모델의 학습부터 배포까지 Docker 자동화 파이프라인입니다.',
+    icon: Cpu,
+    href: '/demo/docker-ml-pipeline',
+    isAvailable: true,
+    isNew: true,
+  },
+  {
     title: '다중 에이전트 워크플로우',
-    description: 'LangGraph 기반으로 여러 AI 에이전트가 협업하고, 인간이 중간에 개입하여 연구를 완성하는 과정을 시뮬레이션합니다.',
+    description: 'LangGraph 기반으로 여러 AI 에이전트가 협업하여 연구를 완성하는 과정을 시뮬레이션합니다.',
     icon: Users,
     href: '/demo/multi-agent',
-    isAvailable: true,
-  },
-  {
-    title: '하이브리드 AI 워크플로우',
-    description: 'Jeni, Exaone, Specialist LLM이 각자의 전문성을 발휘하여 최적의 코드를 생성해내는 과정을 보여줍니다.',
-    icon: Bot,
-    href: '/demo/hybrid-ai-workflow',
-    isAvailable: true,
-  },
-  {
-    title: '자동 연구 데모',
-    description: '단일 AI 에이전트가 연구 전 과정을 자동화하는 기본적인 과정을 시뮬레이션합니다.',
-    icon: Bot,
-    href: '/demo',
-    isAvailable: true,
-  },
-  {
-    title: 'Docker 완전 재현성',
-    description: '어떤 환경에서든 100% 동일한 연구 결과를 보장하는 기술을 시연합니다.',
-    icon: Container,
-    href: '/demo/docker-reproducibility',
     isAvailable: true,
   },
   {
@@ -49,6 +60,13 @@ const demos = [
     description: '분석 결과를 바탕으로 논문 수준의 보고서 초안을 자동으로 작성합니다.',
     icon: FileText,
     href: '/demo/auto-report',
+    isAvailable: true,
+  },
+  {
+    title: 'Docker 완전 재현성',
+    description: '어떤 환경에서든 100% 동일한 연구 결과를 보장하는 Docker 기반 기술을 시연합니다.',
+    icon: Container,
+    href: '/demo/docker-reproducibility',
     isAvailable: true,
   },
   {
@@ -93,6 +111,11 @@ export default function DemoShowcase() {
               transition={{ delay: index * 0.1 }}
             >
               <Card className="h-full flex flex-col group hover:border-blue-500 transition-colors relative">
+                {'isNew' in demo && demo.isNew && (
+                  <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs">
+                    NEW
+                  </Badge>
+                )}
                 <CardHeader className="flex-row items-center gap-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <demo.icon className="w-6 h-6 text-blue-600" />

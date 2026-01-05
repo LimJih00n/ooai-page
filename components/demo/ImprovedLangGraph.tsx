@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Brain, Database, BarChart3, Users, ArrowRight, CheckCircle, GitBranch, Settings, Zap } from 'lucide-react'
+import { Brain, Database, BarChart3, Users, CheckCircle, GitBranch } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 interface FlowStep {
@@ -15,7 +15,7 @@ interface FlowStep {
 }
 
 export default function ImprovedLangGraph({ currentStep }: { currentStep: number }) {
-  const [activeStep, setActiveStep] = useState(0)
+  const [, setActiveStep] = useState(0)
 
   const steps: FlowStep[] = [
     { id: 'input', label: '연구 질문\n입력', icon: Users, x: 10, y: 100, status: 'idle', color: 'blue' },
@@ -43,14 +43,6 @@ export default function ImprovedLangGraph({ currentStep }: { currentStep: number
   ]
 
   useEffect(() => {
-    const stepMapping = [
-      ['input'],
-      ['input', 'planner'],
-      ['input', 'planner', 'router', 'collector1', 'collector2', 'collector3'],
-      ['input', 'planner', 'router', 'collector1', 'collector2', 'collector3', 'analyzer', 'reviewer', 'output']
-    ]
-
-    const activeSteps = stepMapping[Math.min(currentStep, stepMapping.length - 1)] || []
     setActiveStep(currentStep)
   }, [currentStep])
 
@@ -66,7 +58,6 @@ export default function ImprovedLangGraph({ currentStep }: { currentStep: number
     
     if (activeSteps.includes(stepId)) {
       // 현재 단계에서 마지막에 활성화되는 단계들은 'active', 나머지는 'completed'
-      const lastSteps = ['collector1', 'collector2', 'collector3', 'analyzer', 'reviewer', 'output']
       if (currentStep === 2 && ['collector1', 'collector2', 'collector3'].includes(stepId)) return 'active'
       if (currentStep === 3 && ['analyzer', 'reviewer', 'output'].includes(stepId)) return 'active'
       return activeSteps.indexOf(stepId) < activeSteps.length - 1 ? 'completed' : 'active'
@@ -121,7 +112,7 @@ export default function ImprovedLangGraph({ currentStep }: { currentStep: number
         <div className="relative w-full h-64" style={{ minWidth: '850px' }}>
           {/* Connection Lines */}
           <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
-            {connections.map((conn, index) => {
+            {connections.map((conn) => {
               const fromStep = steps.find(s => s.id === conn.from)
               const toStep = steps.find(s => s.id === conn.to)
               if (!fromStep || !toStep) return null

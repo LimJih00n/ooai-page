@@ -1,17 +1,15 @@
 'use client'
 
 import React, { useState } from 'react'
-import { 
-  Brain, Database, Zap, Users, FileText, Shield, 
-  Clock, Target, CheckCircle, ArrowRight, Play, 
-  MessageSquare, Lightbulb, Search, BarChart3,
-  Code, Container, RefreshCw, Eye, Settings
+import {
+  Brain, Database, Zap, Users, FileText, Shield,
+  Clock, Target, CheckCircle, ArrowRight, Play,
+  MessageSquare, Lightbulb,
+  Code, Container, Eye
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import Link from 'next/link'
 import CodeModal from '../demo/CodeModal'
 
 // 핵심 기능들
@@ -48,7 +46,7 @@ const coreFeatures = [
     description: '전세계 데이터베이스에서 실시간 수집',
     icon: Database,
     color: 'indigo',
-    example: '인도양 특정 해역의 2024년 1월 해양 데이터 수집 / Google Datasets, Kaggle 등 공개 데이터셋 / DBpedia, Wikidata 등 지식그래프 / Scopus, Web of Science 등 학술 DB 자동 연동',
+    example: '인도양 특정 해역의 2025년 1월 해양 데이터 수집 / Google Datasets, Kaggle 등 공개 데이터셋 / DBpedia, Wikidata 등 지식그래프 / Scopus, Web of Science 등 학술 DB 자동 연동',
     benefits: ['시간 절약', '누락 방지', '최신 데이터'],
     beforeAfter: {
       before: '수동 검색 → 개별 다운로드 → 형식 변환',
@@ -229,7 +227,7 @@ export default function InteractiveFeatureShowcase() {
         {/* Feature Selector */}
         <div className="space-y-4">
           <h4 className="text-xl font-bold text-gray-900 mb-4">기능 선택</h4>
-          {coreFeatures.map((feature, index) => {
+          {coreFeatures.map((feature) => {
             const Icon = feature.icon
             const colors = getColorClasses(feature.color)
             const isSelected = selectedFeature.id === feature.id

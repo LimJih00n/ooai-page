@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import { 
-  ArrowRight, Shield, Clock, TrendingUp, Zap, 
-  Container, Brain, Database, CheckCircle, Target,
-  BarChart3, RefreshCw, Lock, Globe, Layers
+import {
+  ArrowRight, Shield, Clock, TrendingUp,
+  Container, Brain, CheckCircle, Target,
+  Globe
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -114,7 +114,6 @@ const integratedResults = [
 
 export default function SolutionsOverview() {
   const [selectedPillar, setSelectedPillar] = useState(solutionPillars[0])
-  const [showComparison, setShowComparison] = useState(false)
 
   const getColorClasses = (color: string) => {
     switch (color) {

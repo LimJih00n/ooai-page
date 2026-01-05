@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Terminal, Play, CheckCircle, AlertCircle, Clock } from 'lucide-react'
+import { Terminal, CheckCircle, Clock } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface CodeStep {
@@ -119,6 +119,7 @@ print("검토 상태:", result["review"]["approved"])`,
       setExecutingSteps([])
       setCompletedSteps([])
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStep])
 
   const getStepStatus = (step: CodeStep) => {

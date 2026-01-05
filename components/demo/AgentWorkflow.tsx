@@ -26,7 +26,7 @@ export default function AgentWorkflow({ activeStep }: AgentWorkflowProps) {
           <line x1="50%" y1="10%" x2="50%" y2="90%" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="5,5" />
         </svg>
 
-        {agents.map((agent, index) => {
+        {agents.map((agent) => {
           const isActive = agent.id === activeStep;
           return (
             <motion.div

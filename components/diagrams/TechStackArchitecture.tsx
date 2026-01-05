@@ -1,12 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
-import { 
-  Brain, Database, Container, Layers, Zap, Shield, 
-  Monitor, Server, Cloud, ChevronDown, ChevronUp,
-  Code, Globe, Lock, RefreshCw, Network, 
-  HardDrive, Cpu, MemoryStick, Wifi, FileText, Palette,
-  BarChart3, Bot, Link, Search, TrendingUp, Calculator,
+import {
+  Brain, Database, Container, Layers, Zap, Shield,
+  Monitor, Server, ChevronDown, ChevronUp,
+  Code, RefreshCw, Network,
+  HardDrive, FileText, Palette,
+  BarChart3, Bot, Link, TrendingUp, Calculator,
   Map, Waves, Package, Settings, Notebook, Folder,
   Building, Scale
 } from 'lucide-react'
@@ -22,7 +22,7 @@ const techStack = {
     color: 'blue',
     icon: Monitor,
     technologies: [
-      { name: 'Next.js 15', description: 'React 프레임워크', logo: Zap },
+      { name: 'Next.js 15.5', description: 'React 19 프레임워크', logo: Zap },
       { name: 'TypeScript', description: '타입 안전성', logo: FileText },
       { name: 'Tailwind CSS', description: '스타일링', logo: Palette },
       { name: 'Framer Motion', description: '애니메이션', logo: RefreshCw },
@@ -35,11 +35,11 @@ const techStack = {
     color: 'purple',
     icon: Brain,
     technologies: [
-      { name: 'LangGraph', description: '워크플로우 오케스트레이션', logo: Brain },
-      { name: 'OpenAI GPT-4', description: '언어 모델', logo: Bot },
-      { name: 'LangChain', description: 'LLM 통합', logo: Link },
-      { name: 'Vector DB', description: '지식 그래프', logo: Search },
-      { name: 'Python Agents', description: '다중 에이전트', logo: Code }
+      { name: 'LangGraph', description: 'StateGraph 워크플로우', logo: Brain },
+      { name: 'GPT-4o / Claude 3.5', description: '최신 LLM 모델', logo: Bot },
+      { name: 'LangChain 0.3.x', description: 'LCEL 기반 LLM 통합', logo: Link },
+      { name: 'Claude Code', description: 'AI 코딩 어시스턴트', logo: Code },
+      { name: 'MCP Server', description: 'AI 도구 확장 프로토콜', logo: Network }
     ]
   },
   data: {

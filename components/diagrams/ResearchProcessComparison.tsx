@@ -171,7 +171,6 @@ export default function ResearchProcessComparison() {
   }
 
   const steps = viewMode === 'traditional' ? traditionalSteps : labASteps
-  const totalDuration = viewMode === 'traditional' ? '7-15주' : '3.5시간'
   const successRate = viewMode === 'traditional' ? '30%' : '95%'
 
   return (

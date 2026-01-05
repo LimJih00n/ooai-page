@@ -1,12 +1,11 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Play, RefreshCw, UserCheck, ChevronsRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ProgressTracker from '../ProgressTracker';
 import OutputDisplay from '../OutputDisplay';
-import { Brain, Database, Search, BarChart3, FileText, User } from 'lucide-react';
+import { Brain, Database, BarChart3, FileText, User } from 'lucide-react';
 
 const nodes = [
   { id: 'planner', name: '연구 계획 AI', icon: Brain, description: '사용자 목표를 분석하여 실행 계획 수립' },

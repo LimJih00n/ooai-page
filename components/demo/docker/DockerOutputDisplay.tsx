@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, FileCode, Monitor, Apple, Users, Globe, Laptop, Server } from 'lucide-react';
+import { Terminal, FileCode } from 'lucide-react';
 
 interface Log {
   step: string;

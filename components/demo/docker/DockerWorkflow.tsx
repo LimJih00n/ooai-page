@@ -28,7 +28,7 @@ export default function DockerWorkflow({ activeStep }: DockerWorkflowProps) {
           <line x1="50%" y1="6%" x2="50%" y2="94%" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="5,5" />
         </svg>
 
-        {dockerPhases.map((phase, index) => {
+        {dockerPhases.map((phase) => {
           const isActive = phase.id === activeStep;
           return (
             <motion.div

@@ -97,8 +97,10 @@
                 <li>연구 목적에 맞는 표준화된 Python 개발 환경을 스스로 구축할 수 있다.</li>
                 <li>기존의 Matlab, R 코드를 Python으로 포팅하고 LLM의 도움을 받아 개선할 수 있다.</li>
                 <li>단순 반복적인 연구 자료 수집 및 정제 과정을 자동화하는 스크립트를 작성할 수 있다.</li>
-                <li>LangChain, LangGraph 등 AI 프레임워크를 활용하여 '논문 검색 및 요약', '데이터 수집' 등 특정 목적을 가진 AI 에이전트를 개발할 수 있다.</li>
+                <li>LangChain 0.3.x, LangGraph 등 AI 프레임워크를 활용하여 '논문 검색 및 요약', '데이터 수집' 등 특정 목적을 가진 AI 에이전트를 개발할 수 있다.</li>
+                <li>Claude Code CLI와 MCP 서버를 활용하여 연구 워크플로우를 자동화할 수 있다.</li>
                 <li>자신의 연구 주제에 맞게 다중 에이전트 협업 시스템을 설계하고 프로토타입을 구현할 수 있다.</li>
+                <li>Docker를 활용하여 재현 가능한 연구 환경을 구축하고 공유할 수 있다.</li>
             </ul>
         </div>
     </div>
@@ -145,7 +147,7 @@
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header"><strong>2일차:</strong> LLM을 활용한 코드 작성 및 개선</div>
-                    <div class="accordion-content"><p><strong>주요 내용:</strong> ChatGPT, Copilot 등 LLM을 활용한 코드 생성, 리팩토링, 디버깅 방법.</p><p><strong>실습:</strong> "수온-염분도" 그래프를 그리는 코드를 LLM에게 요청하고, 결과 코드 수정 및 실행.</p></div>
+                    <div class="accordion-content"><p><strong>주요 내용:</strong> Claude, ChatGPT, Copilot, Claude Code 등 LLM 도구를 활용한 코드 생성, 리팩토링, 디버깅 방법.</p><p><strong>실습:</strong> "수온-염분도" 그래프를 그리는 코드를 LLM에게 요청하고, 결과 코드 수정 및 실행.</p></div>
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header"><strong>3일차:</strong> 분석 보고서(Notebook) 자동 생성</div>
@@ -170,8 +172,8 @@
             <p class="text-center text-gray-600 mb-6">Agentic AI 프레임워크를 사용하여 연구 정보 수집 및 요약 과정을 자동화합니다. 신뢰성 있는 정보 검색 에이전트를 구축합니다.</p>
             <div class="space-y-4">
                 <div class="accordion-item">
-                    <div class="accordion-header"><strong>1일차:</strong> Agentic AI 프레임워크: LangChain</div>
-                    <div class="accordion-content"><p><strong>주요 내용:</strong> LangChain의 핵심 컴포넌트(LLMs, Prompts, Chains, Agents, Tools) 이해.</p><p><strong>실습:</strong> 간단한 LLM Chain을 만들어 질문-답변 기능 구현하기.</p></div>
+                    <div class="accordion-header"><strong>1일차:</strong> Agentic AI 프레임워크: LangChain 0.3.x</div>
+                    <div class="accordion-content"><p><strong>주요 내용:</strong> LangChain 0.3.x의 핵심 컴포넌트(LLMs, Prompts, Chains, Agents, Tools) 이해. LCEL(LangChain Expression Language) 기반 체인 구성.</p><p><strong>실습:</strong> 간단한 LLM Chain을 만들어 질문-답변 기능 구현하기.</p></div>
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header"><strong>2일차:</strong> 웹 검색 Tool을 이용한 정보 검색 에이전트</div>
@@ -200,11 +202,26 @@
             <p class="text-center text-gray-600 mb-6">해양과학 연구 시나리오에 맞춰 자율적으로 데이터를 수집하고 분석하는 맞춤형 AI 에이전트를 설계하고 구현합니다.</p>
             <div class="space-y-4">
                 <div class="accordion-item">
-                    <div class="accordion-header"><strong>1일차:</strong> 제어 가능한 AI, LangGraph의 이해</div>
-                    <div class="accordion-content"><p><strong>주요 내용:</strong> 연구와 같이 신뢰성이 중요한 분야에 적합한 상태 기반(Stateful) 에이전트, LangGraph의 구조(노드, 엣지) 학습.</p><p><strong>실습:</strong> '검색' -> '요약' -> '검토'의 명확한 단계를 가지는 연구 워크플로우를 LangGraph로 구현.</p></div>
+                    <div class="accordion-header"><strong>1일차:</strong> 제어 가능한 AI, LangGraph 최신 API</div>
+                    <div class="accordion-content"><p><strong>주요 내용:</strong> 연구와 같이 신뢰성이 중요한 분야에 적합한 상태 기반(Stateful) 에이전트, LangGraph의 구조(StateGraph, 노드, 엣지, 체크포인트) 학습.</p><p><strong>실습:</strong> '검색' -> '요약' -> '검토'의 명확한 단계를 가지는 연구 워크플로우를 LangGraph로 구현.</p></div>
                 </div>
                 <div class="accordion-item">
-                    <div class="accordion-header"><strong>2일차:</strong> 자율 해양 데이터 수집 에이전트 구축</div>
+                    <div class="accordion-header"><strong>2일차:</strong> Claude Code를 활용한 연구 자동화</div>
+                    <div class="accordion-content">
+                        <p><strong>주요 내용:</strong> Claude Code CLI 설치 및 활용법, 터미널 기반 AI 코딩 어시스턴트로 연구 코드 작성 및 디버깅 자동화.</p>
+                        <p><strong>실습:</strong> Claude Code를 활용하여 해양 데이터 분석 스크립트 작성, 코드 리뷰 및 개선 워크플로우 체험.</p>
+                        <div class="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg">
+                            <h4 class="font-semibold text-purple-800">Claude Code 핵심 기능</h4>
+                            <ul class="text-sm text-gray-700 list-disc ml-4 mt-2">
+                                <li>터미널에서 직접 AI와 대화하며 코드 작성</li>
+                                <li>프로젝트 컨텍스트를 이해한 맞춤형 코드 제안</li>
+                                <li>파일 읽기/쓰기, 명령어 실행 자동화</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header"><strong>3일차:</strong> 자율 해양 데이터 수집 에이전트 구축</div>
                     <div class="accordion-content">
                         <p><strong>주요 내용:</strong> 연구 주제에 따라 필요한 데이터 소스(위성, 부이 등)를 스스로 결정하고 데이터를 수집하는 에이전트 설계.</p>
                         <p><strong>실습:</strong> "동해의 특정 좌표의 최근 표층 수온 변화" 데이터 수집 자동화 에이전트 개발 (Copernicus Marine Service API 활용).</p>
@@ -216,16 +233,34 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <div class="accordion-header"><strong>3일차:</strong> 다중 에이전트 협업 시스템</div>
-                    <div class="accordion-content"><p><strong>주요 내용:</strong> '연구 기획 에이전트', '데이터 수집 에이전트', '분석 보고 에이전트' 등 역할 분담 및 협업 시스템 설계.</p><p><strong>실습:</strong> LangGraph를 사용하여 각기 다른 역할을 가진 에이전트들이 순차적/조건부로 작동하는 시스템 구축.</p></div>
+                    <div class="accordion-header"><strong>4일차:</strong> MCP 서버와 다중 에이전트 협업</div>
+                    <div class="accordion-content">
+                        <p><strong>주요 내용:</strong> MCP(Model Context Protocol) 서버를 활용한 AI 도구 확장, '연구 기획 에이전트', '데이터 수집 에이전트', '분석 보고 에이전트' 등 역할 분담 및 협업 시스템 설계.</p>
+                        <p><strong>실습:</strong> MCP 서버 설정 및 커스텀 도구 연동, LangGraph를 사용하여 각기 다른 역할을 가진 에이전트들이 순차적/조건부로 작동하는 시스템 구축.</p>
+                        <div class="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                            <h4 class="font-semibold text-green-800">MCP 서버 활용 예시</h4>
+                            <ul class="text-sm text-gray-700 list-disc ml-4 mt-2">
+                                <li>파일 시스템 접근 도구 연동</li>
+                                <li>외부 API 호출 도구 구성</li>
+                                <li>데이터베이스 쿼리 도구 통합</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="accordion-item">
-                    <div class="accordion-header"><strong>4일차:</strong> 최종 프로젝트 기획 및 개발</div>
-                    <div class="accordion-content"><p><strong>주요 내용:</strong> 개인별/팀별 연구 주제 선정, 해당 연구를 자동화할 AI 에이전트 시스템 기획.</p><p><strong>실습:</strong> 프로젝트 설계 및 프로토타입 개발 (강사 멘토링).</p></div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-header"><strong>5일차:</strong> 최종 프로젝트 발표 및 과정 리뷰</div>
-                    <div class="accordion-content"><p><strong>주요 내용:</strong> 개발한 AI 에이전트 시스템의 작동 방식, 한계점, 향후 발전 방향 발표 및 공유.</p><p><strong>실습:</strong> 동료 평가 및 과정 전반에 대한 Q&A, 네트워킹.</p></div>
+                    <div class="accordion-header"><strong>5일차:</strong> Docker 재현성 환경 & 최종 프로젝트</div>
+                    <div class="accordion-content">
+                        <p><strong>주요 내용:</strong> Docker를 활용한 재현 가능한 연구 환경 구축, 연구 결과의 100% 재현성 보장 방법. 개인별/팀별 최종 프로젝트 발표.</p>
+                        <p><strong>실습:</strong> Dockerfile 작성, 연구 환경 컨테이너화, 프로젝트 발표 및 동료 평가, 과정 리뷰 및 네트워킹.</p>
+                        <div class="mt-4 p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
+                            <h4 class="font-semibold text-indigo-800">Docker 재현성의 장점</h4>
+                            <ul class="text-sm text-gray-700 list-disc ml-4 mt-2">
+                                <li>연구실 A 결과 = 연구실 B 결과 (100% 보장)</li>
+                                <li>"내 컴퓨터에서는 됐는데..." 문제 완전 해결</li>
+                                <li>논문 심사 시 코드 재현성 검증 용이</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Brain, Database, BarChart3, Users, ArrowRight, CheckCircle, GitBranch, Settings, Zap } from 'lucide-react'
+import { Brain, Database, BarChart3, Users, CheckCircle, Settings } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 interface Node {

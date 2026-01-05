@@ -1,26 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import { 
-  ArrowRight, 
-  Beaker, 
-  Brain, 
-  Shield, 
-  Lightbulb, 
-  Code, 
-  Users, 
-  Settings, 
-  Database, 
-  GitBranch, 
-  Monitor, 
-  Building, 
-  Rocket, 
-  FileSearch, 
-  Cpu, 
-  Cloud, 
-  Lock, 
-  UserCheck, 
-  Calendar, 
+import {
+  ArrowRight,
+  Beaker,
+  Brain,
+  Shield,
+  Lightbulb,
+  Code,
+  Users,
+  Settings,
+  Database,
+  GitBranch,
+  Cpu,
+  Cloud,
+  Lock,
   HeadphonesIcon,
   TrendingUp,
   Target,
@@ -29,11 +23,11 @@ import {
   Search,
   Workflow,
   Bot,
-  Link,
   Package,
   CheckCircle,
-  Bug,
-  Egg
+  Egg,
+  Rocket,
+  Monitor
 } from 'lucide-react'
 import { GiButterfly, GiCaterpillar } from 'react-icons/gi'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -91,7 +85,7 @@ export default function DetailedServiceOfferings() {
           items: [
             {
               title: "단일 에이전트 배포",
-              description: "연구 자동화를 위한 Auto-GPT 기반 에이전트 설정",
+              description: "연구 자동화를 위한 LangGraph 기반 AI 에이전트 설정",
               duration: "2주",
               deliverables: ["설정된 AI 에이전트", "사용자 매뉴얼", "초기 교육"],
               icon: <Bot className="w-4 h-4" />
@@ -105,9 +99,9 @@ export default function DetailedServiceOfferings() {
             },
             {
               title: "워크플로우 자동화",
-              description: "n8n, Make 등을 활용한 반복 작업 자동화",
+              description: "Claude Code, MCP 서버를 활용한 연구 워크플로우 자동화",
               duration: "1-2주",
-              deliverables: ["자동화된 워크플로우", "모니터링 대시보드", "유지보수 가이드"],
+              deliverables: ["자동화된 워크플로우", "MCP 서버 설정", "유지보수 가이드"],
               icon: <Workflow className="w-4 h-4" />
             }
           ]
@@ -238,9 +232,9 @@ export default function DetailedServiceOfferings() {
             },
             {
               title: "맞춤형 다중 에이전트 시스템",
-              description: "연구실 전용 복잡한 에이전트 시스템 설계",
+              description: "LangGraph 기반 연구실 전용 다중 에이전트 시스템 설계",
               duration: "3-6개월",
-              deliverables: ["커스텀 시스템", "소스 코드", "기술 이전"],
+              deliverables: ["커스텀 LangGraph 시스템", "소스 코드", "기술 이전"],
               icon: <Puzzle className="w-4 h-4" />
             },
             {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Brain, Database, Microscope, FileText, Users, TrendingUp, Shield, Zap, ArrowRight, CheckCircle, Target, Layers, ChevronRight } from 'lucide-react'
+import { Brain, Database, Microscope, FileText, Users, TrendingUp, Shield, Zap, CheckCircle, Target, Layers, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function UltraThinkService() {

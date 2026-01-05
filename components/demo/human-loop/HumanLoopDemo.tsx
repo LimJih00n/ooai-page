@@ -44,7 +44,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 데이터 로드 (가상 해양 관측 데이터)
-timestamps = pd.date_range('2024-01-01', periods=30, freq='D')
+timestamps = pd.date_range('2025-01-01', periods=30, freq='D')
 data = {
     'Date': timestamps,
     'SST': np.random.normal(23.5, 1.2, 30),  # 해수면 온도
@@ -80,7 +80,7 @@ import seaborn as sns
 import numpy as np
 
 # 데이터 로드 (가상 해양 관측 데이터)
-timestamps = pd.date_range('2024-01-01', periods=30, freq='D')
+timestamps = pd.date_range('2025-01-01', periods=30, freq='D')
 np.random.seed(42)  # 재현성을 위한 시드 설정
 data = {
     'Date': timestamps,
@@ -143,11 +143,11 @@ plt.show()`;
   const finalReport = `## 해양 환경 변수 상관관계 분석 보고서
 
 ### 요약
-본 분석은 2024년 1월 한 달간 수집된 해수면 온도(SST)와 엽록소 농도 데이터의 상관관계를 종합적으로 분석한 결과입니다.
+본 분석은 2025년 1월 한 달간 수집된 해수면 온도(SST)와 엽록소 농도 데이터의 상관관계를 종합적으로 분석한 결과입니다.
 
 ### 1. 연구 목적
 - 목표: 해수면 온도와 해양 일차 생산성 지표인 엽록소 농도 간의 관계 규명
-- 기간: 2024년 1월 1일 ~ 1월 30일 (30일간)
+- 기간: 2025년 1월 1일 ~ 1월 30일 (30일간)
 - 지역: 대한민국 남해 관측 정점
 
 ### 2. 데이터 및 방법론
@@ -201,7 +201,7 @@ plt.show()`;
 이를 통해 해양 생태계 변화를 보다 정확히 이해하고 예측할 수 있을 것으로 기대됩니다.
 
 ---
-*작성일: 2024년 2월 1일*
+*작성일: 2025년 1월*
 *AI 분석 도구: LabA Ocean Research Assistant v2.0*`;
 
   const simulateTyping = (text: string, setter: (value: string) => void, onComplete?: () => void) => {

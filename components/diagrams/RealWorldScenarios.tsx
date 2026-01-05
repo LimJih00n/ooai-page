@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
-import { 
-  Waves, Fish, Thermometer, Map, Calendar, BarChart3,
-  Users, Clock, CheckCircle, ArrowRight, Play, Pause,
-  Brain, Database, Container, FileText, Target, Microscope,
-  Globe, Zap, AlertTriangle, TrendingUp, Award
+import {
+  Waves, Fish, Thermometer,
+  Users, Clock, CheckCircle,
+  Brain, Target, Microscope,
+  Globe, Zap, AlertTriangle, Award
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -289,12 +289,10 @@ const researchScenarios = [
 export default function RealWorldScenarios() {
   const [selectedScenario, setSelectedScenario] = useState(researchScenarios[0])
   const [currentStep, setCurrentStep] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
 
   const handleScenarioChange = (scenario: typeof researchScenarios[0]) => {
     setSelectedScenario(scenario)
     setCurrentStep(0)
-    setIsPlaying(false)
   }
 
   const getComplexityColor = (complexity: string) => {

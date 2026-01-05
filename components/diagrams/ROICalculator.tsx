@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import { Calculator, TrendingUp, Clock, Users, DollarSign, Zap, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadialBarChart, RadialBar, Legend } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
 // ROI 계산 데이터
-const calculateROI = (researchers: number, avgSalary: number, researchTime: number) => {
+const calculateROI = (researchers: number, avgSalary: number) => {
   const yearlyHours = 2000 // 연간 근무시간
   const currentEfficiency = 0.23 // 현재 실제 연구 시간 비율
   const LabAEfficiency = 0.60 // LabA 사용 시 효율
@@ -35,9 +35,7 @@ const COLORS = ['#2563eb', '#9333ea', '#4f46e5', '#7c3aed']
 export default function ROICalculator() {
   const [researchers, setResearchers] = useState(5)
   const [avgSalary, setAvgSalary] = useState(60000000) // 6천만원
-  const [isCalculated, setIsCalculated] = useState(false)
-  
-  const roi = calculateROI(researchers, avgSalary, 0.23)
+  const roi = calculateROI(researchers, avgSalary)
   
   // 차트 데이터
   const comparisonData = [
@@ -51,10 +49,6 @@ export default function ROICalculator() {
     { name: '자동화 효과', value: Math.round(roi.costSaved / 1000000), fill: COLORS[2] }
   ]
   
-  const efficiencyData = [
-    { name: '생산성', current: 23, labA: 60, fill: COLORS[0] }
-  ]
-
   return (
     <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-8">
       <div className="text-center mb-8">
@@ -122,9 +116,8 @@ export default function ROICalculator() {
                 />
               </div>
               
-              <Button 
-                onClick={() => setIsCalculated(true)}
-                variant="research" 
+              <Button
+                variant="research"
                 className="w-full group"
               >
                 ROI 계산하기

@@ -82,7 +82,6 @@ export default function HybridDemoContainer() {
     return () => clearTimeout(timer);
   }, [isRunning, currentStep]);
 
-  const activeStepId = isRunning || isComplete ? hybridSteps[Math.min(currentStep, hybridSteps.length - 1)]?.id : 'idle';
 
   return (
     <div className="w-full max-w-7xl mx-auto">

@@ -10,7 +10,6 @@ import SolutionsOverview from '@/components/diagrams/SolutionsOverview'
 import DetailedServiceOfferings from '@/components/diagrams/DetailedServiceOfferings'
 import TechStackArchitecture from '@/components/diagrams/TechStackArchitecture'
 import DemoShowcase from '@/components/diagrams/DemoShowcase'
-import Link from 'next/link'
 
 export default function Home() {
   return (

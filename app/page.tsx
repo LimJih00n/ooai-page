@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import { ArrowRight, Rocket, Mail, Phone, MapPin, Anchor, Brain, BarChart3, Globe, Waves, Shield } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowRight, Rocket, Mail, Phone, MapPin, Brain, BarChart3, Globe, Waves, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
@@ -20,12 +21,16 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-[#1B3A5C] to-[#2E6B9E] rounded-full flex items-center justify-center">
-                    <Anchor className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-xl font-bold text-gray-900">O5I</span>
-                </div>
+                <a href="#" className="flex items-center">
+                  <Image
+                    src="/o5i-logo.png"
+                    alt="O5I"
+                    width={120}
+                    height={39}
+                    className="h-9 w-auto"
+                    priority
+                  />
+                </a>
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-8">
@@ -70,10 +75,23 @@ export default function Home() {
         <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="text-center">
-              <Badge variant="research" className="mb-6 animate-fade-up flex items-center justify-center gap-2 mx-auto w-fit">
-                <span>해양과학기술 AI 전문 기업</span>
-              </Badge>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 animate-fade-up">
+              <div className="mb-8 animate-fade-up">
+                <Image
+                  src="/o5i-logo.png"
+                  alt="O5I - Ocean Intelligence"
+                  width={280}
+                  height={92}
+                  className="mx-auto h-20 sm:h-24 w-auto"
+                  priority
+                />
+              </div>
+              <p className="text-lg sm:text-xl text-[#2E6B9E] font-medium mb-2 animate-fade-up tracking-wide">
+                바다에서 찾는 지능, 기술로 여는 미래
+              </p>
+              <p className="text-sm sm:text-base text-gray-500 mb-8 animate-fade-up tracking-widest uppercase">
+                Ocean Intelligence, AI-Powered Future
+              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 animate-fade-up">
                 <span className="gradient-text">Agentic AI</span> 기반
                 <br />
                 해양과학기술 플랫폼
@@ -82,7 +100,7 @@ export default function Home() {
                 AI 에이전트가 정보를 수집·분석·보고하는{' '}
                 <span className="font-semibold text-[#1B3A5C]">연구 및 업무효율화 플랫폼</span>
                 <br />
-                <span className="text-lg text-gray-500">R&D 과제공고, 금융시황, 법률동향까지 자동으로 브리핑합니다</span>
+                <span className="text-lg text-gray-500">R&D 과제공고, 법률동향, 연구과제 기획까지 자동으로 브리핑합니다</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up">
                 <Button asChild variant="research" size="xl" className="group">
@@ -313,12 +331,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#1B3A5C] to-[#2E6B9E] rounded-full flex items-center justify-center">
-                  <Anchor className="w-4 h-4 text-white" />
-                </div>
-                <span className="text-xl font-bold">O5I</span>
+              <div className="mb-4">
+                <Image
+                  src="/o5i-logo.png"
+                  alt="O5I"
+                  width={140}
+                  height={46}
+                  className="h-10 w-auto brightness-0 invert"
+                />
               </div>
+              <p className="text-sm text-gray-400 mb-1 tracking-wide">바다에서 찾는 지능, 기술로 여는 미래</p>
+              <p className="text-xs text-gray-500 mb-4 tracking-widest uppercase">Ocean Intelligence, AI-Powered Future</p>
               <p className="text-gray-400 mb-4 max-w-md">
                 Agentic AI 기반 해양과학기술 연구 및 업무효율화 플랫폼.
                 AI 에이전트가 정보를 수집·분석·보고합니다.

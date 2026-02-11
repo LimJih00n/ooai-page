@@ -1,10 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="6" fill="url(#gradient)"/>
-  <text x="16" y="23" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">LA</text>
-  <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
+  <rect width="32" height="32" rx="4" fill="#ffffff"/>
+  <rect x="3" y="4" width="4.4" height="24" rx="1" fill="#03396c"/>
+  <rect x="8.2" y="4" width="4.4" height="24" rx="1" fill="#005b96"/>
+  <rect x="13.4" y="4" width="4.4" height="24" rx="1" fill="#6497b1"/>
+  <rect x="18.6" y="4" width="4.4" height="24" rx="1" fill="#b3cde0"/>
+  <rect x="23.8" y="4" width="4.4" height="24" rx="1" fill="#daa520"/>
 </svg>

@@ -11,13 +11,13 @@ import { Button } from '@/components/ui/button'
 const calculateROI = (researchers: number, avgSalary: number) => {
   const yearlyHours = 2000 // 연간 근무시간
   const currentEfficiency = 0.23 // 현재 실제 연구 시간 비율
-  const LabAEfficiency = 0.60 // LabA 사용 시 효율
+  const o5iEfficiency = 0.60 // O5I 사용 시 효율
   
   const hourlyRate = avgSalary / yearlyHours
   const currentProductiveHours = yearlyHours * currentEfficiency
-  const labAProductiveHours = yearlyHours * LabAEfficiency
+  const o5iProductiveHours = yearlyHours * o5iEfficiency
   
-  const timeSaved = (labAProductiveHours - currentProductiveHours) * researchers
+  const timeSaved = (o5iProductiveHours - currentProductiveHours) * researchers
   const costSaved = timeSaved * hourlyRate
   const reproducibityCost = avgSalary * researchers * 0.15 // 재현성 실패로 인한 15% 손실
   
@@ -40,7 +40,7 @@ export default function ROICalculator() {
   // 차트 데이터
   const comparisonData = [
     { name: '기존 방식', 실제연구시간: 23, 행정업무: 35, 환경설정: 25, 문제해결: 17, fill: '#e5e7eb' },
-    { name: 'LabA', 실제연구시간: 60, 행정업무: 20, 환경설정: 5, 문제해결: 15, fill: '#2563eb' }
+    { name: 'O5I', 실제연구시간: 60, 행정업무: 20, 환경설정: 5, 문제해결: 15, fill: '#2563eb' }
   ]
   
   const savingsData = [
@@ -65,7 +65,7 @@ export default function ROICalculator() {
           </h3>
         </motion.div>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          귀하의 연구실에서 LabA 도입 시 예상되는 정확한 투자 수익률을 계산해보세요
+          귀하의 연구실에서 O5I 도입 시 예상되는 정확한 투자 수익률을 계산해보세요
         </p>
       </div>
 

@@ -329,7 +329,7 @@ export default function RealWorldScenarios() {
           </h3>
         </motion.div>
         <p className="text-lg text-gray-600 max-w-4xl mx-auto">
-          국내 주요 연구기관에서 LabA를 활용한 실제 해양 연구 프로젝트 사례를 단계별로 체험해보세요
+          국내 주요 연구기관에서 O5I를 활용한 실제 해양 연구 프로젝트 사례를 단계별로 체험해보세요
         </p>
       </div>
 
@@ -533,7 +533,7 @@ export default function RealWorldScenarios() {
                     <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                       <div className="flex items-center space-x-2 mb-2">
                         <Zap className="w-4 h-4 text-blue-600" />
-                        <span className="font-medium text-blue-800">LabA</span>
+                        <span className="font-medium text-blue-800">O5I</span>
                       </div>
                       <p className="text-2xl font-bold text-blue-600">
                         {selectedScenario.steps[currentStep].duration}

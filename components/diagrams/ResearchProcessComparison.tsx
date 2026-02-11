@@ -67,8 +67,8 @@ const traditionalSteps = [
   }
 ]
 
-// LabA 프로세스 단계
-const labASteps = [
+// O5I 프로세스 단계
+const o5iSteps = [
   {
     id: 1,
     title: "자연어 질문 입력",
@@ -137,7 +137,7 @@ export default function ResearchProcessComparison() {
     let interval: NodeJS.Timeout
     if (isPlaying) {
       interval = setInterval(() => {
-        const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : labASteps.length
+        const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : o5iSteps.length
         setCurrentStep(prev => {
           if (prev < maxSteps - 1) {
             return prev + 1
@@ -153,7 +153,7 @@ export default function ResearchProcessComparison() {
 
   // 애니메이션 제어
   const handlePlay = () => {
-    const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : labASteps.length
+    const maxSteps = viewMode === 'traditional' ? traditionalSteps.length : o5iSteps.length
     
     if (!isPlaying && currentStep === maxSteps - 1) {
       // 마지막 단계에서 재생 버튼을 누르면 처음부터 시작
@@ -170,7 +170,7 @@ export default function ResearchProcessComparison() {
     setIsPlaying(false)
   }
 
-  const steps = viewMode === 'traditional' ? traditionalSteps : labASteps
+  const steps = viewMode === 'traditional' ? traditionalSteps : o5iSteps
   const successRate = viewMode === 'traditional' ? '30%' : '95%'
 
   return (
@@ -189,7 +189,7 @@ export default function ResearchProcessComparison() {
           </h3>
         </motion.div>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          기존 방식과 LabA의 차이를 단계별로 비교해보세요
+          기존 방식과 O5I의 차이를 단계별로 비교해보세요
         </p>
       </div>
 
@@ -227,7 +227,7 @@ export default function ResearchProcessComparison() {
           >
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-              <span>LabA 방식</span>
+              <span>O5I 방식</span>
             </div>
           </button>
         </div>
@@ -241,7 +241,7 @@ export default function ResearchProcessComparison() {
               <Pause className="w-5 h-5 mr-2" />
               일시정지
             </>
-          ) : currentStep === (viewMode === 'traditional' ? traditionalSteps.length - 1 : labASteps.length - 1) ? (
+          ) : currentStep === (viewMode === 'traditional' ? traditionalSteps.length - 1 : o5iSteps.length - 1) ? (
             <>
               <RotateCcw className="w-5 h-5 mr-2" />
               다시 시연
@@ -505,7 +505,7 @@ export default function ResearchProcessComparison() {
           <CardHeader className="bg-blue-50">
             <CardTitle className="flex items-center space-x-2 text-blue-800">
               <CheckCircle className="w-5 h-5" />
-              <span>LabA 방식</span>
+              <span>O5I 방식</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">

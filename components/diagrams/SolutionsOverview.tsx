@@ -162,7 +162,7 @@ export default function SolutionsOverview() {
           className="mb-6"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            LabA의 해답
+            O5I의 해답
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Docker + LangGraph + AI로 구축하는 차세대 연구 플랫폼

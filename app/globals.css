@@ -34,7 +34,7 @@
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(to right, #2563eb, #9333ea, #4f46e5);
+  background: linear-gradient(to right, #1B3A5C, #2E6B9E, #D4A52D);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -42,13 +42,13 @@
 
 /* Research gradient background */
 .research-gradient {
-  background: linear-gradient(to bottom right, #dbeafe, #ffffff, #e0e7ff);
+  background: linear-gradient(to bottom right, #e8eff7, #ffffff, #f0f4fa);
 }
 
 /* Pattern background */
 .research-pattern {
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, rgba(27, 58, 92, 0.12) 1px, transparent 0);
   background-size: 20px 20px;
 }
 

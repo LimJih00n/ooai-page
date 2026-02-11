@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LabA - 대한민국 연구실을 위한 AI 혁신",
-  description: "AI와 컨테이너 기술로 구축하는 차세대 연구 플랫폼. 재현 가능하고, 자동화되며, 완전히 안전한 연구 환경",
+  title: "O5I - Agentic AI 기반 해양과학기술 플랫폼",
+  description: "해양과학기술 전문 AI 기업 오오아이(O5I). Agentic AI 기반 정보분석 서비스와 연구·업무효율화 플랫폼을 제공합니다.",
   icons: {
     icon: [
       { url: '/logo.svg', type: 'image/svg+xml' },
@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

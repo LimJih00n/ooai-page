@@ -98,7 +98,7 @@ export default function DemoShowcase() {
             기술 데모 허브
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            LabA의 핵심 기술들이 실제 연구 과정에서 어떻게 작동하는지 직접 확인해보세요.
+            O5I의 핵심 기술들이 실제 연구 과정에서 어떻게 작동하는지 직접 확인해보세요.
           </p>
         </div>
 

@@ -20,7 +20,7 @@ const badgeVariants = cva(
         warning:
           "border-transparent bg-purple-100 text-purple-800 hover:bg-purple-200",
         research:
-          "border-transparent bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 hover:from-blue-200 hover:to-indigo-200",
+          "border-transparent bg-gradient-to-r from-[#e8eff7] to-[#dce7f3] text-[#1B3A5C] hover:from-[#dce7f3] hover:to-[#cfdeed]",
       },
     },
     defaultVariants: {

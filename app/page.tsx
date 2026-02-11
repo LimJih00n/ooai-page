@@ -88,8 +88,8 @@ export default function Home() {
               <p className="text-lg sm:text-xl text-[#2E6B9E] font-medium mb-2 animate-fade-up tracking-wide">
                 바다에서 찾는 지능, 기술로 여는 미래
               </p>
-              <p className="text-sm sm:text-base text-gray-500 mb-8 animate-fade-up tracking-widest uppercase">
-                Ocean Intelligence, AI-Powered Future
+              <p className="text-sm sm:text-base text-gray-500 mb-8 animate-fade-up tracking-wide">
+                O5I for the OCEAN : Infra · Integration · Intelligence · Interaction · Ingenuity
               </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 animate-fade-up">
                 <span className="gradient-text">Agentic AI</span> 기반
@@ -341,7 +341,7 @@ export default function Home() {
                 />
               </div>
               <p className="text-sm text-gray-400 mb-1 tracking-wide">바다에서 찾는 지능, 기술로 여는 미래</p>
-              <p className="text-xs text-gray-500 mb-4 tracking-widest uppercase">Ocean Intelligence, AI-Powered Future</p>
+              <p className="text-xs text-gray-500 mb-4 tracking-wide">O5I for the OCEAN : Infra · Integration · Intelligence · Interaction · Ingenuity</p>
               <p className="text-gray-400 mb-4 max-w-md">
                 Agentic AI 기반 해양과학기술 연구 및 업무효율화 플랫폼.
                 AI 에이전트가 정보를 수집·분석·보고합니다.

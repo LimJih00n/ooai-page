@@ -35,7 +35,7 @@ const demos = [
   },
   {
     title: 'Chl-a 예측 파이프라인',
-    description: '위성 데이터로 Chlorophyll-a를 예측하는 ML 모델의 학습부터 배포까지 Docker 자동화 파이프라인입니다.',
+    description: '위성 데이터 기반 Chlorophyll-a 예측 ML 모델의 학습·검증·배포를 Docker로 자동화하는 파이프라인입니다.',
     icon: Cpu,
     href: '/demo/docker-ml-pipeline',
     isAvailable: true,

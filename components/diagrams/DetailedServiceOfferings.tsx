@@ -13,65 +13,53 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 
-const subscriptionPlans = [
+const servicePlans = [
   {
-    id: 'basic',
-    name: '기본',
-    price: '30',
-    unit: '만원/월',
-    badge: 'Starter',
-    description: '연구기획 기본 — 과제공고와 동향 모니터링',
+    id: 'research-planning',
+    name: '연구기획',
+    badge: 'Planning',
+    description: '과제공고 모니터링과 R&D 동향 분석으로 기획을 지원합니다',
     gradient: 'from-[#2E6B9E] to-[#3a7db0]',
     features: [
       { text: 'R&D 과제공고 모니터링', included: true, detail: '정부·공공기관 과제공고 일일 브리핑' },
       { text: 'ODA 사업동향 분석', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
       { text: '이메일 브리핑 (주 5회)', included: true, detail: '화~토 오전 자동 발송' },
-      { text: '키워드 맞춤 필터링', included: true, detail: '관심 분야 키워드 최대 10개' },
-      { text: '법률·규제 동향 추적', included: false },
-      { text: '연구과제 기획지원', included: false },
-      { text: '주간 인사이트 리포트', included: false },
+      { text: '키워드 맞춤 필터링', included: true, detail: '관심 분야 키워드 설정' },
+      { text: '주간 인사이트 리포트', included: true, detail: '매주 월요일 심층 R&D 동향' },
     ],
-    cta: '기본 플랜 시작',
+    cta: '상담 신청',
     popular: false,
   },
   {
-    id: 'standard',
-    name: '표준',
-    price: '45',
-    unit: '만원/월',
-    badge: 'Popular',
-    description: '+ 연구행정 — 법률·규제 추적과 기획지원까지',
+    id: 'research-admin',
+    name: '연구행정',
+    badge: 'Administration',
+    description: '법률·규제 추적과 기획지원으로 행정 부담을 줄입니다',
     gradient: 'from-[#1B3A5C] to-[#2E6B9E]',
     features: [
-      { text: 'R&D 과제공고 모니터링', included: true, detail: '정부·공공기관 과제공고 일일 브리핑' },
-      { text: 'ODA 사업동향 분석', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
-      { text: '이메일 브리핑 (주 5회)', included: true, detail: '화~토 오전 자동 발송' },
-      { text: '키워드 맞춤 필터링', included: true, detail: '관심 분야 키워드 최대 30개' },
+      { text: '연구기획 서비스 전체 포함', included: true, detail: '과제공고, 브리핑, 인사이트 등' },
       { text: '법률·규제 동향 추적', included: true, detail: '해양·환경 법률 개정 및 규제 변화 모니터링' },
-      { text: '연구과제 기획지원', included: true, detail: 'RFP 분석, 유사과제 조사, 연구 트렌드 기반 기획 지원' },
-      { text: '주간 인사이트 리포트', included: false },
+      { text: '연구과제 기획지원', included: true, detail: 'RFP 분석, 유사과제 조사, 연구 트렌드 기반 기획' },
+      { text: '보고서 자동 작성', included: true, detail: 'AI 기반 연구 보고서 초안 생성' },
+      { text: '기획서 초안 생성', included: true, detail: 'AI가 RFP 기반 기획서 초안 작성' },
     ],
-    cta: '표준 플랜 시작',
+    cta: '상담 신청',
     popular: true,
   },
   {
-    id: 'premium',
-    name: '프리미엄',
-    price: '65',
-    unit: '만원/월',
-    badge: 'Premium',
-    description: '+ 연구수행 지원 — 기획서 초안 생성과 심층 인사이트',
+    id: 'business-automation',
+    name: '업무자동화',
+    badge: 'Automation',
+    description: '문서 변환, 시각화, AI 브리핑 등 반복 업무를 자동화합니다',
     gradient: 'from-[#D4A52D] to-[#b8912a]',
     features: [
-      { text: 'R&D 과제공고 모니터링', included: true, detail: '정부·공공기관 과제공고 일일 브리핑' },
-      { text: 'ODA 사업동향 분석', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
-      { text: '이메일 브리핑 (주 5회)', included: true, detail: '화~토 오전 자동 발송' },
-      { text: '키워드 맞춤 필터링', included: true, detail: '관심 분야 키워드 무제한' },
-      { text: '법률·규제 동향 추적', included: true, detail: '해양·환경 법률 개정 및 규제 변화 모니터링' },
-      { text: '연구과제 기획지원 + 기획서 초안', included: true, detail: 'RFP 분석, 유사과제 조사, 연구 트렌드 + AI 기획서 초안 생성' },
-      { text: '주간 인사이트 리포트', included: true, detail: '매주 월요일 심층 R&D 동향 인사이트' },
+      { text: '문서 변환 자동화', included: true, detail: 'HWP·DOCX·PDF 간 자동 변환' },
+      { text: '시각화 자동 생성', included: true, detail: '데이터 기반 차트·다이어그램 생성' },
+      { text: 'AI 브리핑 서비스', included: true, detail: '맞춤형 정보 수집·요약·발송' },
+      { text: '데이터 수집·정리', included: true, detail: '웹·DB·API 데이터 자동 수집 및 정형화' },
+      { text: '맞춤형 AI 에이전트', included: true, detail: '업무 특성에 맞는 전용 에이전트 구축' },
     ],
-    cta: '프리미엄 플랜 시작',
+    cta: '상담 신청',
     popular: false,
   },
 ]
@@ -104,16 +92,16 @@ export default function DetailedServiceOfferings() {
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-16">
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-          서비스 가격 안내
+          서비스 안내
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          조직에 맞는 AI 서비스를 선택하세요. 모든 플랜은 월 단위 구독입니다.
+          조직의 니즈에 맞는 AI 서비스를 구성합니다. 상담을 통해 최적의 솔루션을 제안해 드립니다.
         </p>
       </div>
 
-      {/* Subscription Plans */}
+      {/* Service Plans */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        {subscriptionPlans.map((plan) => (
+        {servicePlans.map((plan) => (
           <div
             key={plan.id}
             onMouseEnter={() => setHoveredPlan(plan.id)}
@@ -142,8 +130,8 @@ export default function DetailedServiceOfferings() {
               <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
               <p className="text-sm opacity-90 mb-4">{plan.description}</p>
               <div className="flex items-baseline">
-                <span className="text-5xl font-bold">{plan.price}</span>
-                <span className="text-lg ml-2 opacity-90">{plan.unit}</span>
+                <span className="text-2xl font-bold">맞춤 견적</span>
+                <span className="text-sm ml-2 opacity-90">상담 후 안내</span>
               </div>
             </div>
 
@@ -172,9 +160,12 @@ export default function DetailedServiceOfferings() {
                 variant={plan.popular ? 'research' : 'research-outline'}
                 className="w-full group"
                 size="lg"
+                asChild
               >
-                {plan.cta}
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <a href="#contact">
+                  {plan.cta}
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
             </div>
           </div>

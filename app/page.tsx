@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { ArrowRight, Rocket, Mail, Phone, MapPin, Brain, BarChart3, Globe } from 'lucide-react'
+import { ArrowRight, Rocket, Mail, Brain, BarChart3, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
@@ -50,7 +50,7 @@ export default function Home() {
                     데모
                   </a>
                   <a href="#pricing" className="text-gray-700 hover:text-[#1B3A5C] px-3 py-2 text-sm font-medium transition-colors">
-                    가격
+                    서비스 안내
                   </a>
                   <a href="#contact" className="text-gray-700 hover:text-[#1B3A5C] px-3 py-2 text-sm font-medium transition-colors">
                     문의
@@ -183,7 +183,7 @@ export default function Home() {
                 <div className="glass p-6 rounded-xl text-center">
                   <Rocket className="w-10 h-10 text-[#1B3A5C] mx-auto mb-3" />
                   <h4 className="font-bold text-gray-900 mb-2">일반업무</h4>
-                  <p className="text-sm text-gray-600">이메일 브리핑, 문서 변환, 정보 요약</p>
+                  <p className="text-sm text-gray-600">문서 변환, 시각화, AI 브리핑, 데이터 정리</p>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">일반업무 혁신</h3>
                 <p className="text-gray-600 mb-4">
-                  이메일 브리핑, 문서 변환(HWP·DOCX·PDF), 정보 요약 등 반복업무를 자동화합니다.
+                  문서 변환(HWP·DOCX·PDF), 시각화 자동생성, AI 브리핑, 데이터 수집·정리 등 반복업무를 자동화합니다.
                 </p>
                 <Badge variant="research">핵심 서비스</Badge>
               </div>
@@ -290,33 +290,19 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+            <div className="flex justify-center max-w-4xl mx-auto">
+              <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 min-w-[300px]">
                 <Mail className="w-10 h-10 text-[#D4A52D] mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-2">이메일</h3>
-                <a href="mailto:contact@ocean5i.com" className="text-blue-200 hover:text-white transition-colors">
-                  contact@ocean5i.com
+                <a href="mailto:ocean5i@ocean5i.com" className="text-blue-200 hover:text-white transition-colors">
+                  ocean5i@ocean5i.com
                 </a>
-              </div>
-              <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <Phone className="w-10 h-10 text-[#D4A52D] mx-auto mb-4" />
-                <h3 className="text-lg font-bold mb-2">전화</h3>
-                <a href="tel:070-0000-0000" className="text-blue-200 hover:text-white transition-colors">
-                  070-0000-0000
-                </a>
-              </div>
-              <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <MapPin className="w-10 h-10 text-[#D4A52D] mx-auto mb-4" />
-                <h3 className="text-lg font-bold mb-2">주소</h3>
-                <p className="text-blue-200">
-                  부산광역시 해운대구
-                </p>
               </div>
             </div>
 
             <div className="text-center mt-12">
               <Button asChild variant="outline" size="xl" className="border-white text-white hover:bg-white/10 group">
-                <a href="mailto:contact@ocean5i.com">
+                <a href="mailto:ocean5i@ocean5i.com">
                   무료 상담 요청하기
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
@@ -356,7 +342,7 @@ export default function Home() {
                 <li><a href="#services" className="hover:text-white transition-colors">AI 서비스</a></li>
                 <li><a href="#solutions" className="hover:text-white transition-colors">연구 자동화</a></li>
                 <li><a href="#demos" className="hover:text-white transition-colors">기술 데모</a></li>
-                <li><a href="#pricing" className="hover:text-white transition-colors">가격 안내</a></li>
+                <li><a href="#pricing" className="hover:text-white transition-colors">서비스 안내</a></li>
               </ul>
             </div>
             <div>

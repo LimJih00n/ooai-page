@@ -46,7 +46,7 @@ const coreFeatures = [
     description: '전세계 데이터베이스에서 실시간 수집',
     icon: Database,
     color: 'indigo',
-    example: '인도양 특정 해역의 2025년 1월 해양 데이터 수집 / Google Datasets, Kaggle 등 공개 데이터셋 / DBpedia, Wikidata 등 지식그래프 / Scopus, Web of Science 등 학술 DB 자동 연동',
+    example: '인도양 특정 해역의 2026년 1월 해양 데이터 수집 / Google Datasets, Kaggle 등 공개 데이터셋 / DBpedia, Wikidata 등 지식그래프 / Scopus, Web of Science 등 학술 DB 자동 연동',
     benefits: ['시간 절약', '누락 방지', '최신 데이터'],
     beforeAfter: {
       before: '수동 검색 → 개별 다운로드 → 형식 변환',

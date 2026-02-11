@@ -36,8 +36,8 @@ const techStack = {
     icon: Brain,
     technologies: [
       { name: 'LangGraph', description: 'StateGraph 워크플로우', logo: Brain },
-      { name: 'GPT-4o / Claude 3.5', description: '최신 LLM 모델', logo: Bot },
-      { name: 'LangChain 0.3.x', description: 'LCEL 기반 LLM 통합', logo: Link },
+      { name: 'Claude 4.5 Sonnet / GPT-4o', description: '최신 LLM 모델', logo: Bot },
+      { name: 'LangChain 0.3', description: 'LCEL 기반 LLM 통합', logo: Link },
       { name: 'Claude Code', description: 'AI 코딩 어시스턴트', logo: Code },
       { name: 'MCP Server', description: 'AI 도구 확장 프로토콜', logo: Network }
     ]

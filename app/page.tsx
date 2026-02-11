@@ -211,11 +211,11 @@ export default function Home() {
                 <div className="w-14 h-14 bg-[#D4A52D]/10 rounded-xl flex items-center justify-center mb-6">
                   <BarChart3 className="w-7 h-7 text-[#D4A52D]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">금융시황</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">연구과제 기획지원</h3>
                 <p className="text-gray-600 mb-4">
-                  국내외 금융시장 동향, 환율, 원자재 가격 등 경제 지표를 매일 아침 요약합니다.
+                  RFP 분석, 유사과제 이력 조사, 연구 트렌드 파악으로 과제 기획서 작성을 지원합니다.
                 </p>
-                <Badge variant="secondary">프리미엄</Badge>
+                <Badge variant="research">표준 이상</Badge>
               </div>
 
               <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">

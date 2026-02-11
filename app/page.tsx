@@ -26,7 +26,7 @@ export default function Home() {
                     src="/o5i-logo.png"
                     alt="O5I"
                     width={120}
-                    height={39}
+                    height={44}
                     className="h-9 w-auto"
                     priority
                   />
@@ -80,7 +80,7 @@ export default function Home() {
                   src="/o5i-logo.png"
                   alt="O5I - Ocean Intelligence"
                   width={280}
-                  height={92}
+                  height={103}
                   className="mx-auto h-20 sm:h-24 w-auto"
                   priority
                 />
@@ -336,7 +336,7 @@ export default function Home() {
                   src="/o5i-logo.png"
                   alt="O5I"
                   width={140}
-                  height={46}
+                  height={51}
                   className="h-10 w-auto brightness-0 invert"
                 />
               </div>

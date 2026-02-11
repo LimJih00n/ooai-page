@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { ArrowRight, Rocket, Mail, Phone, MapPin, Brain, BarChart3, Globe, Waves, Shield } from 'lucide-react'
+import { ArrowRight, Rocket, Mail, Phone, MapPin, Brain, BarChart3, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import InteractiveFeatureShowcase from '@/components/diagrams/InteractiveFeatureShowcase'
@@ -92,15 +92,15 @@ export default function Home() {
                 O5I for the OCEAN : Infra · Integration · Intelligence · Interaction · Ingenuity
               </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 animate-fade-up">
-                <span className="gradient-text">Agentic AI</span> 기반
+                <span className="gradient-text">Agentic AI</span>로
                 <br />
-                해양과학기술 플랫폼
+                연구와 업무를 혁신합니다
               </h1>
               <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-up">
-                AI 에이전트가 정보를 수집·분석·보고하는{' '}
-                <span className="font-semibold text-[#1B3A5C]">연구 및 업무효율화 플랫폼</span>
+                <span className="font-semibold text-[#1B3A5C]">연구수행 · 연구기획 · 연구행정 · 일반업무</span>를
+                Agentic AI로 혁신합니다
                 <br />
-                <span className="text-lg text-gray-500">R&D 과제공고, 법률동향, 연구과제 기획까지 자동으로 브리핑합니다</span>
+                <span className="text-lg text-gray-500">해양과학기술 분야를 선도하는 AI 전문 기업</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up">
                 <Button asChild variant="research" size="xl" className="group">
@@ -167,23 +167,23 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-6">
                 <div className="glass p-6 rounded-xl text-center">
                   <Brain className="w-10 h-10 text-[#1B3A5C] mx-auto mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">Agentic AI</h4>
-                  <p className="text-sm text-gray-600">자율형 AI 에이전트 기반 자동화</p>
+                  <h4 className="font-bold text-gray-900 mb-2">연구수행</h4>
+                  <p className="text-sm text-gray-600">데이터 수집·분석·시각화 자동화</p>
                 </div>
                 <div className="glass p-6 rounded-xl text-center">
-                  <Waves className="w-10 h-10 text-[#2E6B9E] mx-auto mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">해양과학</h4>
-                  <p className="text-sm text-gray-600">해양 데이터 분석 전문성</p>
+                  <Globe className="w-10 h-10 text-[#2E6B9E] mx-auto mb-3" />
+                  <h4 className="font-bold text-gray-900 mb-2">연구기획</h4>
+                  <p className="text-sm text-gray-600">과제공고 모니터링, RFP 분석</p>
                 </div>
                 <div className="glass p-6 rounded-xl text-center">
                   <BarChart3 className="w-10 h-10 text-[#D4A52D] mx-auto mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">정보분석</h4>
-                  <p className="text-sm text-gray-600">맞춤형 정보 브리핑 서비스</p>
+                  <h4 className="font-bold text-gray-900 mb-2">연구행정</h4>
+                  <p className="text-sm text-gray-600">보고서 자동 작성, 규제·법률 추적</p>
                 </div>
                 <div className="glass p-6 rounded-xl text-center">
-                  <Shield className="w-10 h-10 text-[#1B3A5C] mx-auto mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">보안</h4>
-                  <p className="text-sm text-gray-600">온프레미스 배포 지원</p>
+                  <Rocket className="w-10 h-10 text-[#1B3A5C] mx-auto mb-3" />
+                  <h4 className="font-bold text-gray-900 mb-2">일반업무</h4>
+                  <p className="text-sm text-gray-600">이메일 브리핑, 문서 변환, 정보 요약</p>
                 </div>
               </div>
             </div>
@@ -195,56 +195,56 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-                정보분석 서비스
+                AI 서비스
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                AI 에이전트가 매일 핵심 정보를 수집·분석하여 이메일로 브리핑합니다
+                Agentic AI가 연구와 업무의 4대 영역을 혁신합니다
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
                 <div className="w-14 h-14 bg-[#1B3A5C]/10 rounded-xl flex items-center justify-center mb-6">
-                  <Globe className="w-7 h-7 text-[#1B3A5C]" />
+                  <Brain className="w-7 h-7 text-[#1B3A5C]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">R&D 과제공고</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">연구수행 자동화</h3>
                 <p className="text-gray-600 mb-4">
-                  정부·공공기관 R&D 과제공고를 실시간 모니터링하고 관심 분야에 맞는 공고를 선별하여 브리핑합니다.
+                  AI 에이전트가 데이터 수집·분석·시각화를 자동화하고, Docker 기반 재현성을 보장합니다.
                 </p>
-                <Badge variant="research">기본 서비스</Badge>
+                <Badge variant="research">핵심 서비스</Badge>
               </div>
 
               <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
                 <div className="w-14 h-14 bg-[#2E6B9E]/10 rounded-xl flex items-center justify-center mb-6">
-                  <Waves className="w-7 h-7 text-[#2E6B9E]" />
+                  <Globe className="w-7 h-7 text-[#2E6B9E]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">ODA 사업동향</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">연구기획 지원</h3>
                 <p className="text-gray-600 mb-4">
-                  해양·환경 분야 ODA 사업 동향과 국제기구 프로젝트 정보를 분석하여 보고합니다.
+                  R&D 과제공고 실시간 모니터링, RFP 분석, 유사과제 조사로 기획서 초안을 생성합니다.
                 </p>
-                <Badge variant="research">기본 서비스</Badge>
+                <Badge variant="research">핵심 서비스</Badge>
               </div>
 
               <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
                 <div className="w-14 h-14 bg-[#D4A52D]/10 rounded-xl flex items-center justify-center mb-6">
                   <BarChart3 className="w-7 h-7 text-[#D4A52D]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">연구과제 기획지원</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">연구행정 효율화</h3>
                 <p className="text-gray-600 mb-4">
-                  RFP 분석, 유사과제 이력 조사, 연구 트렌드 파악으로 과제 기획서 작성을 지원합니다.
+                  보고서 자동 작성, 법률·규제 동향 추적, ODA 사업동향 분석으로 행정 부담을 줄입니다.
                 </p>
-                <Badge variant="research">표준 이상</Badge>
+                <Badge variant="research">핵심 서비스</Badge>
               </div>
 
               <div className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
                 <div className="w-14 h-14 bg-[#1B3A5C]/10 rounded-xl flex items-center justify-center mb-6">
-                  <Shield className="w-7 h-7 text-[#1B3A5C]" />
+                  <Rocket className="w-7 h-7 text-[#1B3A5C]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">법률·규제 동향</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">일반업무 혁신</h3>
                 <p className="text-gray-600 mb-4">
-                  해양·환경 관련 법률 개정, 규제 변화, 정책 동향을 추적하여 알려드립니다.
+                  이메일 브리핑, 문서 변환(HWP·DOCX·PDF), 정보 요약 등 반복업무를 자동화합니다.
                 </p>
-                <Badge variant="secondary">표준 이상</Badge>
+                <Badge variant="research">핵심 서비스</Badge>
               </div>
             </div>
           </div>
@@ -343,8 +343,8 @@ export default function Home() {
               <p className="text-sm text-gray-400 mb-1 tracking-wide">바다에서 찾는 지능, 기술로 여는 미래</p>
               <p className="text-xs text-gray-500 mb-4 tracking-wide">O5I for the OCEAN : Infra · Integration · Intelligence · Interaction · Ingenuity</p>
               <p className="text-gray-400 mb-4 max-w-md">
-                Agentic AI 기반 해양과학기술 연구 및 업무효율화 플랫폼.
-                AI 에이전트가 정보를 수집·분석·보고합니다.
+                Agentic AI로 연구수행·기획·행정·일반업무를 혁신하는
+                해양과학기술 AI 전문 기업입니다.
               </p>
               <p className="text-sm text-gray-500">
                 주식회사 오오아이 (O5I Inc.)
@@ -353,7 +353,7 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-4 text-gray-300">서비스</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#services" className="hover:text-white transition-colors">정보분석 서비스</a></li>
+                <li><a href="#services" className="hover:text-white transition-colors">AI 서비스</a></li>
                 <li><a href="#solutions" className="hover:text-white transition-colors">연구 자동화</a></li>
                 <li><a href="#demos" className="hover:text-white transition-colors">기술 데모</a></li>
                 <li><a href="#pricing" className="hover:text-white transition-colors">가격 안내</a></li>

@@ -20,14 +20,14 @@ const subscriptionPlans = [
     price: '30',
     unit: '만원/월',
     badge: 'Starter',
-    description: '핵심 정보분석으로 업무 효율을 높이세요',
+    description: '연구기획 기본 — 과제공고와 동향 모니터링',
     gradient: 'from-[#2E6B9E] to-[#3a7db0]',
     features: [
-      { text: 'R&D 과제공고 브리핑', included: true, detail: '정부·공공기관 과제공고 일일 모니터링' },
-      { text: 'ODA 사업동향 브리핑', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
+      { text: 'R&D 과제공고 모니터링', included: true, detail: '정부·공공기관 과제공고 일일 브리핑' },
+      { text: 'ODA 사업동향 분석', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
       { text: '이메일 브리핑 (주 5회)', included: true, detail: '화~토 오전 자동 발송' },
       { text: '키워드 맞춤 필터링', included: true, detail: '관심 분야 키워드 최대 10개' },
-      { text: '법률·규제 동향', included: false },
+      { text: '법률·규제 동향 추적', included: false },
       { text: '연구과제 기획지원', included: false },
       { text: '주간 인사이트 리포트', included: false },
     ],
@@ -40,14 +40,14 @@ const subscriptionPlans = [
     price: '45',
     unit: '만원/월',
     badge: 'Popular',
-    description: '과제 기획부터 법률·규제까지 포괄하는 종합 분석',
+    description: '+ 연구행정 — 법률·규제 추적과 기획지원까지',
     gradient: 'from-[#1B3A5C] to-[#2E6B9E]',
     features: [
-      { text: 'R&D 과제공고 브리핑', included: true, detail: '정부·공공기관 과제공고 일일 모니터링' },
-      { text: 'ODA 사업동향 브리핑', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
+      { text: 'R&D 과제공고 모니터링', included: true, detail: '정부·공공기관 과제공고 일일 브리핑' },
+      { text: 'ODA 사업동향 분석', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
       { text: '이메일 브리핑 (주 5회)', included: true, detail: '화~토 오전 자동 발송' },
       { text: '키워드 맞춤 필터링', included: true, detail: '관심 분야 키워드 최대 30개' },
-      { text: '법률·규제 동향', included: true, detail: '해양·환경 법률 개정 및 규제 변화 추적' },
+      { text: '법률·규제 동향 추적', included: true, detail: '해양·환경 법률 개정 및 규제 변화 모니터링' },
       { text: '연구과제 기획지원', included: true, detail: 'RFP 분석, 유사과제 조사, 연구 트렌드 기반 기획 지원' },
       { text: '주간 인사이트 리포트', included: false },
     ],
@@ -60,15 +60,15 @@ const subscriptionPlans = [
     price: '65',
     unit: '만원/월',
     badge: 'Premium',
-    description: '과제 기획·동향분석·인사이트를 모두 포함한 올인원 패키지',
+    description: '+ 연구수행 지원 — 기획서 초안 생성과 심층 인사이트',
     gradient: 'from-[#D4A52D] to-[#b8912a]',
     features: [
-      { text: 'R&D 과제공고 브리핑', included: true, detail: '정부·공공기관 과제공고 일일 모니터링' },
-      { text: 'ODA 사업동향 브리핑', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
+      { text: 'R&D 과제공고 모니터링', included: true, detail: '정부·공공기관 과제공고 일일 브리핑' },
+      { text: 'ODA 사업동향 분석', included: true, detail: '해양·환경 ODA 프로젝트 동향' },
       { text: '이메일 브리핑 (주 5회)', included: true, detail: '화~토 오전 자동 발송' },
       { text: '키워드 맞춤 필터링', included: true, detail: '관심 분야 키워드 무제한' },
-      { text: '법률·규제 동향', included: true, detail: '해양·환경 법률 개정 및 규제 변화 추적' },
-      { text: '연구과제 기획지원', included: true, detail: 'RFP 분석, 유사과제 조사, 연구 트렌드 + 기획서 초안 생성' },
+      { text: '법률·규제 동향 추적', included: true, detail: '해양·환경 법률 개정 및 규제 변화 모니터링' },
+      { text: '연구과제 기획지원 + 기획서 초안', included: true, detail: 'RFP 분석, 유사과제 조사, 연구 트렌드 + AI 기획서 초안 생성' },
       { text: '주간 인사이트 리포트', included: true, detail: '매주 월요일 심층 R&D 동향 인사이트' },
     ],
     cta: '프리미엄 플랜 시작',
@@ -80,7 +80,7 @@ const additionalServices = [
   {
     icon: <Brain className="w-6 h-6" />,
     title: '맞춤형 AI 에이전트 개발',
-    description: '기관·기업 특화 정보분석 에이전트를 설계·구축합니다.',
+    description: '연구수행·기획·행정·업무 특화 AI 에이전트를 설계·구축합니다.',
     pricing: '별도 협의',
   },
   {
@@ -107,7 +107,7 @@ export default function DetailedServiceOfferings() {
           서비스 가격 안내
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          필요에 맞는 정보분석 서비스를 선택하세요. 모든 플랜은 월 단위 구독입니다.
+          조직에 맞는 AI 서비스를 선택하세요. 모든 플랜은 월 단위 구독입니다.
         </p>
       </div>
 

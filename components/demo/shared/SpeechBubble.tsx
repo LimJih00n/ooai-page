@@ -6,6 +6,7 @@ import { Brain, User, Monitor } from 'lucide-react'
 interface Props {
   speaker: 'ai' | 'researcher' | 'system'
   text: string
+  progress?: number // 0-1, default 1 = show full text
 }
 
 const speakerConfig = {
@@ -41,9 +42,15 @@ const speakerConfig = {
   },
 }
 
-export default function SpeechBubble({ speaker, text }: Props) {
+export default function SpeechBubble({ speaker, text, progress = 1 }: Props) {
   const config = speakerConfig[speaker]
   const { Icon } = config
+
+  // Typing effect: progress 0→0.4 = character by character, 0.4→1 = full text
+  const typingProgress = Math.min(progress / 0.4, 1)
+  const charCount = Math.ceil(typingProgress * text.length)
+  const displayText = progress >= 1 ? text : text.slice(0, charCount)
+  const showCursor = progress < 1 && progress < 0.4
 
   return (
     <motion.div
@@ -64,7 +71,10 @@ export default function SpeechBubble({ speaker, text }: Props) {
           <span className={`text-[10px] font-semibold ${config.labelColor} uppercase tracking-wide`}>
             {config.label}
           </span>
-          <p className="text-sm text-gray-700 mt-0.5 leading-relaxed">{text}</p>
+          <p className="text-sm text-gray-700 mt-0.5 leading-relaxed">
+            {displayText}
+            {showCursor && <span className="inline-block w-[2px] h-[1em] bg-gray-400 animate-pulse align-middle ml-0.5" />}
+          </p>
         </div>
       </div>
     </motion.div>

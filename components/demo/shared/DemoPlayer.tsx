@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play, Pause, RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -17,23 +17,23 @@ interface Props {
   scenes: Scene[]
 }
 
-function renderWindow(scene: Scene) {
+function renderWindow(scene: Scene, progress: number) {
   switch (scene.windowType) {
     case 'terminal': {
       const p = scene.windowProps as TerminalWindowProps
-      return <TerminalWindow title={p.title} lines={p.lines} />
+      return <TerminalWindow title={p.title} lines={p.lines} progress={progress} />
     }
     case 'code': {
       const p = scene.windowProps as CodeEditorWindowProps
-      return <CodeEditorWindow fileName={p.fileName} language={p.language} code={p.code} highlightLines={p.highlightLines} />
+      return <CodeEditorWindow fileName={p.fileName} language={p.language} code={p.code} highlightLines={p.highlightLines} progress={progress} />
     }
     case 'browser': {
       const p = scene.windowProps as BrowserWindowProps
-      return <BrowserWindow url={p.url} title={p.title} content={p.content} />
+      return <BrowserWindow url={p.url} title={p.title} content={p.content} progress={progress} />
     }
     case 'document': {
       const p = scene.windowProps as DocumentWindowProps
-      return <DocumentWindow title={p.title} content={p.content} />
+      return <DocumentWindow title={p.title} content={p.content} progress={progress} />
     }
   }
 }
@@ -42,6 +42,11 @@ export default function DemoPlayer({ title, subtitle, scenes }: Props) {
   const [currentIndex, setCurrentIndex] = useState(-1) // -1 = not started
   const [isPlaying, setIsPlaying] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
+  const [progress, setProgress] = useState(0) // 0-1 within current scene
+
+  const rafRef = useRef<number>(0)
+  const progressRef = useRef(0) // real-time progress for pause capture
+  const pausedProgressRef = useRef(0) // saved progress when paused
 
   const goToNext = useCallback(() => {
     setCurrentIndex(prev => {
@@ -49,34 +54,58 @@ export default function DemoPlayer({ title, subtitle, scenes }: Props) {
       if (next >= scenes.length) {
         setIsPlaying(false)
         setIsComplete(true)
+        // Keep progress at 1 so last scene stays fully visible
         return prev
       }
+      // Reset progress for next scene
+      pausedProgressRef.current = 0
       return next
     })
   }, [scenes.length])
 
+  // rAF animation loop
   useEffect(() => {
     if (!isPlaying || currentIndex < 0 || currentIndex >= scenes.length) return
 
-    const timer = setTimeout(goToNext, scenes[currentIndex].duration)
-    return () => clearTimeout(timer)
+    const duration = scenes[currentIndex].duration
+    const startTime = performance.now() - (pausedProgressRef.current * duration)
+
+    const animate = (now: number) => {
+      const elapsed = now - startTime
+      const p = Math.min(elapsed / duration, 1)
+      progressRef.current = p
+      setProgress(p)
+
+      if (p >= 1) {
+        goToNext()
+        return
+      }
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafRef.current)
   }, [isPlaying, currentIndex, scenes, goToNext])
 
   const handlePlay = () => {
     if (isComplete) {
-      // Restart
+      // Restart from beginning
       setCurrentIndex(0)
       setIsComplete(false)
+      setProgress(0)
+      pausedProgressRef.current = 0
       setIsPlaying(true)
       return
     }
     if (currentIndex < 0) {
       setCurrentIndex(0)
+      pausedProgressRef.current = 0
     }
     setIsPlaying(true)
   }
 
   const handlePause = () => {
+    pausedProgressRef.current = progressRef.current
     setIsPlaying(false)
   }
 
@@ -84,6 +113,8 @@ export default function DemoPlayer({ title, subtitle, scenes }: Props) {
     setIsPlaying(false)
     setIsComplete(false)
     setCurrentIndex(-1)
+    setProgress(0)
+    pausedProgressRef.current = 0
   }
 
   const scene = currentIndex >= 0 && currentIndex < scenes.length ? scenes[currentIndex] : null
@@ -107,7 +138,7 @@ export default function DemoPlayer({ title, subtitle, scenes }: Props) {
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.35 }}
             >
-              {renderWindow(scene)}
+              {renderWindow(scene, progress)}
             </motion.div>
           ) : (
             <motion.div
@@ -137,7 +168,7 @@ export default function DemoPlayer({ title, subtitle, scenes }: Props) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <SpeechBubble speaker={scene.bubble.speaker} text={scene.bubble.text} />
+              <SpeechBubble speaker={scene.bubble.speaker} text={scene.bubble.text} progress={progress} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -178,7 +209,13 @@ export default function DemoPlayer({ title, subtitle, scenes }: Props) {
           {scenes.map((s, i) => (
             <button
               key={s.id}
-              onClick={() => { setCurrentIndex(i); setIsPlaying(false); setIsComplete(false) }}
+              onClick={() => {
+                setCurrentIndex(i)
+                setIsPlaying(false)
+                setIsComplete(false)
+                setProgress(1) // Show jumped-to scene fully
+                pausedProgressRef.current = 1
+              }}
               className={`w-2.5 h-2.5 rounded-full transition-all ${
                 i === currentIndex
                   ? 'bg-blue-600 scale-125'

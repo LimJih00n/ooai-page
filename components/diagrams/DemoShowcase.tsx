@@ -1,145 +1,249 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Container, UserCheck, FileText, Waves, Wind, Users, Terminal, Server, Brain, Cpu } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
+import {
+  ArrowRight,
+  Users,
+  Cpu,
+  FileSearch,
+  Globe,
+  TrendingUp,
+  Scale,
+  FileOutput,
+  BarChart3,
+  FlaskConical,
+  Target,
+  ClipboardList,
+  Wrench,
+} from 'lucide-react'
 
-const demos = [
+type Category = 'all' | 'research-execution' | 'research-planning' | 'research-admin' | 'general'
+
+interface Demo {
+  title: string
+  description: string
+  icon: React.ComponentType<{ className?: string }>
+  href: string
+  category: Category
+  categoryLabel: string
+  tags: string[]
+}
+
+const categories: { key: Category; label: string; icon: React.ComponentType<{ className?: string }>; color: string }[] = [
+  { key: 'all', label: '전체', icon: FlaskConical, color: 'bg-gray-100 text-gray-700 hover:bg-gray-200' },
+  { key: 'research-execution', label: '연구수행', icon: FlaskConical, color: 'bg-blue-100 text-blue-700 hover:bg-blue-200' },
+  { key: 'research-planning', label: '연구기획', icon: Target, color: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200' },
+  { key: 'research-admin', label: '연구행정', icon: ClipboardList, color: 'bg-amber-100 text-amber-700 hover:bg-amber-200' },
+  { key: 'general', label: '일반업무', icon: Wrench, color: 'bg-purple-100 text-purple-700 hover:bg-purple-200' },
+]
+
+const categoryBadgeColors: Record<string, string> = {
+  '연구수행': 'bg-blue-50 text-blue-700 border-blue-200',
+  '연구기획': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  '연구행정': 'bg-amber-50 text-amber-700 border-amber-200',
+  '일반업무': 'bg-purple-50 text-purple-700 border-purple-200',
+}
+
+const demos: Demo[] = [
+  // === Research Execution ===
   {
-    title: 'Agentic AI Workspace',
-    description: '프로젝트 컨텍스트를 이해하고 복잡한 연구 작업을 자율적으로 계획하고 실행하는 AI 에이전트입니다.',
-    icon: Brain,
-    href: '/demo/agentic-ai',
-    isAvailable: true,
-    isNew: true,
-  },
-  {
-    title: 'Claude Code',
-    description: 'AI 코딩 어시스턴트가 프로젝트 컨텍스트를 이해하고 연구용 Python 코드를 자동 생성합니다.',
-    icon: Terminal,
-    href: '/demo/claude-code',
-    isAvailable: true,
-    isNew: true,
-  },
-  {
-    title: 'MCP Server',
-    description: 'Model Context Protocol로 AI가 파일시스템, 데이터베이스, 외부 API에 안전하게 연결합니다.',
-    icon: Server,
-    href: '/demo/mcp-server',
-    isAvailable: true,
-    isNew: true,
-  },
-  {
-    title: 'Chl-a 예측 파이프라인',
-    description: '위성 데이터 기반 Chlorophyll-a 예측 ML 모델의 학습·검증·배포를 Docker로 자동화하는 파이프라인입니다.',
-    icon: Cpu,
-    href: '/demo/docker-ml-pipeline',
-    isAvailable: true,
-    isNew: true,
-  },
-  {
-    title: '다중 에이전트 워크플로우',
-    description: 'LangGraph 기반으로 여러 AI 에이전트가 협업하여 연구를 완성하는 과정을 시뮬레이션합니다.',
+    title: '다중 에이전트 연구 협업',
+    description: 'LangGraph 기반 AI 에이전트들이 문헌 검색, 데이터 분석, 결과 종합까지 연구 전 과정을 자율적으로 협업합니다.',
     icon: Users,
     href: '/demo/multi-agent',
-    isAvailable: true,
+    category: 'research-execution',
+    categoryLabel: '연구수행',
+    tags: ['LangGraph', 'Multi-Agent'],
   },
   {
-    title: 'Human-in-the-Loop',
-    description: 'AI의 분석 과정에 연구자가 개입하여 결과의 신뢰도를 높이는 협업 워크플로우입니다.',
-    icon: UserCheck,
-    href: '/demo/human-loop',
-    isAvailable: true,
+    title: 'Chl-a 예측 ML 파이프라인',
+    description: '위성 데이터 기반 Chlorophyll-a 예측 모델의 학습·검증·배포를 Docker로 자동화하는 재현 가능한 파이프라인입니다.',
+    icon: Cpu,
+    href: '/demo/docker-ml-pipeline',
+    category: 'research-execution',
+    categoryLabel: '연구수행',
+    tags: ['Docker', 'ML Pipeline'],
+  },
+  // === Research Planning ===
+  {
+    title: 'R&D 과제공고 브리핑',
+    description: 'NTIS·IRIS·NIPA·KAIA 등 R&D 공고를 자동 수집하고, 기관 프로필 기반으로 적합도를 평가하여 맞춤 브리핑을 제공합니다.',
+    icon: FileSearch,
+    href: '/demo/rnd-briefing',
+    category: 'research-planning',
+    categoryLabel: '연구기획',
+    tags: ['Auto-Crawl', 'Matching'],
   },
   {
-    title: '자동 보고서 생성',
-    description: '분석 결과를 바탕으로 논문 수준의 보고서 초안을 자동으로 작성합니다.',
-    icon: FileText,
-    href: '/demo/auto-report',
-    isAvailable: true,
+    title: 'ODA 사업 분석',
+    description: 'KOICA·EDCF·UNDP·World Bank 등 국제개발협력 사업을 자동 분석하고, 참여 기회를 식별하여 브리핑합니다.',
+    icon: Globe,
+    href: '/demo/oda-analysis',
+    category: 'research-planning',
+    categoryLabel: '연구기획',
+    tags: ['ODA', 'Global'],
+  },
+  // === Research Administration ===
+  {
+    title: '금융경제 시황 리포트',
+    description: '글로벌 금융·암호화폐·환율 데이터를 수집하고, 기술 분석(RSI/MACD)을 적용하여 일일·주간 리포트를 자동 생성합니다.',
+    icon: TrendingUp,
+    href: '/demo/market-report',
+    category: 'research-admin',
+    categoryLabel: '연구행정',
+    tags: ['Finance', 'Auto-Report'],
   },
   {
-    title: 'Docker 완전 재현성',
-    description: '어떤 환경에서든 100% 동일한 연구 결과를 보장하는 Docker 기반 기술을 시연합니다.',
-    icon: Container,
-    href: '/demo/docker-reproducibility',
-    isAvailable: true,
+    title: '법령·정책 변동 추적',
+    description: '국회·법제처·해수부·환경부의 법령 제·개정을 실시간 추적하고, AI가 연구 영향도를 분석하여 긴급 알림을 발송합니다.',
+    icon: Scale,
+    href: '/demo/legal-tracking',
+    category: 'research-admin',
+    categoryLabel: '연구행정',
+    tags: ['Legal', 'Monitoring'],
+  },
+  // === General ===
+  {
+    title: 'HWP 문서 변환기',
+    description: 'DOCX·MD·PDF 파일을 HWP/HWPX 형식으로 변환합니다. 스타일 템플릿 적용과 대량 일괄 변환을 지원합니다.',
+    icon: FileOutput,
+    href: '/demo/hwp-converter',
+    category: 'general',
+    categoryLabel: '일반업무',
+    tags: ['HWP', 'Converter'],
   },
   {
-    title: '[Live] 해양 데이터 수집',
-    description: 'AI가 Copernicus 위성 데이터 서버에 직접 접속하여 해양 데이터를 수집합니다.',
-    icon: Waves,
-    href: '/auto-data-demo.html',
-    isAvailable: true,
-    isExternal: true,
-  },
-  {
-    title: '[Live] 대기 데이터 수집',
-    description: 'AI가 NOAA 실시간 API를 호출하여 특정 지역의 대기 데이터를 수집합니다.',
-    icon: Wind,
-    href: '/auto-data-demo-ncei.html',
-    isAvailable: true,
-    isExternal: true,
+    title: 'AI 시각화 생성기',
+    description: '자연어 설명만으로 Plotly 차트, Graphviz 다이어그램 등을 AI가 자동 생성합니다. 코딩 없이 연구 시각화를 완성합니다.',
+    icon: BarChart3,
+    href: '/demo/ai-visualization',
+    category: 'general',
+    categoryLabel: '일반업무',
+    tags: ['Plotly', 'Graphviz'],
   },
 ]
 
 export default function DemoShowcase() {
-  const availableDemos = demos.filter(demo => demo.isAvailable)
+  const [activeCategory, setActiveCategory] = useState<Category>('all')
+
+  const filteredDemos = activeCategory === 'all'
+    ? demos
+    : demos.filter(d => d.category === activeCategory)
 
   return (
     <section id="demos" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        {/* Header */}
+        <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            기술 데모 허브
+            서비스 데모
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            O5I의 핵심 기술들이 실제 연구 과정에서 어떻게 작동하는지 직접 확인해보세요.
+            O5I의 Agentic AI가 연구의 각 단계에서 어떻게 작동하는지 직접 확인해보세요.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {availableDemos.map((demo, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map(cat => (
+            <button
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              className={`
+                inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium
+                transition-all duration-200 border
+                ${activeCategory === cat.key
+                  ? cat.key === 'all'
+                    ? 'bg-gray-900 text-white border-gray-900 shadow-md'
+                    : cat.key === 'research-execution'
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-md'
+                      : cat.key === 'research-planning'
+                        ? 'bg-emerald-600 text-white border-emerald-600 shadow-md'
+                        : cat.key === 'research-admin'
+                          ? 'bg-amber-600 text-white border-amber-600 shadow-md'
+                          : 'bg-purple-600 text-white border-purple-600 shadow-md'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                }
+              `}
             >
-              <Card className="h-full flex flex-col group hover:border-blue-500 transition-colors relative">
-                {'isNew' in demo && demo.isNew && (
-                  <Badge className="absolute -top-2 -right-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs">
-                    NEW
-                  </Badge>
-                )}
-                <CardHeader className="flex-row items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <demo.icon className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <CardTitle>{demo.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow flex flex-col">
-                  <p className="text-gray-600 mb-6 flex-grow">{demo.description}</p>
-                  <Button asChild variant="research-outline" className="w-full mt-auto group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    {demo.isExternal ? (
-                      <a href={demo.href} target="_blank" rel="noopener noreferrer">
-                        데모 보기 <ArrowRight className="ml-2 w-4 h-4" />
-                      </a>
-                    ) : (
-                      <Link href={demo.href}>
-                        데모 보기 <ArrowRight className="ml-2 w-4 h-4" />
-                      </Link>
-                    )}
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <cat.icon className="w-4 h-4" />
+              {cat.label}
+              {cat.key !== 'all' && (
+                <span className={`
+                  text-xs px-1.5 py-0.5 rounded-full
+                  ${activeCategory === cat.key ? 'bg-white/20' : 'bg-gray-100'}
+                `}>
+                  {demos.filter(d => d.category === cat.key).length}
+                </span>
+              )}
+            </button>
           ))}
         </div>
+
+        {/* Demo Grid */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredDemos.map((demo) => (
+              <motion.div
+                key={demo.href}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="h-full flex flex-col group hover:shadow-lg hover:border-blue-300 transition-all duration-200">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                        <demo.icon className="w-5 h-5 text-blue-600" />
+                      </div>
+                      <Badge
+                        variant="outline"
+                        className={`text-xs ${categoryBadgeColors[demo.categoryLabel] || ''}`}
+                      >
+                        {demo.categoryLabel}
+                      </Badge>
+                    </div>
+                    <CardTitle className="text-base leading-snug">{demo.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow flex flex-col pt-0">
+                    <p className="text-sm text-gray-500 mb-4 flex-grow leading-relaxed">
+                      {demo.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {demo.tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="text-xs px-2 py-0.5 bg-gray-100 text-gray-500 rounded-md"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <Button
+                      asChild
+                      variant="research-outline"
+                      className="w-full mt-auto group-hover:bg-blue-600 group-hover:text-white transition-colors"
+                    >
+                      <Link href={demo.href}>
+                        데모 체험 <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   )

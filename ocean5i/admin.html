@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="3600">
+<title>O5I RAG 관리자 현황</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+          background: #0f172a; color: #e2e8f0; padding: 28px 20px; min-height: 100vh; }
+  h1   { font-size: 22px; font-weight: 700; color: #38bdf8; }
+  .sub { font-size: 13px; color: #64748b; margin-top: 4px; margin-bottom: 20px; }
+  .card { background: #1e293b; border-radius: 14px; padding: 22px 24px;
+            margin-bottom: 16px; border: 1px solid #334155; }
+  .status { font-size: 15px; font-weight: 600; color: #22c55e;
+              padding: 12px 16px; background: rgba(255,255,255,0.04);
+              border-radius: 8px; border-left: 4px solid #22c55e; margin-bottom: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 12px; }
+  .metric { text-align: center; padding: 16px 8px; background: #0f172a; border-radius: 10px; }
+  .metric-value { font-size: 30px; font-weight: 700; color: #38bdf8; }
+  .metric-label { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+  .session { font-size: 13px; color: #64748b; margin-top: 18px;
+               padding-top: 14px; border-top: 1px solid #334155; }
+  .footer { font-size: 12px; color: #475569; text-align: center; margin-top: 20px; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px;
+             border-radius: 20px; background: #0f172a; color: #64748b; margin-left: 8px; }
+</style>
+</head>
+<body>
+<h1>🤖 O5I RAG 지식베이스 현황</h1>
+<p class="sub">ulldok 서버 · 매일 23:00 자동 갱신 <span class="badge">admin</span></p>
+
+<div class="card">
+  <div class="status">✅ 263개 신규 파일이 지식베이스에 추가됨</div>
+  <div class="grid">
+    <div class="metric">
+      <div class="metric-value">1,915</div>
+      <div class="metric-label">전체 청크 수</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">263</div>
+      <div class="metric-label">인덱싱 완료</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">263</div>
+      <div class="metric-label">오늘 추가</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">2</div>
+      <div class="metric-label">영구 스킵</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">0</div>
+      <div class="metric-label">재시도 대기</div>
+    </div>
+  </div>
+  <div class="session">세션 #32 · completed · 인덱싱 0개 / 스킵 0개</div>
+</div>
+
+<div class="footer">마지막 업데이트: 2026년 02월 17일 23:54 · O5I 기술 상담 챗봇 (qwen2.5:14b + ChromaDB)</div>
+</body>
+</html>

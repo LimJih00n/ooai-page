@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O5I — Agentic AI for Marine Science</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ── FAB animations ───────────────────────── */
+        .fab-item {
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(10px) scale(0.8);
+            pointer-events: none;
+        }
+        .fab-open .fab-item { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+        .fab-item:nth-child(1) { transition-delay: 0.05s; }
+        .fab-item:nth-child(2) { transition-delay: 0.10s; }
+        .fab-item:nth-child(3) { transition-delay: 0.15s; }
+        .fab-main-icon { transition: transform 0.3s ease; }
+        .fab-open .fab-main-icon { transform: rotate(45deg); }
+
+        /* ── Navbar hide/show ────────────────────── */
+        #navbar { transition: top 0.3s ease; }
+
+        /* ── Pulsing status dot ──────────────────── */
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+            50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+        }
+        .pulse-dot { animation: pulse-dot 2s infinite; }
+
+        /* ── Status marquee ─────────────────────── */
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to   { transform: translateX(-100%); }
+        }
+        .marquee-inner { animation: marquee 22s linear infinite; white-space: nowrap; }
+
+        /* ── Footer fade-in ──────────────────────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Mobile menu slide ───────────────────── */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        #mobile-menu.open { max-height: 400px; }
+
+        /* ── Gradient text ───────────────────────── */
+        .grad-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 min-h-screen font-sans antialiased">
+
+<!-- ════════════════════════════════════════════
+     NAVBAR  —  qwen2.5-coder:7b generated, refined
+     ════════════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 shrink-0">
+            <img src="https://lh3.googleusercontent.com/d/1mMXhPzyfrtkhpsMkjrjOPLHuU426bvu-" alt="O5I" class="h-8 w-auto">
+        </a>
+
+        <!-- Desktop nav links -->
+        <ul class="hidden md:flex items-center gap-8 text-base text-slate-300">
+            <li><a href="index.html"    class="text-sky-400 relative group">홈
+                <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-sky-400"></span></a></li>
+            <li><a href="services_v2.html" class="hover:text-sky-400 transition relative group">서비스
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-400 group-hover:w-full transition-all duration-300"></span></a></li>
+            <li><a href="about_v2.html" class="hover:text-sky-400 transition relative group">소개
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-sky-400 group-hover:w-full transition-all duration-300"></span></a></li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <a href="mailto:ocean5i@ocean5i.com"
+           class="hidden md:inline-flex items-center gap-2 px-5 py-2 bg-sky-500 hover:bg-sky-400 text-white text-base font-semibold rounded-full transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            문의하기
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button id="hamburger" onclick="toggleMenu()"
+                class="md:hidden text-slate-300 hover:text-white transition p-1">
+            <svg id="ham-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-menu" class="md:hidden bg-slate-900/95 border-t border-slate-800">
+        <ul class="flex flex-col px-5 py-4 gap-4 text-slate-300 text-base">
+            <li><a href="index.html"    onclick="toggleMenu()" class="text-sky-400">홈</a></li>
+            <li><a href="services_v2.html" onclick="toggleMenu()" class="hover:text-sky-400 transition">서비스</a></li>
+            <li><a href="about_v2.html"    onclick="toggleMenu()" class="hover:text-sky-400 transition">소개</a></li>
+            <li><a href="mailto:ocean5i@ocean5i.com"
+                   class="inline-block px-5 py-2 bg-sky-500 text-white rounded-full text-center">문의하기</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════════ -->
+<section id="hero" class="flex flex-col items-center justify-center min-h-screen text-center px-6 pt-20">
+    <p class="text-sky-400 text-sm font-bold tracking-widest uppercase mb-5 flex items-center gap-2">
+        <span class="w-2 h-2 bg-sky-400 rounded-full pulse-dot inline-block"></span>
+        Agentic AI Platform
+    </p>
+    <h1 class="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+        해양과학을 위한<br>
+        <span class="grad-text">지능형 R&D 플랫폼</span>
+    </h1>
+    <p class="text-slate-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+        해양물리를 아는 연구자가 만든 AI.<br>
+        R&D 과제 발굴부터 <strong class="text-slate-200">해양 빅데이터 분석</strong>까지 전 과정을 자동화합니다.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <a href="services_v2.html"
+           class="px-8 py-3 bg-sky-500 hover:bg-sky-400 text-white font-semibold rounded-full transition shadow-lg shadow-sky-500/30">
+            서비스 시작하기
+        </a>
+        <a href="about_v2.html"
+           class="px-8 py-3 border border-slate-600 hover:border-sky-400 text-slate-300 hover:text-sky-400 font-semibold rounded-full transition">
+            포트폴리오 보기
+        </a>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl w-full mb-12">
+        <div class="glass rounded-2xl p-4 text-center hover:border-sky-500/40 transition">
+            <div class="text-2xl mb-2">🌊</div>
+            <div class="text-sky-400 font-black text-2xl leading-none mb-1">9</div>
+            <div class="text-white text-xs font-bold mb-0.5">전문 서비스</div>
+            <div class="text-slate-500 text-xs">해양과학 특화</div>
+        </div>
+        <div class="glass rounded-2xl p-4 text-center hover:border-indigo-500/40 transition">
+            <div class="text-2xl mb-2">🤖</div>
+            <div class="text-indigo-400 font-black text-2xl leading-none mb-1">38<span class="text-base font-bold">초</span></div>
+            <div class="text-white text-xs font-bold mb-0.5">E2E 파이프라인</div>
+            <div class="text-slate-500 text-xs">ADI 5-Agent</div>
+        </div>
+        <div class="glass rounded-2xl p-4 text-center hover:border-teal-500/40 transition">
+            <div class="text-2xl mb-2">📚</div>
+            <div class="text-teal-400 font-black text-2xl leading-none mb-1">1,915</div>
+            <div class="text-white text-xs font-bold mb-0.5">RAG 청크</div>
+            <div class="text-slate-500 text-xs">Air-gapped 로컬</div>
+        </div>
+        <div class="glass rounded-2xl p-4 text-center hover:border-violet-500/40 transition">
+            <div class="text-2xl mb-2">🎓</div>
+            <div class="text-violet-400 font-black text-2xl leading-none mb-1">3</div>
+            <div class="text-white text-xs font-bold mb-0.5">협력 연구기관</div>
+            <div class="text-slate-500 text-xs">KIOST · SNU · OSEAN</div>
+        </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="flex flex-col items-center gap-2 text-slate-600 text-sm animate-bounce">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+        scroll
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     STATUS MONITOR STRIP
+     qwen2.5-coder:7b generated, refined
+     ════════════════════════════════════════════ -->
+<div id="status-monitor" class="fade-up border-t border-b border-slate-800 bg-slate-900/60 backdrop-blur-sm">
+    <!-- Live status indicators -->
+    <div class="max-w-7xl mx-auto px-5 py-3 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
+
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot shrink-0"></span>
+            <span class="text-slate-400">RAG Engine</span>
+            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full font-semibold border border-green-500/30">
+                1,915 chunks
+            </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot shrink-0"></span>
+            <span class="text-slate-400">Ollama API</span>
+            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full font-semibold border border-green-500/30">
+                :11434 정상
+            </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot shrink-0"></span>
+            <span class="text-slate-400">ChromaDB</span>
+            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full font-semibold border border-green-500/30">
+                연결됨
+            </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot shrink-0"></span>
+            <span class="text-slate-400">HTTPS Proxy</span>
+            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full font-semibold border border-green-500/30">
+                활성
+            </span>
+        </div>
+    </div>
+
+    <!-- Scrolling marquee -->
+    <div class="border-t border-slate-800 overflow-hidden py-1.5">
+        <div class="marquee-inner text-sm text-slate-600 px-4">
+            🚀 qwen2.5:14b 메인 브레인 활성 &nbsp;·&nbsp;
+            🤖 qwen2.5-coder:7b 코딩 전담 활성 &nbsp;·&nbsp;
+            📚 1,915 청크 · 261개 파일 인덱싱 완료 &nbsp;·&nbsp;
+            🔒 Bearer Token 인증 활성 &nbsp;·&nbsp;
+            🌊 O5I — Agentic AI for Marine Science &nbsp;·&nbsp;
+            📍 부산 영도 · www.ocean5i.com &nbsp;·&nbsp;
+        </div>
+    </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+     qwen2.5-coder:7b generated, refined
+     ════════════════════════════════════════════ -->
+<footer id="main-footer" class="fade-up relative">
+    <!-- Top gradient border -->
+    <div class="h-px bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-50"></div>
+
+    <div class="bg-slate-900/80 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-5 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+            <!-- Col 1: Brand -->
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-2">
+                    <img src="https://lh3.googleusercontent.com/d/1mMXhPzyfrtkhpsMkjrjOPLHuU426bvu-" alt="O5I" class="h-9 w-auto">
+                </div>
+                <p class="text-slate-400 text-base leading-relaxed">
+                    Agentic AI 기반 해양과학기술<br>
+                    연구 및 업무효율화 플랫폼
+                </p>
+                <!-- Social / placeholder -->
+                <div class="flex gap-3 mt-2">
+                    <a href="https://www.ocean5i.com" target="_blank"
+                       class="w-8 h-8 rounded-full bg-slate-800 hover:bg-sky-500/20 border border-slate-700 hover:border-sky-500 flex items-center justify-center text-slate-400 hover:text-sky-400 transition text-sm font-bold">
+                        W
+                    </a>
+                    <a href="mailto:ocean5i@ocean5i.com"
+                       class="w-8 h-8 rounded-full bg-slate-800 hover:bg-sky-500/20 border border-slate-700 hover:border-sky-500 flex items-center justify-center text-slate-400 hover:text-sky-400 transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Quick links -->
+            <div class="flex flex-col gap-4">
+                <h3 class="text-white font-semibold text-base tracking-wider uppercase">빠른 링크</h3>
+                <ul class="flex flex-col gap-2 text-base text-slate-400">
+                    <li><a href="services_v2.html"  class="hover:text-sky-400 transition flex items-center gap-2">
+                        <span class="w-1 h-1 bg-sky-500 rounded-full"></span>서비스</a></li>
+                    <li><a href="about_v2.html"     class="hover:text-sky-400 transition flex items-center gap-2">
+                        <span class="w-1 h-1 bg-sky-500 rounded-full"></span>포트폴리오</a></li>
+                    <li><a href="about_v2.html"     class="hover:text-sky-400 transition flex items-center gap-2">
+                        <span class="w-1 h-1 bg-sky-500 rounded-full"></span>기술문서</a></li>
+                    <li><a href="about_v2.html"     class="hover:text-sky-400 transition flex items-center gap-2">
+                        <span class="w-1 h-1 bg-sky-500 rounded-full"></span>소개</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Contact -->
+            <div class="flex flex-col gap-4">
+                <h3 class="text-white font-semibold text-base tracking-wider uppercase">연락처</h3>
+                <a href="mailto:ocean5i@ocean5i.com"
+                   class="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-sky-500/10 border border-sky-500/30 hover:bg-sky-500/20 hover:border-sky-400 transition group w-fit">
+                    <svg class="w-5 h-5 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="text-sky-300 font-semibold group-hover:text-white transition">ocean5i@ocean5i.com</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="border-t border-slate-800 py-4 px-5">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-slate-600">
+                <span>© 2026 오오아이 O5I · All rights reserved.</span>
+                <span class="flex items-center gap-1">
+                    Made with
+                    <svg class="w-3 h-3 text-sky-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+                    </svg>
+                    <a href="https://claude.ai/claude-code" class="hover:text-sky-400 transition">Claude Code</a>
+                    &nbsp;·&nbsp; Coded by qwen2.5-coder:7b
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ════════════════════════════════════════════
+     FLOATING ACTION BUTTON
+     ════════════════════════════════════════════ -->
+<div id="fab-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div id="fab-actions" class="flex flex-col items-end gap-3">
+        <div class="fab-item flex items-center gap-3">
+            <span class="bg-slate-800 text-white text-sm px-3 py-1 rounded-full shadow whitespace-nowrap border border-slate-700">서비스 문의</span>
+            <a href="mailto:ocean5i@ocean5i.com"
+               class="w-11 h-11 bg-gradient-to-br from-sky-500 to-sky-600 text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="fab-item flex items-center gap-3">
+            <span class="bg-slate-800 text-white text-sm px-3 py-1 rounded-full shadow whitespace-nowrap border border-slate-700">데모 요청</span>
+            <a href="services_v2.html"
+               class="w-11 h-11 bg-gradient-to-br from-indigo-500 to-indigo-600 text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <button id="fab-main" onclick="toggleFAB()"
+            class="w-13 h-13 w-14 h-14 bg-gradient-to-br from-sky-500 to-indigo-600 text-white rounded-full shadow-2xl shadow-sky-500/40 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform focus:outline-none">
+        <svg id="fab-icon" class="fab-main-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+    </button>
+</div>
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════ -->
+<script>
+    // ── Navbar hide on scroll down ──────────────
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        const y = window.scrollY;
+        nav.style.top = (y > lastY && y > 80) ? '-80px' : '0';
+        lastY = y;
+    });
+
+    // ── Mobile menu toggle ──────────────────────
+    function toggleMenu() {
+        document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    // ── FAB toggle ──────────────────────────────
+    const fabActions = document.getElementById('fab-actions');
+    const fabMain    = document.getElementById('fab-main');
+    let fabOpen = false;
+    function toggleFAB() {
+        fabOpen = !fabOpen;
+        fabActions.classList.toggle('fab-open', fabOpen);
+        fabMain.classList.toggle('fab-open', fabOpen);
+    }
+    document.addEventListener('click', e => {
+        if (fabOpen && !document.getElementById('fab-container').contains(e.target)) {
+            fabOpen = false;
+            fabActions.classList.remove('fab-open');
+            fabMain.classList.remove('fab-open');
+        }
+    });
+
+    // ── Fade-in on scroll (IntersectionObserver) ─
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => e.target.classList.toggle('visible', e.isIntersecting));
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -885,44 +885,79 @@
 </section>
 
 <!-- ══════════════════════════════════════════
-     SERVICE 10: VLM 해양쓰레기 피복도
+     SERVICE 10: VLM 영상분석 피복도
 ══════════════════════════════════════════ -->
 <section id="vlm" class="py-20 px-5">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-sky-400 text-sm font-bold tracking-widest uppercase mb-3">Service 10 · 특허출원 완료</p>
             <h2 class="text-3xl md:text-4xl font-black text-white mb-4">
-                VLM 기반 <span class="grad-text">해양쓰레기 피복도</span> 산출
+                VLM 기반 <span class="grad-text">영상분석 피복도</span> 산출
             </h2>
             <p class="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
-                비전-언어 모델(VLM) + YOLO 하이브리드로 해양쓰레기 피복도를 정량 산출.<br>
-                슬라이딩 윈도우 + 투표 방법론 · 특허 출원 완료.
+                비전-언어 모델(VLM) + YOLO 하이브리드로 항공·위성 영상에서 대상물 피복도를 정량 산출.<br>
+                해양쓰레기 · 재난피해 · 환경오염 · 시설물 안전점검까지 확장 가능한 범용 프레임워크.
             </p>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up mb-10">
+            <div class="glass-strong rounded-2xl p-7">
+                <div class="text-sky-400 text-sm font-black uppercase tracking-widest mb-3">핵심 기술</div>
+                <h3 class="text-white font-black text-lg mb-3">슬라이딩 윈도우 + 투표 방법론</h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">정사영상을 격자로 분할하고, 각 셀에서 VLM이 대상물 존재 확률을 판정. 중첩 투표로 확률밀도 기반 피복도를 산출합니다. YOLO가 놓치는 비정형 객체를 VLM이 보완하여 탐지율 53배 향상.</p>
+                <div class="flex flex-wrap gap-1.5">
+                    <span class="tech-badge">VLM + YOLO</span><span class="tech-badge">확률 투표</span><span class="tech-badge">53배 향상</span><span class="tech-badge">특허출원</span>
+                </div>
+            </div>
+            <div class="glass-strong rounded-2xl p-7">
+                <div class="text-indigo-400 text-sm font-black uppercase tracking-widest mb-3">적용 분야</div>
+                <h3 class="text-white font-black text-lg mb-3">산업 횡단 범용 프레임워크</h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex items-start gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-sky-500/15 border border-sky-500/20 flex items-center justify-center text-sm shrink-0">🌊</span>
+                        <div>
+                            <div class="text-white font-bold">해양환경</div>
+                            <div class="text-slate-400">해양쓰레기 피복도, 해안 침식, 유류오염 범위 산출</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/20 flex items-center justify-center text-sm shrink-0">⚠️</span>
+                        <div>
+                            <div class="text-white font-bold">재난·재해</div>
+                            <div class="text-slate-400">태풍·홍수 피해 면적, 산사태 범위, 침수 지역 자동 산정</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-green-500/15 border border-green-500/20 flex items-center justify-center text-sm shrink-0">🏗️</span>
+                        <div>
+                            <div class="text-white font-bold">안전·시설관리</div>
+                            <div class="text-slate-400">인프라 균열·손상 탐지, 태양광 패널 결함, 건축물 외벽 점검</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-teal-500/15 border border-teal-500/20 flex items-center justify-center text-sm shrink-0">🌿</span>
+                        <div>
+                            <div class="text-white font-bold">환경·생태</div>
+                            <div class="text-slate-400">녹조·적조 분포, 산림 피복 변화, 토지 이용 변화 탐지</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 fade-up">
-            <div class="glass rounded-2xl p-7">
-                <div class="text-sky-400 text-sm font-black uppercase tracking-widest mb-3">방법론</div>
-                <h3 class="text-white font-black text-lg mb-3">슬라이딩 윈도우 + 투표</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">정사영상을 3m 윈도우 / 1m 스트라이드로 분할. 각 셀에서 VLM이 쓰레기 존재 확률을 판정하고, 중첩 투표로 확률밀도 기반 피복도 산출.</p>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="tech-badge">3m 윈도우</span><span class="tech-badge">1m 스트라이드</span><span class="tech-badge">확률 투표</span>
-                </div>
+            <div class="glass rounded-xl p-6">
+                <div class="text-sky-400 font-black text-2xl mb-1">53x</div>
+                <div class="text-white text-sm font-bold mb-1">탐지율 향상</div>
+                <div class="text-slate-400 text-sm">YOLO 단독 대비 VLM 하이브리드</div>
             </div>
-            <div class="glass rounded-2xl p-7 border border-sky-500/20">
-                <div class="text-sky-400 text-sm font-black uppercase tracking-widest mb-3">성능</div>
-                <h3 class="text-white font-black text-lg mb-3">YOLO 대비 53배 탐지</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">YOLO 단독 피복도 0.43% → VLM 보완 후 22.76%. VLM이 YOLO 대비 3.6배 추가 쓰레기 발견. 현장 관측과 부합하는 밀집 구역 75% 피복도 확인.</p>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="tech-badge">피복도 22.76%</span><span class="tech-badge">53배 향상</span><span class="tech-badge">현장 검증</span>
-                </div>
+            <div class="glass rounded-xl p-6">
+                <div class="text-indigo-400 font-black text-2xl mb-1">16</div>
+                <div class="text-white text-sm font-bold mb-1">특허 청구항</div>
+                <div class="text-slate-400 text-sm">출원 완료 · GeoJSON 출력</div>
             </div>
-            <div class="glass rounded-2xl p-7">
-                <div class="text-indigo-400 text-sm font-black uppercase tracking-widest mb-3">IP · 실적</div>
-                <h3 class="text-white font-black text-lg mb-3">특허 출원 + 현장 테스트</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">특허 출원 완료(2026-03-19, 청구항 16개). 현장이미지 6장 테스트 보고서 v3 완성. GeoJSON 출력으로 GIS 연동 가능.</p>
-                <div class="flex flex-wrap gap-1.5">
-                    <span class="tech-badge">특허출원</span><span class="tech-badge">청구항 16개</span><span class="tech-badge">GeoJSON</span>
-                </div>
+            <div class="glass rounded-xl p-6">
+                <div class="text-green-400 font-black text-2xl mb-1">GIS</div>
+                <div class="text-white text-sm font-bold mb-1">공간정보 연동</div>
+                <div class="text-slate-400 text-sm">GeoJSON · QGIS · 공간 DB 호환</div>
             </div>
         </div>
     </div>

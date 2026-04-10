@@ -202,9 +202,9 @@
         </div>
         <div class="glass rounded-2xl p-4 text-center hover:border-teal-500/40 transition">
             <div class="text-2xl mb-2">📚</div>
-            <div class="text-teal-400 font-black text-2xl leading-none mb-1">5,901</div>
+            <div class="text-teal-400 font-black text-2xl leading-none mb-1">9,585</div>
             <div class="text-white text-xs font-bold mb-0.5">RAG 청크</div>
-            <div class="text-slate-500 text-xs">Gemini Embedding</div>
+            <div class="text-slate-500 text-xs">Qwen3-VL Embedding</div>
         </div>
         <div class="glass rounded-2xl p-4 text-center hover:border-green-500/40 transition">
             <div class="text-2xl mb-2">🔒</div>
@@ -300,9 +300,9 @@
                         <div class="text-sky-400 text-sm">매일 화~토</div>
                     </div>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">Gemini CLI 기반 AI 자동 생성. 글로벌 금융·원자재·암호화폐·환율 시장 동향을 기관급 브리핑으로 매일 발송.</p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">로컬 LLM(gemma4:31b) 기반 AI 자동 생성. 글로벌 금융·원자재·암호화폐·환율 시장 동향을 기관급 브리핑으로 매일 발송.</p>
                 <div class="flex flex-wrap gap-1.5">
-                    <span class="tech-badge">Gemini CLI</span><span class="tech-badge">자동 생성</span><span class="tech-badge">매일</span>
+                    <span class="tech-badge">Ollama gemma4</span><span class="tech-badge">자동 생성</span><span class="tech-badge">매일</span>
                 </div>
             </div>
             <div class="glass rounded-2xl p-7">
@@ -747,11 +747,11 @@
             <div class="fade-up glass rounded-xl p-6">
                 <h3 class="text-white font-bold mb-3">하이브리드 AI 운용</h3>
                 <ul class="space-y-2 text-sm text-slate-400">
-                    <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>qwen2.5:14b — 기획·디자인 (22tok/s)</li>
+                    <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>gemma4:31b — 기획·분석·브리핑</li>
                     <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>qwen2.5-coder:7b — 코드 생성</li>
-                    <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>RTX 4090 24GB 완전 GPU 운용</li>
+                    <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>DGX Spark GB10 128GB 통합메모리</li>
                 </ul>
-                <div class="flex flex-wrap gap-1.5 mt-4"><span class="tech-badge">RTX 4090</span><span class="tech-badge">Ollama</span></div>
+                <div class="flex flex-wrap gap-1.5 mt-4"><span class="tech-badge">DGX Spark</span><span class="tech-badge">Ollama 13모델</span></div>
             </div>
             <div class="fade-up glass rounded-xl p-6">
                 <h3 class="text-white font-bold mb-3">품질 보장</h3>
@@ -777,7 +777,7 @@
                 RAG <span class="grad-text">지식 검색</span> · MCP <span class="grad-text">멀티서버 연동</span>
             </h2>
             <p class="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
-                8,500+ 청크 Gemini Embedding RAG + LiteParse OCR 파싱 + MCP 프로토콜로 외부 서비스 단일 제어
+                9,500+ 청크 Qwen3-VL Embedding RAG + LiteParse OCR 파싱 + MCP 프로토콜로 외부 서비스 단일 제어
             </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up">
@@ -785,10 +785,10 @@
                 <div class="text-sky-400 text-sm font-black uppercase tracking-widest mb-3">RAG 지식 검색 엔진</div>
                 <div class="space-y-3 text-sm">
                     <div class="flex justify-between py-2 border-b border-slate-800">
-                        <span class="text-slate-400">Vector DB</span><span class="text-sky-300 font-bold">ChromaDB · 8,500+ chunks</span>
+                        <span class="text-slate-400">Vector DB</span><span class="text-sky-300 font-bold">ChromaDB · 9,500+ chunks</span>
                     </div>
                     <div class="flex justify-between py-2 border-b border-slate-800">
-                        <span class="text-slate-400">Embedding</span><span class="text-slate-300">Gemini Embedding 2 (멀티모달)</span>
+                        <span class="text-slate-400">Embedding</span><span class="text-slate-300">Qwen3-VL Embedding 2B (로컬 GPU)</span>
                     </div>
                     <div class="flex justify-between py-2 border-b border-slate-800">
                         <span class="text-slate-400">문서 파싱</span><span class="text-sky-300 font-bold">LiteParse (OCR + 레이아웃 보존)</span>
@@ -797,7 +797,7 @@
                         <span class="text-slate-400">검색 방식</span><span class="text-slate-300">cosine similarity + 시맨틱 청킹</span>
                     </div>
                     <div class="flex justify-between py-2 border-b border-slate-800">
-                        <span class="text-slate-400">LLM</span><span class="text-sky-300 font-bold">qwen2.5:14b</span>
+                        <span class="text-slate-400">LLM</span><span class="text-sky-300 font-bold">gemma4:31b (DGX Spark)</span>
                     </div>
                     <div class="flex justify-between py-2">
                         <span class="text-slate-400">보안</span><span class="text-green-400 font-bold">Air-gapped · Bearer Auth</span>
@@ -815,7 +815,7 @@
                     <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span><span class="text-slate-300">Gmail · Calendar MCP</span></div>
                     <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span><span class="text-slate-300">MS365 MCP</span></div>
                     <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></span><span class="text-slate-300">Google Tasks MCP</span></div>
-                    <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span><span class="text-slate-300">SSH MCP (3서버)</span></div>
+                    <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span><span class="text-slate-300">SSH MCP (4서버)</span></div>
                     <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-teal-400 rounded-full"></span><span class="text-slate-300">Slack MCP</span></div>
                     <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span><span class="text-slate-300">Viz MCP (그래프)</span></div>
                     <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-green-400 rounded-full"></span><span class="text-slate-300">Planner · OneNote</span></div>
@@ -875,9 +875,9 @@
                         <div class="text-teal-400 text-sm">맞춤 구축</div>
                     </div>
                 </div>
-                <p class="text-slate-400 text-sm leading-relaxed mb-4">기관 내부 보고서·HWP·PDF를 인덱싱하여 자연어 질의로 즉시 검색·요약. Gemini Embedding 듀얼 백엔드로 높은 검색 정확도 보장.</p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">기관 내부 보고서·HWP·PDF를 인덱싱하여 자연어 질의로 즉시 검색·요약. Qwen3-VL Embedding 로컬 GPU 추론으로 높은 검색 정확도 보장.</p>
                 <div class="flex flex-wrap gap-1.5">
-                    <span class="tech-badge">Gemini Embedding</span><span class="tech-badge">HWP 지원</span><span class="tech-badge">자연어 검색</span>
+                    <span class="tech-badge">Qwen3-VL Embedding</span><span class="tech-badge">HWP 지원</span><span class="tech-badge">자연어 검색</span>
                 </div>
             </div>
             <div class="glass rounded-2xl p-7">
@@ -1052,7 +1052,7 @@
         <div class="flex items-center gap-2">
             <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot shrink-0"></span>
             <span class="text-slate-400">RAG Engine</span>
-            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full font-semibold border border-green-500/30">5,901 chunks</span>
+            <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full font-semibold border border-green-500/30">9,500+ chunks</span>
         </div>
         <div class="flex items-center gap-2">
             <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot shrink-0"></span>
@@ -1073,7 +1073,7 @@
     <div class="border-t border-slate-800 overflow-hidden py-1.5">
         <div class="marquee-inner text-sm text-slate-600 px-4">
             🌊 O5I — Agentic AI for Marine Science &nbsp;·&nbsp;
-            📚 RAG: 5,901 청크 인덱싱 완료 &nbsp;·&nbsp;
+            📚 RAG: 9,500+ 청크 인덱싱 완료 &nbsp;·&nbsp;
             🤖 ADI: 5-에이전트 파이프라인 38초 E2E &nbsp;·&nbsp;
             📈 정기 AI 브리핑 매일 자동 발송 중 &nbsp;·&nbsp;
             🔊 Ocean Soundscape 분석 파이프라인 운영 중 &nbsp;·&nbsp;

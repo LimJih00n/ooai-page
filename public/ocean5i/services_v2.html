@@ -128,6 +128,27 @@
             to   { transform: translateX(-100%); }
         }
         .marquee-inner { animation: marquee 22s linear infinite; white-space: nowrap; }
+
+        /* ── Category tabs ───────────────────────── */
+        .cat-tab {
+            color: rgb(148 163 184);
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+        }
+        .cat-tab:hover {
+            color: rgb(226 232 240);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+        .cat-tab[aria-selected="true"] {
+            color: white;
+            background: linear-gradient(90deg, #0ea5e9, #6366f1);
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(14, 165, 233, 0.25);
+        }
+        /* Hide non-matching sections */
+        .service-section.cat-hidden {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 min-h-screen font-sans antialiased">
@@ -190,7 +211,7 @@
     <div class="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-4xl w-full">
         <div class="glass rounded-2xl p-4 text-center hover:border-sky-500/40 transition">
             <div class="text-2xl mb-2">🌊</div>
-            <div class="text-sky-400 font-black text-2xl leading-none mb-1">11</div>
+            <div class="text-sky-400 font-black text-2xl leading-none mb-1">12</div>
             <div class="text-white text-xs font-bold mb-0.5">전문 서비스</div>
             <div class="text-slate-500 text-xs">해양과학 특화</div>
         </div>
@@ -208,9 +229,9 @@
         </div>
         <div class="glass rounded-2xl p-4 text-center hover:border-green-500/40 transition">
             <div class="text-2xl mb-2">🔒</div>
-            <div class="text-green-400 font-black text-2xl leading-none mb-1">3</div>
+            <div class="text-green-400 font-black text-2xl leading-none mb-1">2</div>
             <div class="text-white text-xs font-bold mb-0.5">특허 · 출원</div>
-            <div class="text-slate-500 text-xs">등록 1 + 출원 2</div>
+            <div class="text-slate-500 text-xs">등록 1 + 출원 1</div>
         </div>
         <div class="glass rounded-2xl p-4 text-center hover:border-violet-500/40 transition col-span-2 md:col-span-1">
             <div class="text-2xl mb-2">🎓</div>
@@ -222,9 +243,37 @@
 </section>
 
 <!-- ══════════════════════════════════════════
+     CATEGORY TABS (sticky)
+══════════════════════════════════════════ -->
+<div id="category-tabs" class="sticky top-16 z-40 bg-slate-950/80 backdrop-blur-xl border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex gap-2 overflow-x-auto scroll-smooth" role="tablist" aria-label="서비스 카테고리">
+        <button type="button" role="tab" aria-selected="true" data-category="all"
+                class="cat-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition whitespace-nowrap">
+            🗂 전체 <span class="text-xs opacity-70">12</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-category="research"
+                class="cat-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition whitespace-nowrap">
+            🧭 연구·R&amp;D 기획 <span class="text-xs opacity-70">3</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-category="ocean-ai"
+                class="cat-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition whitespace-nowrap">
+            🌊 해양·환경 AI <span class="text-xs opacity-70">3</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-category="agents"
+                class="cat-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition whitespace-nowrap">
+            🤖 AI 에이전트·인프라 <span class="text-xs opacity-70">3</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-category="delivery"
+                class="cat-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition whitespace-nowrap">
+            🎓 교육·통합 지원 <span class="text-xs opacity-70">3</span>
+        </button>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════
      SERVICE 01: 정기 AI 브리핑
 ══════════════════════════════════════════ -->
-<section id="briefing" class="py-20 px-5 bg-slate-900/30">
+<section id="briefing" data-category="research" class="service-section py-20 px-5 bg-slate-900/30">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-sky-400 text-sm font-bold tracking-widest uppercase mb-3">Service 01 · 운영 중</p>
@@ -339,7 +388,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 02: 해양 데이터 분석
 ══════════════════════════════════════════ -->
-<section id="ocean-data" class="py-20 px-5">
+<section id="ocean-data" data-category="ocean-ai" class="service-section py-20 px-5">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-teal-400 text-sm font-bold tracking-widest uppercase mb-3">Service 02 · 운영 중</p>
@@ -401,16 +450,16 @@
 <!-- ══════════════════════════════════════════
      SERVICE 03: R&D 역량 평가체계
 ══════════════════════════════════════════ -->
-<section id="eval" class="py-20 px-5 bg-slate-900/30">
+<section id="eval" data-category="research" class="service-section py-20 px-5 bg-slate-900/30">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
-            <p class="text-indigo-400 text-sm font-bold tracking-widest uppercase mb-3">Service 03 · 특허 등록 1건 + 출원 2건</p>
+            <p class="text-indigo-400 text-sm font-bold tracking-widest uppercase mb-3">Service 03 · 특허 출원 준비 중</p>
             <h2 class="text-3xl md:text-4xl font-black text-white mb-4">
                 R&D 역량 <span class="grad-text">평가체계 v4.1</span>
             </h2>
             <p class="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
                 다차원 지표 기반 R&D 조직 역량 진단 시스템.<br>
-                기관 유형별 자동 가중치 조정 · 특허 등록 1건 + 출원 2건 (VLM 피복도 포함)
+                기관 유형별 자동 가중치 조정 · 특허 출원 준비 중
             </p>
         </div>
         <div class="fade-up grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -465,7 +514,7 @@
                     <div class="h-1.5 bg-slate-800 rounded-full"><div class="h-full w-[70%] bg-gradient-to-r from-teal-500 to-indigo-400 rounded-full"></div></div>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <span class="tech-badge">v4.1</span><span class="tech-badge">특허 출원 중</span><span class="tech-badge">저작권 등록</span><span class="tech-badge">4개 평가 트랙</span>
+                    <span class="tech-badge">v4.1</span><span class="tech-badge">특허 출원 준비 중</span><span class="tech-badge">저작권 등록</span><span class="tech-badge">4개 평가 트랙</span>
                 </div>
             </div>
         </div>
@@ -475,7 +524,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 04: R&D 과제 자동화
 ══════════════════════════════════════════ -->
-<section id="rnd" class="py-20 px-5">
+<section id="rnd" data-category="research" class="service-section py-20 px-5">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-sky-400 text-sm font-bold tracking-widest uppercase mb-3">Service 04 · 저작권 등록</p>
@@ -531,10 +580,10 @@
                     <li class="flex items-start gap-2"><span class="text-indigo-400 mt-0.5">▸</span>기관 유형별 가중치 자동 조정 알고리즘</li>
                     <li class="flex items-start gap-2"><span class="text-indigo-400 mt-0.5">▸</span>다차원 지표 기반 R&D 조직 역량 진단</li>
                     <li class="flex items-start gap-2"><span class="text-indigo-400 mt-0.5">▸</span>맞춤형 평가 트랙 자동 결정</li>
-                    <li class="flex items-start gap-2"><span class="text-indigo-400 mt-0.5">▸</span>특허 출원 진행 중 · 저작권 등록</li>
+                    <li class="flex items-start gap-2"><span class="text-indigo-400 mt-0.5">▸</span>특허 출원 준비 중 · 저작권 등록</li>
                 </ul>
                 <div class="flex flex-wrap gap-1.5 mt-5">
-                    <span class="tech-badge">Python</span><span class="tech-badge">v4.1</span><span class="tech-badge">특허출원</span>
+                    <span class="tech-badge">Python</span><span class="tech-badge">v4.1</span><span class="tech-badge">특허 출원 준비 중</span>
                 </div>
             </div>
             <div class="fade-up glass rounded-xl p-6">
@@ -559,7 +608,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 05: AI 교육·컨설팅
 ══════════════════════════════════════════ -->
-<section id="edu" class="py-20 px-5 bg-slate-900/30">
+<section id="edu" data-category="delivery" class="service-section py-20 px-5 bg-slate-900/30">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-violet-400 text-sm font-bold tracking-widest uppercase mb-3">Service 05 · 운영 중</p>
@@ -603,7 +652,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 06: Agentic AI 업무지원체계
 ══════════════════════════════════════════ -->
-<section id="agentic" class="py-20 px-5">
+<section id="agentic" data-category="agents" class="service-section py-20 px-5">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-sky-400 text-sm font-bold tracking-widest uppercase mb-3">Service 06 · 운영 중</p>
@@ -688,7 +737,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 07: ADI 멀티에이전트
 ══════════════════════════════════════════ -->
-<section id="adi" class="py-20 px-5 bg-slate-900/30">
+<section id="adi" data-category="agents" class="service-section py-20 px-5 bg-slate-900/30">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-indigo-400 text-sm font-bold tracking-widest uppercase mb-3">Service 07 · 운영 중</p>
@@ -769,7 +818,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 08: RAG + MCP 인프라
 ══════════════════════════════════════════ -->
-<section id="infra" class="py-20 px-5">
+<section id="infra" data-category="agents" class="service-section py-20 px-5">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-teal-400 text-sm font-bold tracking-widest uppercase mb-3">Service 08 · 운영 중</p>
@@ -828,7 +877,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 09: 고객 맞춤 통합 솔루션
 ══════════════════════════════════════════ -->
-<section id="custom" class="py-20 px-5 bg-slate-900/30">
+<section id="custom" data-category="delivery" class="service-section py-20 px-5 bg-slate-900/30">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-amber-400 text-sm font-bold tracking-widest uppercase mb-3">Service 09 · 운영 중</p>
@@ -900,7 +949,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 10: VLM 영상분석 피복도
 ══════════════════════════════════════════ -->
-<section id="vlm" class="py-20 px-5">
+<section id="vlm" data-category="ocean-ai" class="service-section py-20 px-5">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up mb-12 text-center">
             <p class="text-sky-400 text-sm font-bold tracking-widest uppercase mb-3">Service 10 · 특허출원 완료</p>
@@ -979,7 +1028,7 @@
 <!-- ══════════════════════════════════════════
      SERVICE 11: CoastGuard (Coming Soon)
 ══════════════════════════════════════════ -->
-<section id="coastguard" class="py-20 px-5 bg-slate-900/30">
+<section id="coastguard" data-category="ocean-ai" class="service-section py-20 px-5 bg-slate-900/30">
     <div class="max-w-7xl mx-auto">
         <div class="fade-up grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
@@ -1039,6 +1088,131 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SERVICE 12: Project Archive & AX Platform
+══════════════════════════════════════════ -->
+<section id="archive" data-category="delivery" class="service-section py-20 px-5">
+    <div class="max-w-7xl mx-auto">
+        <div class="fade-up mb-12 text-center">
+            <p class="text-indigo-400 text-sm font-bold tracking-widest uppercase mb-3">Service 12 · 운영 중</p>
+            <h2 class="text-3xl md:text-4xl font-black text-white mb-4">
+                Project Archive <span class="grad-text">& AX 플랫폼</span>
+            </h2>
+            <p class="text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
+                과제·기관 웹사이트의 라이프사이클 아카이브에 AX(AI Transformation) 확장을 결합.<br>
+                단순 보전을 넘어 지식그래프·Cross-domain 검색·자율 분석 에이전트까지 일관 제공.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 fade-up mb-6">
+            <div class="glass-strong rounded-2xl p-7">
+                <div class="text-indigo-400 text-sm font-black uppercase tracking-widest mb-3">기반 모듈 — Archive</div>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Mirror Engine</span><span class="text-indigo-300 font-bold">월간 스냅샷 · 변경분 diff</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Change Tracker</span><span class="text-slate-300">파일·문서 단위 업로드 타임라인</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Report Helper</span><span class="text-indigo-300 font-bold">분기·연차 보고서 초안 자동 구성</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Retention Policy</span><span class="text-slate-300">보관 기한·공개 등급 정책 엔진</span>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <span class="text-slate-400">Alert & Notify</span><span class="text-green-400 font-bold">텔레그램 · Google Chat · Slack · Teams</span>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="text-xs text-indigo-300 font-bold mb-1">연구 과정이 곧 보고 결과물</div>
+                    <div class="text-xs text-slate-400 leading-relaxed">구성원의 일상 업무(웹 업로드·회의록·문서 게시)가 자동 기록되어, 별도의 보고서 작성 없이 연차 자료로 자연 축적됩니다.</div>
+                </div>
+            </div>
+            <div class="glass-strong rounded-2xl p-7">
+                <div class="text-sky-400 text-sm font-black uppercase tracking-widest mb-3">확장 모듈 — AX Layer</div>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Data Pipeline</span><span class="text-sky-300 font-bold">ISO 19115 · OGC 표준 적용</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Knowledge Graph</span><span class="text-slate-300">도메인 온톨로지 + 관계 추론</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Cross-domain RAG</span><span class="text-sky-300 font-bold">다수 DB 통합 검색 · 근거 수집</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-slate-800">
+                        <span class="text-slate-400">Analysis Agent</span><span class="text-slate-300">자연어 질의 → 자율 분석 → 보고서</span>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <span class="text-slate-400">외부 공개</span><span class="text-green-400 font-bold">공개 API · 정책 의사결정 연동</span>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="text-xs text-sky-300 font-bold mb-1">아카이브에서 AX 플랫폼으로</div>
+                    <div class="text-xs text-slate-400 leading-relaxed">수동 검색형 디지털 도서관이 아닌, 자율 분석 Agent가 데이터를 능동적으로 탐색·해석하여 정책·의사결정 계층까지 연결합니다.</div>
+                </div>
+            </div>
+        </div>
+        <div class="glass rounded-2xl p-7 fade-up">
+            <div class="text-teal-400 text-sm font-black uppercase tracking-widest mb-4">구성 유연성 — 발주처 환경에 맞춘 배포</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <div class="text-white font-bold text-sm mb-3">배포 위치</div>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▸</span>발주처 On-Premise (민감·안보 데이터)</li>
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▸</span>발주처 지정 클라우드 (국가망·공공 클라우드)</li>
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▸</span>O5I 운영 SaaS (빠른 착수)</li>
+                        <li class="flex items-start gap-2"><span class="text-teal-400">▸</span>하이브리드 (보전 내부 + AI 분석 외부)</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="text-white font-bold text-sm mb-3">서비스 레벨</div>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>Lite — 보전·변경추적·알림</li>
+                        <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>Standard — 보고서 자동화 포함</li>
+                        <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>Enterprise — 데이터 파이프라인·RAG</li>
+                        <li class="flex items-start gap-2"><span class="text-sky-400">▸</span>AX Platform — Knowledge Graph·Agent</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-5">
+                <span class="tech-badge">웹사이트 미러링</span>
+                <span class="tech-badge">변경 추적</span>
+                <span class="tech-badge">보고서 자동화</span>
+                <span class="tech-badge">Knowledge Graph</span>
+                <span class="tech-badge">Cross-domain RAG</span>
+                <span class="tech-badge">Analysis Agent</span>
+                <span class="tech-badge">유연 배포</span>
+            </div>
+        </div>
+        <div class="glass rounded-2xl p-7 fade-up mt-6">
+            <div class="text-amber-400 text-sm font-black uppercase tracking-widest mb-4">격리 환경 LLM · Fine-tuning 지원</div>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                민감 해역·안보 데이터 등 외부 유출이 제한되는 영역을 위해, <b class="text-white">인터넷과 격리된 서버(Air-gapped)</b>에
+                특정 역할을 수행하는 <b class="text-white">오픈소스 LLM</b>을 탑재하고, 역할에 맞춘 <b class="text-white">Fine-tuning</b>까지 수행합니다.
+                O5I는 이미 Agentic AI 체계를 자체 구축하여 일상 업무에 활용 중이며, 동일한 구성을 발주처 환경에 이식합니다.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-2"><span class="text-amber-400">▸</span>Air-gapped 배포 · 외부 네트워크 차단 상태 운영</li>
+                    <li class="flex items-start gap-2"><span class="text-amber-400">▸</span>역할별 최적 오픈소스 LLM 탑재 (검색·요약·분류·분석)</li>
+                </ul>
+                <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-2"><span class="text-amber-400">▸</span>도메인 Fine-tuning · 기관 문헌·보고서·관측데이터 활용</li>
+                    <li class="flex items-start gap-2"><span class="text-amber-400">▸</span>HWP·MD·DOCX·HWPX 변환 파이프라인 <b class="text-white">저작권 등록 완료</b></li>
+                </ul>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-4">
+                <span class="tech-badge">Air-gapped LLM</span>
+                <span class="tech-badge">Open-source 모델</span>
+                <span class="tech-badge">Fine-tuning</span>
+                <span class="tech-badge">문서변환 저작권</span>
+                <span class="tech-badge">Agentic AI 운영중</span>
             </div>
         </div>
     </div>
@@ -1112,6 +1286,7 @@
                     <li><a href="#custom" class="hover:text-sky-400 transition flex items-center gap-2"><span class="w-1 h-1 bg-amber-500 rounded-full"></span>고객 맞춤 솔루션</a></li>
                     <li><a href="#vlm" class="hover:text-sky-400 transition flex items-center gap-2"><span class="w-1 h-1 bg-sky-500 rounded-full"></span>VLM 피복도</a></li>
                     <li><a href="#coastguard" class="hover:text-sky-400 transition flex items-center gap-2"><span class="w-1 h-1 bg-teal-500 rounded-full"></span>CoastGuard</a></li>
+                    <li><a href="#archive" class="hover:text-sky-400 transition flex items-center gap-2"><span class="w-1 h-1 bg-indigo-500 rounded-full"></span>Archive & AX Platform</a></li>
                 </ul>
             </div>
             <div class="flex flex-col gap-4">
@@ -1233,6 +1408,59 @@
 
     // Start after page load
     setTimeout(runFlowAnimation, 1200);
+
+    // ── Category tab filtering ───────────────
+    // Anchor → category lookup (keeps deep links like #vlm working)
+    const SERVICE_CATEGORY = {
+        briefing: 'research',  eval: 'research',   rnd: 'research',
+        'ocean-data': 'ocean-ai', vlm: 'ocean-ai',  coastguard: 'ocean-ai',
+        agentic: 'agents',       adi: 'agents',     infra: 'agents',
+        edu: 'delivery',         custom: 'delivery', archive: 'delivery',
+    };
+
+    function applyCategory(cat, opts = {}) {
+        const tabs = document.querySelectorAll('.cat-tab');
+        tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.category === cat ? 'true' : 'false'));
+
+        document.querySelectorAll('.service-section').forEach(s => {
+            const show = cat === 'all' || s.dataset.category === cat;
+            s.classList.toggle('cat-hidden', !show);
+        });
+
+        if (opts.updateUrl !== false) {
+            const url = new URL(window.location.href);
+            if (cat === 'all') url.searchParams.delete('cat');
+            else url.searchParams.set('cat', cat);
+            history.replaceState(null, '', url.toString() + (window.location.hash || ''));
+        }
+    }
+
+    document.querySelectorAll('.cat-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const cat = btn.dataset.category;
+            applyCategory(cat);
+            window.scrollTo({ top: document.getElementById('category-tabs').offsetTop - 60, behavior: 'smooth' });
+        });
+    });
+
+    // Initial load: honor ?cat=xxx or #service-id
+    (function initCategory() {
+        const params = new URLSearchParams(window.location.search);
+        const hashId = window.location.hash.replace('#', '');
+        let initial = params.get('cat');
+        if (!initial && hashId && SERVICE_CATEGORY[hashId]) {
+            initial = SERVICE_CATEGORY[hashId];
+        }
+        if (!initial) initial = 'all';
+        applyCategory(initial, { updateUrl: false });
+
+        if (hashId) {
+            setTimeout(() => {
+                const el = document.getElementById(hashId);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 80);
+        }
+    })();
 </script>
 </body>
 </html>

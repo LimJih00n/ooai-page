@@ -1,0 +1,131 @@
+{
+  "$schema": "./portfolio.schema.json",
+  "meta": {
+    "lastUpdated": "2026-04-21",
+    "source": "SSoT for homepage — edit here, then run scripts/audit-portfolio.py",
+    "owner": "O5I Inc. (오오아이주식회사)"
+  },
+  "company": {
+    "name": "오오아이(주)",
+    "nameEn": "O5I Inc.",
+    "foundedDate": "2025-01-16",
+    "bizRegNumber": "304-10-47435",
+    "ceo": "임세한 (Dr. Sehan Lim)",
+    "headcount": 1
+  },
+  "patents": {
+    "summary": {
+      "registered": 1,
+      "applied": 1,
+      "total": 2
+    },
+    "items": [
+      {
+        "id": "patent-coastal-hazard",
+        "title": "연안재해 위험도 평가·예측 통합시스템",
+        "status": "registered",
+        "filedDate": null,
+        "registeredDate": null,
+        "notes": "등록 완료"
+      },
+      {
+        "id": "patent-vlm-debris",
+        "title": "VLM 기반 해양쓰레기 피복도 슬라이딩 윈도우 탐지 방법",
+        "status": "applied",
+        "filedDate": "2026-03-19",
+        "registeredDate": null,
+        "certificatePath": "~/patent-vlm/특허출원등록증_260319.pdf"
+      }
+    ]
+  },
+  "copyrights": {
+    "summary": {
+      "registered": 7,
+      "applied": 0,
+      "total": 7
+    },
+    "items": [
+      {
+        "id": "cr-linux-hwp",
+        "title": "리눅스용 HWP 상호변환 프로그램 v1.0",
+        "registrationNumber": "C-2026-010776",
+        "status": "registered",
+        "receiptNumber": "2026-011394",
+        "certificatePath": "~/o5i/12_SW저작권등록/리눅스용hwp상호변환프로그램_저작권등록부.pdf",
+        "backedUpToSpark": true,
+        "backedUpToDrive": false
+      },
+      {
+        "id": "cr-vscode-hwp",
+        "title": "VS Code HWP 뷰어 확장프로그램 v1.0",
+        "registrationNumber": null,
+        "status": "registered",
+        "receiptNumber": "2026-011395",
+        "certificatePath": null,
+        "backedUpToSpark": false,
+        "backedUpToDrive": false,
+        "note": "delli/dellma에 등록증 존재, spark/Drive 백업 예정"
+      },
+      {
+        "id": "cr-rnd-pipeline",
+        "title": "R&D 과제기획관리지원 파이프라인 v5.0",
+        "registrationNumber": null,
+        "status": "registered",
+        "receiptNumber": "2026-011396",
+        "certificatePath": null,
+        "backedUpToSpark": false,
+        "backedUpToDrive": false,
+        "note": "delli/dellma에 등록증 존재, spark/Drive 백업 예정"
+      },
+      {
+        "id": "cr-3track-eval",
+        "title": "O5I 3-Track R&D 역량진단 평가시스템 v4.1",
+        "registrationNumber": null,
+        "status": "registered",
+        "receiptNumber": "2026-011397",
+        "certificatePath": null,
+        "backedUpToSpark": false,
+        "backedUpToDrive": false,
+        "note": "delli/dellma에 등록증 존재, spark/Drive 백업 예정"
+      },
+      {
+        "id": "cr-change-detection",
+        "title": "딥러닝 기반 위성·항공영상 변화탐지 엔진 v1.0",
+        "registrationNumber": "C-2026-013893",
+        "status": "registered",
+        "receiptNumber": "2026-013865",
+        "certificatePath": "~/o5i/12_SW저작권등록/딥러닝기반항공인공위성영상변화탐지엔진_저작권등록증.pdf",
+        "backedUpToSpark": true,
+        "backedUpToDrive": false
+      },
+      {
+        "id": "cr-data-collection",
+        "title": "위성·항공영상 자료수집체계 v1.0",
+        "registrationNumber": null,
+        "status": "registered",
+        "receiptNumber": null,
+        "certificatePath": null,
+        "backedUpToSpark": false,
+        "backedUpToDrive": false,
+        "note": "delli/dellma에 등록증 존재, spark/Drive 백업 예정"
+      },
+      {
+        "id": "cr-md-docx-hwp",
+        "title": "MD·DOCX·HWP 변환 스타일 자동적용 v2.0",
+        "registrationNumber": "C-2026-018040",
+        "status": "registered",
+        "receiptNumber": null,
+        "certificatePath": "~/o5i/12_SW저작권등록/MD_DOCX_HWP변환스타일자동적용_저작권등록증_C-2026-018040.pdf",
+        "backedUpToSpark": true,
+        "backedUpToDrive": false,
+        "createdDate": "2026-03-31"
+      }
+    ]
+  },
+  "displayStrings": {
+    "headline": "특허 2건 (등록 1 · 출원 1) · SW 저작권 등록 7건",
+    "compact": "특허 2건 · SW 7건",
+    "patentBadge": "특허 등록 1건 + 출원 1건",
+    "copyrightBadge": "SW 저작권 등록 7건"
+  }
+}

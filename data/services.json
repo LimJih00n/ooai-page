@@ -1,0 +1,191 @@
+{
+  "$schema": "./services.schema.json",
+  "meta": {
+    "lastUpdated": "2026-04-21",
+    "source": "SSoT for services page — drives tab filtering in services_v2.html"
+  },
+  "categories": [
+    {
+      "id": "research",
+      "order": 1,
+      "label": "연구·R&D 기획",
+      "icon": "🧭",
+      "color": "sky",
+      "description": "R&D 과제 기획·역량 진단·정책 동향 브리핑",
+      "serviceIds": ["briefing", "eval", "rnd"]
+    },
+    {
+      "id": "ocean-ai",
+      "order": 2,
+      "label": "해양·환경 AI",
+      "icon": "🌊",
+      "color": "teal",
+      "description": "해양 데이터 분석·위성영상 피복도·연안 감시",
+      "serviceIds": ["ocean-data", "vlm", "coastguard"]
+    },
+    {
+      "id": "agents",
+      "order": 3,
+      "label": "AI 에이전트·인프라",
+      "icon": "🤖",
+      "color": "indigo",
+      "description": "Agentic 업무자동화·멀티에이전트·RAG/MCP 인프라",
+      "serviceIds": ["agentic", "adi", "infra"]
+    },
+    {
+      "id": "delivery",
+      "order": 4,
+      "label": "교육·통합 지원",
+      "icon": "🎓",
+      "color": "amber",
+      "description": "AI 교육·고객 맞춤 솔루션·프로젝트 아카이브",
+      "serviceIds": ["edu", "custom", "archive"]
+    }
+  ],
+  "services": [
+    {
+      "id": "briefing",
+      "order": 1,
+      "code": "S01",
+      "title": "정기 AI 브리핑",
+      "shortTitle": "AI 브리핑",
+      "categoryId": "research",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "sky",
+      "summary": "해양·수산·환경 정책 동향을 격주 자동 분석·배포"
+    },
+    {
+      "id": "ocean-data",
+      "order": 2,
+      "code": "S02",
+      "title": "해양 데이터 분석",
+      "shortTitle": "해양 데이터",
+      "categoryId": "ocean-ai",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "teal",
+      "summary": "위성·현장·관측 해양 데이터 전처리·시각화·보고"
+    },
+    {
+      "id": "eval",
+      "order": 3,
+      "code": "S03",
+      "title": "R&D 역량 평가체계",
+      "shortTitle": "역량 평가",
+      "categoryId": "research",
+      "status": "active",
+      "statusLabel": "특허 출원 준비 중",
+      "accentColor": "indigo",
+      "summary": "3-Track R&D 역량 정량 진단 · SW 저작권 등록"
+    },
+    {
+      "id": "rnd",
+      "order": 4,
+      "code": "S04",
+      "title": "R&D 과제 자동화",
+      "shortTitle": "과제 자동화",
+      "categoryId": "research",
+      "status": "active",
+      "statusLabel": "저작권 등록",
+      "accentColor": "sky",
+      "summary": "공고 수집·매칭·제안서 자동화 파이프라인 v5.0"
+    },
+    {
+      "id": "edu",
+      "order": 5,
+      "code": "S05",
+      "title": "AI 교육·컨설팅",
+      "shortTitle": "AI 교육",
+      "categoryId": "delivery",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "violet",
+      "summary": "해양·수산 현장 대상 AI 실무 교육 및 자문"
+    },
+    {
+      "id": "agentic",
+      "order": 6,
+      "code": "S06",
+      "title": "Agentic AI 업무지원체계",
+      "shortTitle": "Agentic AI",
+      "categoryId": "agents",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "sky",
+      "summary": "Claude Code·MCP 기반 업무 자동화 에이전트 구축"
+    },
+    {
+      "id": "adi",
+      "order": 7,
+      "code": "S07",
+      "title": "ADI 멀티에이전트",
+      "shortTitle": "ADI",
+      "categoryId": "agents",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "indigo",
+      "summary": "Agentic Design Intelligence 멀티에이전트 플랫폼"
+    },
+    {
+      "id": "infra",
+      "order": 8,
+      "code": "S08",
+      "title": "RAG + MCP 인프라",
+      "shortTitle": "RAG/MCP",
+      "categoryId": "agents",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "teal",
+      "summary": "ChromaDB·Ollama·MCP 통합 지식 검색 인프라"
+    },
+    {
+      "id": "custom",
+      "order": 9,
+      "code": "S09",
+      "title": "고객 맞춤 통합 솔루션",
+      "shortTitle": "맞춤 솔루션",
+      "categoryId": "delivery",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "amber",
+      "summary": "고객사 도메인에 맞춘 AI 시스템 설계·구축"
+    },
+    {
+      "id": "vlm",
+      "order": 10,
+      "code": "S10",
+      "title": "VLM 영상분석 피복도",
+      "shortTitle": "VLM 피복도",
+      "categoryId": "ocean-ai",
+      "status": "active",
+      "statusLabel": "특허출원 완료",
+      "accentColor": "sky",
+      "summary": "VLM 슬라이딩 윈도우 해양쓰레기 피복도 정량화 (2026-03-19 출원)"
+    },
+    {
+      "id": "coastguard",
+      "order": 11,
+      "code": "S11",
+      "title": "CoastGuard",
+      "shortTitle": "CoastGuard",
+      "categoryId": "ocean-ai",
+      "status": "coming-soon",
+      "statusLabel": "Coming Soon",
+      "accentColor": "slate",
+      "summary": "연안·해안 실시간 감시 AI 플랫폼 (예정)"
+    },
+    {
+      "id": "archive",
+      "order": 12,
+      "code": "S12",
+      "title": "Project Archive & AX Platform",
+      "shortTitle": "Archive",
+      "categoryId": "delivery",
+      "status": "active",
+      "statusLabel": "운영 중",
+      "accentColor": "indigo",
+      "summary": "프로젝트 지식 아카이브 · AX(AI Transformation) 플랫폼"
+    }
+  ]
+}

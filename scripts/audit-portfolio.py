@@ -145,6 +145,44 @@ def check_html_numbers(portfolio: dict, services: dict, errors: list[str], warni
                 )
 
 
+def check_copyright_detail_section(portfolio: dict, errors: list[str]) -> None:
+    """about_v2.html has a detailed '소프트웨어 저작권 등록' section with one card per item.
+    The badge count and card count must both match portfolio.copyrights.summary.registered."""
+    about = HTML_DIR / "about_v2.html"
+    if not about.exists():
+        return
+    text = about.read_text(encoding="utf-8")
+    expected = portfolio["copyrights"]["summary"]["registered"]
+
+    # Badge like: "<span ...>7건 등록 완료</span>"
+    for m in re.finditer(r">(\d+)건\s*등록\s*완료<", text):
+        n = int(m.group(1))
+        if n != expected:
+            errors.append(
+                f"about_v2.html: '{n}건 등록 완료' badge conflicts with SSoT ({expected}건)"
+            )
+
+    # Card count — only inside the SW Copyright section.
+    section_match = re.search(
+        r"소프트웨어\s*저작권\s*등록.*?</section>",
+        text,
+        flags=re.DOTALL,
+    )
+    if section_match:
+        section_html = section_match.group(0)
+        card_count = len(
+            re.findall(
+                r'border-indigo-500/20">\s*<div class="flex items-start justify-between mb-3">',
+                section_html,
+            )
+        )
+        if card_count != expected:
+            errors.append(
+                f"about_v2.html: SW Copyright section has {card_count} card(s), "
+                f"expected {expected} per SSoT"
+            )
+
+
 def check_html_service_anchors(services: dict, warnings: list[str]) -> None:
     services_html = HTML_DIR / "services_v2.html"
     if not services_html.exists():
@@ -173,6 +211,7 @@ def main(argv: list[str]) -> int:
     check_copyright_counts(portfolio, errors)
     check_services_count(services, errors, warnings)
     check_html_numbers(portfolio, services, errors, warnings)
+    check_copyright_detail_section(portfolio, errors)
     check_html_service_anchors(services, warnings)
 
     if errors:
